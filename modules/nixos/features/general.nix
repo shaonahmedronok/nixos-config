@@ -38,8 +38,7 @@
     wiremix
     wireplumber
     pamixer
-    sonic-pi
-
+    
     # Clipboard
     wl-clipboard
     cliphist
