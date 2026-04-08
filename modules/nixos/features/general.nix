@@ -3,18 +3,16 @@
   environment.systemPackages = with pkgs; [
     # IDEs / Text editors
     neovim
-    vscodium.fhs
+#   vscodium.fhs
 
     # Writings
     typst
 
     # Terminal emulators
     kitty
-    alacritty
-
+    
     # Browsers
     google-chrome
-    librewolf
     firefox
     tor-browser
 
@@ -69,8 +67,7 @@
     # Screenshots
     slurp
     grim
-    flameshot
-
+    
     # Screen recorders
     obs-studio
     gpu-screen-recorder
