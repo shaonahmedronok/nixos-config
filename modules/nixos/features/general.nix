@@ -3,7 +3,6 @@
   environment.systemPackages = with pkgs; [
     # IDEs / Text editors
     neovim
-#   vscodium.fhs
 
     # Writings
     typst
@@ -13,7 +12,6 @@
     
     # Browsers
     google-chrome
-    firefox
     tor-browser
 
     # Image viewer
@@ -101,8 +99,7 @@
     # Network
     iwd
     networkmanagerapplet
-    impala
-
+    
     # Utils
     wget
     nh
@@ -133,7 +130,6 @@
     imagemagick
     yt-dlp
     evince
-    pinta
     localsend
     gnome-keyring
     libqalculate
