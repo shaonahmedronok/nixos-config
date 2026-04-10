@@ -36,7 +36,25 @@
     };
   };
 
-  programs.starship = {
+
+programs.fish = {
+    enable = true;
+    interactiveShellInit = ''
+      set fish_greeting
+      fish_vi_key_bindings
+      zoxide init fish | source
+    '';
+    functions = {
+      fish_prompt = ''
+        string join "" -- (set_color red) "[" (set_color yellow) $USER (set_color green) "@" (set_color blue) $hostname (set_color magenta) " " $(prompt_pwd) (set_color red) "]" (set_color normal) "\$ "
+      '';
+    };
+  };
+
+
+
+
+programs.starship = {
     enable               = true;
     enableBashIntegration = true;
     settings = {

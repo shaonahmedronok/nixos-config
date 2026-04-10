@@ -151,6 +151,7 @@
   services.avahi.nssmdns4             = true;
   services.power-profiles-daemon.enable = true;
   services.flatpak.enable             = true;
+  programs.fish.enable = true;
 
   hardware.bluetooth.enable = true;
   zramSwap.enable           = true;

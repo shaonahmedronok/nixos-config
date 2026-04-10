@@ -37,12 +37,18 @@
     variant = "";
   };
 
-  users.users.az = {
-    isNormalUser = true;
-    description  = "az";
-    extraGroups  = [ "networkmanager" "wheel" "video" "input" "storage" "i2c" ];
-    packages     = [];
-  };
+
+
+users.users.az = {
+  isNormalUser = true;
+  description  = "az";
+  extraGroups  = [ "networkmanager" "wheel" "video" "input" "storage" "i2c" ];
+  packages     = [];
+  shell        = pkgs.fish;
+};
+
+
+
 
   security.pam.services.hyprlock = {};
 
