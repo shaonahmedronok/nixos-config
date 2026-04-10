@@ -12,7 +12,6 @@
   home.stateVersion = "25.11";
   programs.home-manager.enable = true;
 
-  # ── Stylix target overrides ────────────────────────────────────────────
   stylix.targets.qt.enable       = false;
   stylix.targets.kitty.enable    = false;
   stylix.targets.waybar.enable   = false;
@@ -23,7 +22,6 @@
   stylix.targets.mpv.enable      = false;
   stylix.targets.fuzzel.enable   = false;
 
-  # ── Shell ──────────────────────────────────────────────────────────────
   programs.bash = {
     enable    = true;
     initExtra = "";
@@ -36,14 +34,19 @@
     };
   };
 
-
-programs.fish = {
+  programs.fish = {
     enable = true;
     interactiveShellInit = ''
       set fish_greeting
       fish_vi_key_bindings
       zoxide init fish | source
     '';
+    shellAliases = {
+      ls  = "eza --icons";
+      ll  = "eza -la --icons";
+      cat = "bat";
+      vim = "nvim";
+    };
     functions = {
       fish_prompt = ''
         string join "" -- (set_color red) "[" (set_color yellow) $USER (set_color green) "@" (set_color blue) $hostname (set_color magenta) " " $(prompt_pwd) (set_color red) "]" (set_color normal) "\$ "
@@ -51,12 +54,10 @@ programs.fish = {
     };
   };
 
-
-
-
-programs.starship = {
-    enable               = true;
+  programs.starship = {
+    enable                = true;
     enableBashIntegration = true;
+    enableFishIntegration = false;
     settings = {
       add_newline = false;
       character = {
@@ -72,49 +73,52 @@ programs.starship = {
     };
   };
 
-  # ── Smart shell tools ──────────────────────────────────────────────────
   programs.zoxide = {
-    enable               = true;
+    enable                = true;
     enableBashIntegration = true;
+    enableFishIntegration = false;
   };
+
   programs.fzf = {
-    enable               = true;
+    enable                = true;
     enableBashIntegration = true;
+    enableFishIntegration = false;
   };
+
   programs.eza = {
-    enable               = true;
+    enable                = true;
     enableBashIntegration = true;
+    enableFishIntegration = false;
   };
+
   programs.bat.enable = true;
 
   programs.atuin = {
-    enable               = true;
+    enable                = true;
     enableBashIntegration = true;
+    enableFishIntegration = false;
     settings = {
       filter_mode_shell_up_arrow_history = "global";
     };
   };
 
-  # ── Git ────────────────────────────────────────────────────────────────
   programs.git = {
     enable   = true;
     settings = {
-      user.name  = "shaonahmedronok1";
-      user.email = "shaonbtw@gmail.com";
+      user.name      = "shaonahmedronok1";
+      user.email     = "shaonbtw@gmail.com";
       safe.directory = "/etc/nixos";
     };
   };
 
-  # ── XDG ────────────────────────────────────────────────────────────────
   xdg.mimeApps = {
     enable = true;
     defaultApplications = {
-      "inode/directory"              = "thunar.desktop";
+      "inode/directory"                  = "thunar.desktop";
       "application/x-gnome-saved-search" = "thunar.desktop";
     };
   };
 
-  # ── GTK ────────────────────────────────────────────────────────────────
   gtk = {
     enable = true;
     iconTheme = {
@@ -125,9 +129,8 @@ programs.starship = {
     gtk4.extraConfig.gtk-application-prefer-dark-theme = 1;
   };
 
-  # ── Qt ─────────────────────────────────────────────────────────────────
   qt = {
-    enable = true;
+    enable             = true;
     platformTheme.name = lib.mkForce "gtk";
     style.name         = lib.mkForce "adwaita-dark";
   };
