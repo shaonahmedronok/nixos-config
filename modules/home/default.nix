@@ -40,10 +40,6 @@
       set fish_greeting
       fish_vi_key_bindings
       zoxide init fish | source
-      interactiveShellInit = ''
-      set fish_greeting
-      fish_vi_key_bindings
-      zoxide init fish | source
       set fish_color_command red
       set fish_color_param normal
       set fish_color_error brred
@@ -85,19 +81,19 @@
   programs.zoxide = {
     enable                = true;
     enableBashIntegration = true;
-    enableFishIntegration = false;
+    enableFishIntegration = true;
   };
 
   programs.fzf = {
     enable                = true;
     enableBashIntegration = true;
-    enableFishIntegration = false;
+    enableFishIntegration = true;
   };
 
   programs.eza = {
     enable                = true;
     enableBashIntegration = true;
-    enableFishIntegration = false;
+    enableFishIntegration = true;
   };
 
   programs.bat.enable = true;
@@ -105,7 +101,7 @@
   programs.atuin = {
     enable                = true;
     enableBashIntegration = true;
-    enableFishIntegration = false;
+    enableFishIntegration = true;
     settings = {
       filter_mode_shell_up_arrow_history = "global";
     };
