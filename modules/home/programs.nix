@@ -202,25 +202,6 @@
     }
   '';
 
-  home.file.".config/VSCodium/User/settings.json".text = ''
-    {
-      "workbench.colorTheme": "Gruvbox Dark Hard",
-      "editor.fontFamily": "JetBrainsMono Nerd Font",
-      "editor.fontSize": 14,
-      "editor.fontLigatures": true,
-      "workbench.colorCustomizations": {
-        "[Gruvbox Dark Hard]": {
-          "editor.background": "#0d0d0d",
-          "terminal.background": "#0d0d0d",
-          "sideBar.background": "#0d0d0d",
-          "activityBar.background": "#0d0d0d",
-          "statusBar.background": "#1d2021",
-          "titleBar.activeBackground": "#0d0d0d",
-          "panel.background": "#0d0d0d"
-        }
-      }
-    }
-  '';
 
   home.file.".config/yazi/yazi.toml".text = ''
     [mgr]
