@@ -40,7 +40,7 @@
       set fish_greeting
       fish_vi_key_bindings
       zoxide init fish | source
-      set fish_color_command red
+      set fish_color_command green
       set fish_color_param normal
       set fish_color_error brred
       set fish_color_quote yellow
