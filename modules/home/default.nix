@@ -40,6 +40,20 @@
       set fish_greeting
       fish_vi_key_bindings
       zoxide init fish | source
+      interactiveShellInit = ''
+      set fish_greeting
+      fish_vi_key_bindings
+      zoxide init fish | source
+      set fish_color_command red
+      set fish_color_param normal
+      set fish_color_error brred
+      set fish_color_quote yellow
+      set fish_color_redirection cyan
+      set fish_color_end green
+      set fish_color_comment brblack
+      set fish_color_operator blue
+      set fish_color_autosuggestion brblack
+      set fish_color_valid_path --underline
     '';
     shellAliases = {
       ls  = "eza --icons";
@@ -47,17 +61,12 @@
       cat = "bat";
       vim = "nvim";
     };
-    functions = {
-      fish_prompt = ''
-        string join "" -- (set_color red) "[" (set_color yellow) $USER (set_color green) "@" (set_color blue) $hostname (set_color magenta) " " $(prompt_pwd) (set_color red) "]" (set_color normal) "\$ "
-      '';
-    };
   };
 
   programs.starship = {
     enable                = true;
     enableBashIntegration = true;
-    enableFishIntegration = false;
+    enableFishIntegration = true;
     settings = {
       add_newline = false;
       character = {
