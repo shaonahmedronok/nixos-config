@@ -50,6 +50,8 @@
       set fish_color_operator blue
       set fish_color_autosuggestion brblack
       set fish_color_valid_path --underline
+      bind -M insert ctrl-backspace backward-kill-word
+      bind -M insert alt-backspace backward-kill-word
     '';
     shellAliases = {
       ls  = "eza --icons";
