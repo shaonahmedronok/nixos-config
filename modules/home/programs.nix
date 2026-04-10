@@ -74,8 +74,8 @@
       font_size               = 16;
       cursor_trail            = 3;
       background              = theme.base00;
-      foreground              = theme.base06;
-      cursor                  = theme.base06;
+      foreground              = theme.base07;
+      cursor                  = theme.base07;
       cursor_text_color       = theme.base00;
       selection_background    = theme.base02;
       selection_foreground    = theme.base05;
@@ -90,7 +90,10 @@
       color4  = theme.base0D; color12 = theme.base0D;
       color5  = theme.base0E; color13 = theme.base0E;
       color6  = theme.base0C; color14 = theme.base0C;
-      color7  = theme.base06; color15 = theme.base07;
+      color7  = theme.base03; color15 = theme.base03;
+      enable_audio_bell   = "no";
+      allow_remote_control = "yes";
+      shell_integration   = "enabled";
     };
   };
 
