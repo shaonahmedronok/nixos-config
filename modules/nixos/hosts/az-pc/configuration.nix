@@ -13,7 +13,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages                  = pkgs.linuxPackages_latest;
   boot.kernelModules                   = [ "i2c-dev" ];
-  boot.kernelParams = [ "tpm_tis.interrupts=0" ];
+  boot.kernelParams = [ "quiet" ];
 
   networking.hostName              = "nixos";
   networking.networkmanager.enable = true;
