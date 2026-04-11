@@ -34,22 +34,13 @@
     };
   };
 
-  programs.fish = {
+
+programs.fish = {
     enable = true;
     interactiveShellInit = ''
       set fish_greeting
       fish_vi_key_bindings
       zoxide init fish | source
-      set fish_color_command green
-      set fish_color_param normal
-      set fish_color_error brred
-      set fish_color_quote yellow
-      set fish_color_redirection cyan
-      set fish_color_end green
-      set fish_color_comment brblack
-      set fish_color_operator blue
-      set fish_color_autosuggestion brblack
-      set fish_color_valid_path --underline
       bind -M insert ctrl-backspace backward-kill-word
       bind -M insert alt-backspace backward-kill-word
     '';
@@ -60,6 +51,8 @@
       vim = "nvim";
     };
   };
+
+
 
   programs.starship = {
     enable                = true;
