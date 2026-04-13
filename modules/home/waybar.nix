@@ -8,7 +8,7 @@
         "position": "top",
         "spacing": 0,
         "height": 16,
-        "modules-left": ["hyprland/workspaces"],
+        "modules-left": ["custom/logo", "hyprland/workspaces"],
         "modules-center": ["clock"],
         "modules-right": [
           "custom/nightlight",
@@ -32,6 +32,10 @@
           "tooltip": true,
           "on-click": "kitty -e btop"
         },
+	"custom/logo": {
+  "format": "", 
+  "tooltip": false
+},
         "memory": {
           "interval": 5,
           "format": "󰾆 {percentage}%",
@@ -140,6 +144,12 @@
         color: ${theme.base04};
         opacity: 0.6;
       }
+      #custom-logo {
+  color: ${theme.base0D}; /* Uses your theme's blue/accent color */
+  font-size: 18px;
+  margin-left: 12px;
+  margin-right: 10px;
+}
       #workspaces button.active {
         color: ${theme.base00};
         background-color: ${theme.base0B};
