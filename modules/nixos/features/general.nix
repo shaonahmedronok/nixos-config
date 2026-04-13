@@ -4,20 +4,6 @@
 
     # IDEs / Text editors
     neovim
-    positron-bin
- 
-
-
-    # This is the "Official" way to handle RStudio + Packages on Nix
-    (rstudioWrapper.override {
-      packages = with rPackages; [ 
-        ggplot2 
-        tidyverse
-        gtable
-        dplyr
-      ];
-    })
-
 
     # Writings
     typst
@@ -39,7 +25,6 @@
     mpv
 
     # Image / Video editors
-    gimp
     inkscape
 
     # Topbar
