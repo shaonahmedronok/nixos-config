@@ -44,10 +44,6 @@
 
     # File managers / drive mounting
     yazi
-    xfce.thunar
-    xfce.thunar-volman
-    xfce.thunar-archive-plugin
-    xfce.tumbler
     gvfs
     udisks2
     udiskie
@@ -91,37 +87,26 @@
     # Manual pages
     man-db
 
-    # Calculator
-    gnome-calculator
-
     # Network
     iwd
     networkmanagerapplet
     
     # Utils
-    wget
     nh
     bat
     starship
     atuin
     zoxide
-    ncdu
-    dust
     fd
     ripgrep
     fzf
     eza
-    tree
     jq
-    yq
-    less
     playerctl
-    plocate
     curl
     clang
     python3
     luarocks
-    imagemagick
     yt-dlp
     evince
     gnome-keyring
