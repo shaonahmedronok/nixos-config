@@ -131,7 +131,7 @@
         color: ${theme.base06};
         border-bottom: 2px solid ${theme.base0D};
       }
-      .modules-left  { margin-left:  8px; }
+      .modules-left  { margin-left:  3px; }
       .modules-right { margin-right: 8px; }
       #workspaces button {
         all: initial;
@@ -147,7 +147,7 @@
       #custom-logo {
   color: ${theme.base0D}; /* Uses your theme's blue/accent color */
   font-size: 18px;
-  margin-left: 12px;
+  margin-left: 3px;
   margin-right: 10px;
 }
       #workspaces button.active {
