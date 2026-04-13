@@ -9,7 +9,8 @@
     R
     rPackages.ggplot2
     rPackages.tidyverse
-
+    gtable 
+    dplyr
 
     # Writings
     typst
