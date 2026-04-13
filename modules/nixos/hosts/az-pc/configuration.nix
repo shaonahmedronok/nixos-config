@@ -114,9 +114,16 @@ users.users.az = {
     };
   };
 
-  environment.variables = {
+
+
+
+environment.variables = {
     QT_QPA_PLATFORMTHEME = lib.mkForce "gtk2";
   };
+
+  nixpkgs.config.permittedInsecurePackages = [
+    "electron-38.8.4"
+  ];
 
   system.stateVersion = "25.11";
 }
