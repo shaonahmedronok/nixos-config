@@ -3,6 +3,13 @@
   environment.systemPackages = with pkgs; [
     # IDEs / Text editors
     neovim
+    positron-bin
+
+    # Languages
+    R
+    rPackages.ggplot2
+    rPackages.tidyverse
+
 
     # Writings
     typst
