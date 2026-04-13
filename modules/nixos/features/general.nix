@@ -1,16 +1,23 @@
 { pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
+
     # IDEs / Text editors
     neovim
     positron-bin
+ 
+     
+    # This is the "Pro Max" way: it wraps R + libraries together
+    (rWrapper.override {
+      packages = with rPackages; [ 
+        ggplot2 
+        tidyverse
+        gtable 
+        dplyr
+      ];
+    })
 
-    # Languages
-    R
-    rPackages.ggplot2
-    rPackages.tidyverse
-    rPackages.gtable   # Fixed: Added the prefix
-    rPackages.dplyr    # Fixed: Added the prefix
+
 
     # Writings
     typst
