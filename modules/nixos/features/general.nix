@@ -10,6 +10,9 @@
     # Terminal emulators
     kitty
     
+    # Visuals
+    pipes
+
     # Browsers
     google-chrome
     tor-browser
