@@ -118,7 +118,6 @@
     playerctl
     plocate
     curl
-    tldr
     clang
     python3
     luarocks
@@ -144,6 +143,5 @@
   services.power-profiles-daemon.enable = true;
   programs.fish.enable = true;
 
-  hardware.bluetooth.enable = true;
   zramSwap.enable           = true;
 }
