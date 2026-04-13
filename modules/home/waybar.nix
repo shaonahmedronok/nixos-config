@@ -33,7 +33,7 @@
           "on-click": "kitty -e btop"
         },
 	"custom/logo": {
-  "format": "", 
+  "format": "", 
   "tooltip": false
 },
         "memory": {
