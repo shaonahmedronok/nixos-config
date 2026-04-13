@@ -6,17 +6,17 @@
     neovim
     positron-bin
  
-     
-    # This is the "Pro Max" way: it wraps R + libraries together
-    (rWrapper.override {
+
+
+    # This is the "Official" way to handle RStudio + Packages on Nix
+    (rstudioWrapper.override {
       packages = with rPackages; [ 
         ggplot2 
         tidyverse
-        gtable 
+        gtable
         dplyr
       ];
     })
-
 
 
     # Writings
