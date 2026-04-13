@@ -127,7 +127,6 @@
     curl
     tldr
     clang
-    rustup
     python3
     luarocks
     imagemagick
@@ -149,7 +148,7 @@
   services.gvfs.enable               = true;
   services.udisks2.enable             = true;
   services.blueman.enable             = true;
-  services.printing.enable            = true;
+#  services.printing.enable            = true;
   services.avahi.enable               = true;
   services.avahi.nssmdns4             = true;
   services.power-profiles-daemon.enable = true;
