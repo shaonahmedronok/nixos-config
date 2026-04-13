@@ -9,8 +9,8 @@
     R
     rPackages.ggplot2
     rPackages.tidyverse
-    gtable 
-    dplyr
+    rPackages.gtable   # Fixed: Added the prefix
+    rPackages.dplyr    # Fixed: Added the prefix
 
     # Writings
     typst
