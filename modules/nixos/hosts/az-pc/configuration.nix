@@ -6,7 +6,7 @@
     ../../features/gtk.nix
     ../../features/hyprland.nix
     ../../features/general.nix
-    ../../features/r-studio.nix
+    #../../features/r-studio.nix
   ];
 
   boot.loader.systemd-boot.enable      = true;
