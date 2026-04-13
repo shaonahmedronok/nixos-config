@@ -403,6 +403,82 @@
   home.file.".config/.emoji".text = ''
     🔥 fire hot
     💯 hundred perfect
+    🤖 Robot
+    👽 Alien
+    👾 Alien Monster
+    🥱 Yawning Face
+    🧐 Face with Monocle
+    🤓 Nerd Face
+    😕 Confused Face
+    😟 Worried Face
+    🥶 Cold Face
+    🥴 Woozy Face
+    😵 Dizzy Face
+    🤯 Exploding Head
+    🤠 Cowboy Hat Face
+    🥳 Partying Face
+    🥸 Disguised Face
+    😎 Smiling Face with Sunglasses
+    😴 Sleeping Face
+    😷 Face with Medical Mask
+    😶 Face Without Mouth
+    😏 Smirking Face
+    😒 Unamused Face
+    🙄 Face with Rolling Eyes
+    😬 Grimacing Face
+    🤗 Hugging Face
+    🤭 Face with Hand Over Mouth
+    🤫 Shushing Face
+    🤔 Thinking Face
+    🤐 Zipper-Mouth Face
+    🤨 Face with Raised Eyebrow
+    😐 Neutral Face
+    😑 Expressionless Face
+    😶 Face Without Mouth
+    🙃 Upside-Down Face
+    😉 Winking Face
+    😊 Smiling Face with Smiling Eyes
+    😄 Grinning Face with Smiling Eyes
+    😃 Grinning Face with Big Eyes
+    🗣️ Speaking Head
+    👓 Glasses
+    🎒 Backpack
+    🧢 Billed Cap
+    😮‍💨 Face Exhaling
+    😵‍💫 Face with Spiral Eyes
+    😶‍🌫️ Face in Clouds
+    🙈 See-No-Evil Monkey
+    🙉 Hear-No-Evil Monkey
+    🙊 Speak-No-Evil Monkey
+    🦍 Gorilla
+    🦧 Orangutan
+    🐶 Dog Face
+    🐕 Dog
+    🦮 Guide Dog
+    🐕‍🦺 Service Dog
+    🐩 Poodle
+    🐺 Wolf
+    🦊 Fox
+    🦝 Raccoon
+    🐏 Ram
+    🐿️ Chipmunk
+    🦫 Beaver
+    🦔 Hedgehog
+    🐨 Koala
+    🦥 Sloth
+    🦦 Otter
+    🦨 Skunk
+    🦡 Badger
+    🦤 Dodo
+    🦩 Flamingo
+    🦭 Seal
+    🐙 Octopus
+    🐝 Honeybee
+    🐞 Lady Beetle
+    🕷️ Spider
+    🦂 Scorpion
+    🌰 Chestnut
+    🦑 Squid
     ✨ sparkles magic
     💙 blue heart
     🤍 white heart
@@ -418,13 +494,63 @@
     ✏️ pencil write
     🧬 dna genetics
     ⚛️ atom science
-    🍫 chocolate
     🍕 pizza
+    🍫 Chocolate Bar
+    🍨 Ice Cream
+    🍣 Sushi
+    🍝 Spaghetti
+    🍮 Custard
+    🍹 Tropical Drink
+    🧋 Bubble Tea
+    🥢 Chopsticks
+    🥄 Spoon
+    🍄 Mushroom
+    🥦 Broccoli
+    🍎 Red Apple
+    🍏 Green Apple
+    🍒 Cherries
+    🍓 Strawberry
+    🫐 Blueberries
+    🥝 Kiwi Fruit
+    🥑 Avocado
+    🫒 Olive
+    🍇 Grapes
+    🍈 Melon
+    🍊 Tangerine
+    🍋 Lemon
     🌺 hibiscus flower
     🦉 owl bird
     🐧 penguin
     🐼 panda
+    🦙 Llama
+    👘 Kimono
+    🧵 Thread
+    🧶 Yarn
+    🧳 Luggage
     🤝 handshake
+    🦎 Lizard
+    🐍 Snake
+    🐲 Dragon Face
+    🐉 Dragon
+    🦕 Sauropod
+    🦖 T-Rex
     🌸 cherry blossom
+    ⚙️ Gear
+    🔗 Link
+    ⛓️ Chains
+    🪝 Hook
+    🩺 Stethoscope
+    🚪 Door
+    🪞 Mirror
+    🪟 Window
+    🪠 Plunger
+    🚿 Shower
+    🛁 Bathtub
+    🧹 Broom
+    🧻 Roll of Paper
+    🧼 Soap
+    🪥 Toothbrush
+    🧽 Sponge
+    🆒 Cool Button
   '';
 }
