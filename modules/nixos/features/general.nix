@@ -11,9 +11,6 @@
     # Terminal emulators
     kitty
     
-    # Visuals
-    pipes
-
     # Browsers
     google-chrome
     tor-browser
@@ -70,8 +67,7 @@
     grim
     
     # Screen recorders
-    obs-studio
-    gpu-screen-recorder
+    ffmpeg
 
     # Night light
     hyprsunset
@@ -86,7 +82,6 @@
     ddcutil
     wlr-randr
     hypridle
-    swaybg
     xdg-desktop-portal-gtk
     polkit_gnome
     qt5.qtwayland
@@ -106,9 +101,7 @@
     # Utils
     wget
     nh
-    lolcat
     bat
-    figlet
     starship
     atuin
     zoxide
