@@ -44,10 +44,7 @@
 
     # File managers / drive mounting
     yazi
-    gvfs
-    udisks2
     udiskie
-    gnome-disk-utility
     unzip
     p7zip
 
@@ -121,7 +118,6 @@
     git
   ];
 
-  services.gvfs.enable               = true;
   services.udisks2.enable             = true;
   services.avahi.enable               = true;
   services.avahi.nssmdns4             = true;
