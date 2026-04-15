@@ -42,14 +42,14 @@
       decoration = {
         rounding = 8;
         blur = {
-          enabled = true;
+          enabled = false;
           size    = 3;
           passes  = 1;
         };
         active_opacity   = 1.0;
         inactive_opacity = 0.95;
         shadow = {
-          enabled      = true;
+          enabled      = false;
           range        = 8;
           render_power = 2;
           "color"      = lib.mkForce "rgba(${themeNoHash.base00}bb)";
@@ -102,7 +102,6 @@
 
       bind = [
         "$mod, Return, exec, kitty"
-        "$mod, grave, exec, kitty"
         "$mod, period, exec, cat ~/.config/.emoji | fuzzel --dmenu | awk '{print $1}' | wl-copy && wtype -M ctrl v"
         "$mod, Space, exec, fuzzel"
         "$mod, B, exec, google-chrome-stable --gtk-version=3"
