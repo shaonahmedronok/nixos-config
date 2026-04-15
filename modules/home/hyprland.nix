@@ -42,14 +42,14 @@
       decoration = {
         rounding = 8;
         blur = {
-          enabled = false;
+          enabled = lib.mkForce false;
           size    = 3;
           passes  = 1;
         };
         active_opacity   = 1.0;
         inactive_opacity = 0.95;
         shadow = {
-          enabled      = false;
+          enabled      =  lib.mkForce false;
           range        = 8;
           render_power = 2;
           "color"      = lib.mkForce "rgba(${themeNoHash.base00}bb)";
