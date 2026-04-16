@@ -4,7 +4,7 @@
     ../../features/nix.nix
     ../../features/pipewire.nix
     ../../features/gtk.nix
-    ../../features/hyprland.nix
+    ../../features/niri.nix
     ../../features/general.nix
     #../../features/r-studio.nix
   ];
@@ -62,7 +62,7 @@ users.users.az = {
     enable = true;
     settings.default_session = {
       user    = "az";
-      command = "Hyprland";
+      command = "niri-session";
     };
   };
 
