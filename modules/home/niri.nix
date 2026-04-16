@@ -41,50 +41,49 @@
         { command = [ "wl-paste" "--watch" "cliphist" "store" ]; }
       ];
 
-      binds = with config.lib.niri.actions; {
-        "Mod+Return".action = spawn "kitty";
-        "Mod+Space".action = spawn "fuzzel";
-        "Mod+B".action = spawn "google-chrome-stable" "--gtk-version=3";
-        "Mod+E".action = spawn "thunar";
-        "Mod+C".action = close-window;
-        "Mod+F".action = maximize-column;
-        "Mod+Shift+Space".action = toggle-window-floating;
-        "Mod+Shift+X".action = spawn "hyprlock";
+
+binds = {
+        "Mod+Return".action.spawn = "kitty";
+        "Mod+Space".action.spawn = "fuzzel";
+        "Mod+B".action.spawn = [ "google-chrome-stable" "--gtk-version=3" ];
+        "Mod+E".action.spawn = "thunar";
+        "Mod+V".action.spawn = [ "sh" "-c" "cliphist list | fuzzel --dmenu | cliphist decode | wl-copy" ];
+        "Mod+Shift+X".action.spawn = "hyprlock";
         
-        # Audio & Brightness (matching your Hyprland keys)
-        "XF86AudioMute".action = spawn "pactl" "set-sink-mute" "@DEFAULT_SINK@" "toggle";
-        "XF86AudioLowerVolume".action = spawn "pactl" "set-sink-volume" "@DEFAULT_SINK@" "-11%";
-        "XF86AudioRaiseVolume".action = spawn "pactl" "set-sink-volume" "@DEFAULT_SINK@" "+11%";
-
-        # Navigation (H J K L)
-        "Mod+H".action = focus-column-left;
-        "Mod+L".action = focus-column-right;
-        "Mod+J".action = focus-window-or-workspace-down;
-        "Mod+K".action = focus-window-or-workspace-up;
+        # Actions with empty attribute sets
+        "Mod+C".action.close-window = {};
+        "Mod+F".action.maximize-column = {};
+        "Mod+Shift+Space".action.toggle-window-floating = {};
         
-        "Mod+Shift+H".action = move-column-left;
-        "Mod+Shift+L".action = move-column-right;
+        "Mod+H".action.focus-column-left = {};
+        "Mod+L".action.focus-column-right = {};
+        "Mod+J".action.focus-window-or-workspace-down = {};
+        "Mod+K".action.focus-window-or-workspace-up = {};
 
-        # Workspaces 1-9
-        "Mod+1".action = focus-workspace 1;
-        "Mod+2".action = focus-workspace 2;
-        "Mod+3".action = focus-workspace 3;
-        "Mod+4".action = focus-workspace 4;
-        "Mod+5".action = focus-workspace 5;
-        "Mod+6".action = focus-workspace 6;
-        "Mod+7".action = focus-workspace 7;
-        "Mod+8".action = focus-workspace 8;
-        "Mod+9".action = focus-workspace 9;
+        "XF86AudioMute".action.spawn = [ "pactl" "set-sink-mute" "@DEFAULT_SINK@" "toggle" ];
+        "XF86AudioLowerVolume".action.spawn = [ "pactl" "set-sink-volume" "@DEFAULT_SINK@" "-11%" ];
+        "XF86AudioRaiseVolume".action.spawn = [ "pactl" "set-sink-volume" "@DEFAULT_SINK@" "+11%" ];
 
-        "Mod+Shift+1".action = move-window-to-workspace 1;
-        "Mod+Shift+2".action = move-window-to-workspace 2;
-        "Mod+Shift+3".action = move-window-to-workspace 3;
-        "Mod+Shift+4".action = move-window-to-workspace 4;
-        "Mod+Shift+5".action = move-window-to-workspace 5;
-        "Mod+Shift+6".action = move-window-to-workspace 6;
-        "Mod+Shift+7".action = move-window-to-workspace 7;
-        "Mod+Shift+8".action = move-window-to-workspace 8;
-        "Mod+Shift+9".action = move-window-to-workspace 9;
+        # Workspace actions (Integer arguments)
+        "Mod+1".action.focus-workspace = 1;
+        "Mod+2".action.focus-workspace = 2;
+        "Mod+3".action.focus-workspace = 3;
+        "Mod+4".action.focus-workspace = 4;
+        "Mod+5".action.focus-workspace = 5;
+        "Mod+6".action.focus-workspace = 6;
+        "Mod+7".action.focus-workspace = 7;
+        "Mod+8".action.focus-workspace = 8;
+        "Mod+9".action.focus-workspace = 9;
+
+        "Mod+Shift+1".action.move-window-to-workspace = 1;
+        "Mod+Shift+2".action.move-window-to-workspace = 2;
+        "Mod+Shift+3".action.move-window-to-workspace = 3;
+        "Mod+Shift+4".action.move-window-to-workspace = 4;
+        "Mod+Shift+5".action.move-window-to-workspace = 5;
+        "Mod+Shift+6".action.move-window-to-workspace = 6;
+        "Mod+Shift+7".action.move-window-to-workspace = 7;
+        "Mod+Shift+8".action.move-window-to-workspace = 8;
+        "Mod+Shift+9".action.move-window-to-workspace = 9;
       };
     };
   };
