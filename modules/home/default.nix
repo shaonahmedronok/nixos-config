@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }:
 {
   imports = [
-    ./hyprland.nix
+    ./niri.nix
     ./waybar.nix
     ./programs.nix
     ./scripts.nix
@@ -16,7 +16,7 @@
   stylix.targets.kitty.enable    = false;
   stylix.targets.waybar.enable   = false;
   stylix.targets.neovim.enable   = false;
-  stylix.targets.hyprland.enable = false;
+  stylix.targets.niri.enable = false;
   stylix.targets.starship.enable = false;
   stylix.targets.hyprlock.enable = false;
   stylix.targets.mpv.enable      = false;
