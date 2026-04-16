@@ -50,7 +50,6 @@
         "Mod+F".action = maximize-column;
         "Mod+Shift+Space".action = toggle-window-floating;
         "Mod+Shift+X".action = spawn "hyprlock";
-        "Mod+Shift+L".action = spawn "hyprlock";
         
         # Audio & Brightness (matching your Hyprland keys)
         "XF86AudioMute".action = spawn "pactl" "set-sink-mute" "@DEFAULT_SINK@" "toggle";
