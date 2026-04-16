@@ -1,22 +1,27 @@
 { config, pkgs, lib, ... }:
 {
   imports = [
-    ./niri.nix
+    ./niri.nix        # ← was hyprland.nix
     ./waybar.nix
     ./programs.nix
     ./scripts.nix
   ];
 
-  home.username    = "az";
+  home.username      = "az";
   home.homeDirectory = "/home/az";
-  home.stateVersion = "25.11";
+  home.stateVersion  = "25.11";
   programs.home-manager.enable = true;
 
+  # Stylix targets — disable everything we theme manually.
+  # gtk MUST be false so your system gtk.nix (Gruvbox-Green-Dark-Medium)
+  # wins instead of Stylix writing its own settings.ini over it.
+  stylix.targets.gtk.enable      = false;
+  stylix.targets.niri.enable     = false;
   stylix.targets.qt.enable       = false;
   stylix.targets.kitty.enable    = false;
   stylix.targets.waybar.enable   = false;
   stylix.targets.neovim.enable   = false;
-  stylix.targets.niri.enable = false;
+  stylix.targets.hyprland.enable = false;
   stylix.targets.starship.enable = false;
   stylix.targets.hyprlock.enable = false;
   stylix.targets.mpv.enable      = false;
@@ -34,8 +39,7 @@
     };
   };
 
-
-programs.fish = {
+  programs.fish = {
     enable = true;
     interactiveShellInit = ''
       set fish_greeting
@@ -51,8 +55,6 @@ programs.fish = {
       vim = "nvim";
     };
   };
-
-
 
   programs.starship = {
     enable                = true;

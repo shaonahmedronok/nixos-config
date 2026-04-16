@@ -1,80 +1,142 @@
-{ config, pkgs, themeNoHash, ... }:
+{ config, pkgs, lib, theme, themeNoHash, ... }:
 {
-  # We manage the config as a raw KDL file to bypass Home Manager module limitations
+  home.sessionVariables = {
+    NIXOS_OZONE_WL                      = "1";
+    XDG_CURRENT_DESKTOP                 = "niri";
+    XDG_SESSION_TYPE                    = "wayland";
+    XDG_SESSION_DESKTOP                 = "niri";
+    QT_QPA_PLATFORM                     = "wayland";
+    QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
+  };
+
   xdg.configFile."niri/config.kdl".text = ''
     input {
         keyboard {
+            xkb {
+                layout "us"
+            }
             repeat-delay 300
-            repeat-rate 50
+            repeat-rate  50
         }
-        touchpad {
-            off
-        }
+        focus-follows-mouse
+    }
+
+    output "HDMI-A-2" {
+        mode "1280x1024@75"
     }
 
     layout {
         gaps 0
         center-focused-column "never"
-
         preset-column-widths {
             proportion 0.33333
             proportion 0.5
             proportion 0.66667
         }
-
         default-column-width { proportion 0.5; }
-
         focus-ring {
             width 4
-            active-color "#${themeNoHash.base0B}"
+            active-color   "#${themeNoHash.base0B}"
             inactive-color "#${themeNoHash.base01}"
         }
-
         border {
             off
         }
     }
 
-    spawn-at-startup "waybar"
-    spawn-at-startup "mako"
-    spawn-at-startup "swww-daemon"
-    spawn-at-startup "udiskie -t"
-    spawn-at-startup "wl-paste --watch cliphist store"
-
     animations {
         slowdown 0.5
     }
 
+    prefer-no-csd
+
+    window-rule {
+        geometry-corner-radius 8
+        clip-to-geometry true
+    }
+
+    window-rule {
+        match app-id="pavucontrol"
+        open-floating true
+    }
+    window-rule {
+        match app-id="nm-connection-editor"
+        open-floating true
+    }
+    window-rule {
+        match title="File Operation Progress"
+        open-floating true
+    }
+    window-rule {
+        match title="Confirm to replace files"
+        open-floating true
+    }
+    window-rule {
+        match app-id="xdg-desktop-portal-gtk"
+        open-floating true
+    }
+    window-rule {
+        match app-id="imv"
+        open-floating true
+    }
+
+    spawn-at-startup "waybar"
+    spawn-at-startup "mako"
+    spawn-at-startup "udiskie" "-t"
+    spawn-at-startup "hyprsunset" "-t" "4500"
+    spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
+    spawn-at-startup "wl-clip-persist" "--clipboard" "regular"
+    spawn-at-startup "swww-daemon"
+
     binds {
-        // Terminal & Core Apps
         Mod+Return { spawn "kitty"; }
-        Mod+Space { spawn "fuzzel"; }
-        Mod+B { spawn "google-chrome-stable" "--gtk-version=3"; }
-        Mod+E { spawn "thunar"; }
-        Mod+C { close-window; }
-        Mod+F { maximize-column; }
-        Mod+Shift+Space { toggle-window-floating; }
-        Mod+V { spawn "sh" "-c" "cliphist list | fuzzel --dmenu | cliphist decode | wl-copy"; }
-        
-        // Lock
+        Mod+period { spawn "sh" "-c" "cat ~/.config/.emoji | fuzzel --dmenu | awk '{print $1}' | wl-copy && wtype -M ctrl v"; }
+        Mod+Space  { spawn "fuzzel"; }
+        Mod+B      { spawn "google-chrome-stable" "--gtk-version=3"; }
+        Mod+E      { spawn "thunar"; }
+        Mod+V      { spawn "sh" "-c" "cliphist list | fuzzel --dmenu | cliphist decode | wl-copy"; }
         Mod+Shift+X { spawn "hyprlock"; }
-        
-        // Navigation (HJKL)
-        Mod+H { focus-column-left; }
-        Mod+L { focus-column-right; }
-        Mod+J { focus-window-or-workspace-down; }
-        Mod+K { focus-window-or-workspace-up; }
+        Mod+N       { spawn "makoctl" "dismiss"; }
+        Mod+Shift+N { spawn "makoctl" "dismiss" "--all"; }
+        Mod+Z       { spawn "bash" "/home/az/.local/bin/screenshot-capture-wayland.sh" "region"; }
+        Mod+Shift+Z { spawn "bash" "/home/az/.local/bin/screenshot-capture-wayland.sh"; }
+        Mod+W       { spawn "bash" "/home/az/.config/hypr/cycle-wallpaper.sh"; }
 
-        // Column Resizing
-        Mod+Minus { set-column-width "-10%"; }
-        Mod+Equal { set-column-width "+10%"; }
+        Mod+C           { close-window; }
+        Mod+F           { maximize-column; }
+        Mod+Shift+Space { toggle-window-floating; }
 
-        // Audio Control
-        XF86AudioMute { spawn "pactl" "set-sink-mute" "@DEFAULT_SINK@" "toggle"; }
+        Mod+H     { focus-column-left; }
+        Mod+J     { focus-window-or-workspace-down; }
+        Mod+K     { focus-window-or-workspace-up; }
+        Mod+L     { focus-column-right; }
+        Mod+Left  { focus-column-left; }
+        Mod+Down  { focus-window-or-workspace-down; }
+        Mod+Up    { focus-window-or-workspace-up; }
+        Mod+Right { focus-column-right; }
+
+        Mod+Shift+H     { move-column-left; }
+        Mod+Shift+J     { move-window-down-or-to-workspace-down; }
+        Mod+Shift+K     { move-window-up-or-to-workspace-up; }
+        Mod+Shift+L     { move-column-right; }
+        Mod+Shift+Left  { move-column-left; }
+        Mod+Shift+Down  { move-window-down-or-to-workspace-down; }
+        Mod+Shift+Up    { move-window-up-or-to-workspace-up; }
+        Mod+Shift+Right { move-column-right; }
+
+        Mod+Shift+period { move-column-to-monitor-right; }
+        Mod+Shift+comma  { move-column-to-monitor-left; }
+
+        XF86AudioMute        { spawn "pactl" "set-sink-mute"   "@DEFAULT_SINK@" "toggle"; }
         XF86AudioLowerVolume { spawn "pactl" "set-sink-volume" "@DEFAULT_SINK@" "-11%"; }
         XF86AudioRaiseVolume { spawn "pactl" "set-sink-volume" "@DEFAULT_SINK@" "+11%"; }
+        Mod+F1 { spawn "pactl" "set-sink-mute"   "@DEFAULT_SINK@" "toggle"; }
+        Mod+F2 { spawn "pactl" "set-sink-volume" "@DEFAULT_SINK@" "-5%"; }
+        Mod+F3 { spawn "pactl" "set-sink-volume" "@DEFAULT_SINK@" "+5%"; }
 
-        // Workspace Switching
+        Mod+Page_Up   { spawn "ddcutil" "setvcp" "10" "+" "15"; }
+        Mod+Page_Down { spawn "ddcutil" "setvcp" "10" "-" "15"; }
+
         Mod+1 { focus-workspace 1; }
         Mod+2 { focus-workspace 2; }
         Mod+3 { focus-workspace 3; }
@@ -85,7 +147,6 @@
         Mod+8 { focus-workspace 8; }
         Mod+9 { focus-workspace 9; }
 
-        // Move Windows to Workspaces
         Mod+Shift+1 { move-window-to-workspace 1; }
         Mod+Shift+2 { move-window-to-workspace 2; }
         Mod+Shift+3 { move-window-to-workspace 3; }
@@ -96,12 +157,62 @@
         Mod+Shift+8 { move-window-to-workspace 8; }
         Mod+Shift+9 { move-window-to-workspace 9; }
 
-        // Quit Niri
         Mod+Shift+E { quit; }
     }
   '';
 
-  # System services that remain active
-  services.hypridle.enable = true;
-  programs.hyprlock.enable = true;
+  programs.hyprlock = {
+    enable = true;
+    settings = {
+      general = {
+        hide_cursor        = true;
+        ignore_empty_input = true;
+      };
+      background = [{
+        path        = "screenshot";
+        blur_passes = 3;
+        blur_size   = 8;
+        brightness  = 0.8;
+        contrast    = 0.9;
+      }];
+      input-field = [{
+        size              = "250, 55";
+        position          = "0, -80";
+        monitor           = "";
+        dots_center       = true;
+        fade_on_empty     = false;
+        outline_thickness = 3;
+        outer_color       = "rgb(${themeNoHash.base0B})";
+        inner_color       = "rgb(${themeNoHash.base00})";
+        font_color        = "rgb(${themeNoHash.base06})";
+        placeholder_text  = "<i>Password...</i>";
+        shadow_passes     = 2;
+        halign            = "center";
+        valign            = "center";
+      }];
+      label = [{
+        text        = "$TIME";
+        color       = "rgba(${themeNoHash.base06}ff)";
+        font_size   = 52;
+        font_family = "JetBrainsMono Nerd Font";
+        position    = "0, 80";
+        halign      = "center";
+        valign      = "center";
+      }];
+    };
+  };
+
+  services.hypridle = {
+    enable = true;
+    settings = {
+      general = {
+        lock_cmd         = "pidof hyprlock || hyprlock";
+        before_sleep_cmd = "loginctl lock-session";
+      };
+      listener = [
+        { timeout = 300; on-timeout = "loginctl lock-session"; }
+        { timeout = 600; on-timeout = "systemctl suspend"; }
+      ];
+    };
+  };
 }

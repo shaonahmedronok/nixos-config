@@ -27,11 +27,19 @@
         home-manager.nixosModules.home-manager
         {
           home-manager = {
-            useGlobalPkgs = true;
-            useUserPackages = true;
-            users.az = import ./modules/home;
+            useGlobalPkgs    = true;
+            useUserPackages  = true;
+            users.az         = import ./modules/home;
             backupFileExtension = "backup";
             extraSpecialArgs = { inherit (themeLib) theme themeNoHash; };
+            sharedModules = [
+              ({ lib, ... }: {
+                options.stylix.targets.niri.enable = lib.mkOption {
+                  type    = lib.types.bool;
+                  default = false;
+                };
+              })
+            ];
           };
         }
       ];

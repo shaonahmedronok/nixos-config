@@ -4,7 +4,7 @@
     ../../features/nix.nix
     ../../features/pipewire.nix
     ../../features/gtk.nix
-    ../../features/niri.nix
+    ../../features/niri.nix        # ← was hyprland.nix
     ../../features/general.nix
     #../../features/r-studio.nix
   ];
@@ -37,19 +37,15 @@
     variant = "";
   };
 
+  users.users.az = {
+    isNormalUser = true;
+    description  = "az";
+    extraGroups  = [ "networkmanager" "wheel" "video" "input" "storage" "i2c" ];
+    packages     = [];
+    shell        = pkgs.fish;
+  };
 
-
-users.users.az = {
-  isNormalUser = true;
-  description  = "az";
-  extraGroups  = [ "networkmanager" "wheel" "video" "input" "storage" "i2c" ];
-  packages     = [];
-  shell        = pkgs.fish;
-};
-
-
-
-
+  # hyprlock is still used as the lock screen under Niri
   security.pam.services.hyprlock = {};
 
   hardware.graphics.enable           = true;
@@ -62,7 +58,7 @@ users.users.az = {
     enable = true;
     settings.default_session = {
       user    = "az";
-      command = "niri-session";
+      command = "niri-session";    # ← was "Hyprland"
     };
   };
 
@@ -114,10 +110,7 @@ users.users.az = {
     };
   };
 
-
-
-
-environment.variables = {
+  environment.variables = {
     QT_QPA_PLATFORMTHEME = lib.mkForce "gtk2";
   };
 
