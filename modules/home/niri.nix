@@ -26,6 +26,7 @@
         mode "1280x1024@75"
     }
 
+spawn-at-startup "xwayland-satellite"
 
     layout {
         gaps 8
