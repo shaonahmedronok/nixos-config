@@ -26,7 +26,6 @@
         mode "1280x1024@75"
     }
 
-    xwayland
 
     layout {
         gaps 8
