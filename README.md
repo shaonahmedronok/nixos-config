@@ -1,5 +1,5 @@
 <div align="center">
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:242424,100:3c3836&height=180&section=header&text=nixconf&fontSize=36&fontColor=ebdbb2&fontAlignY=38&desc=Declarative%20NixOS%20%C2%B7%20Flakes%20%C2%B7%20Home%20Manager%20%C2%B7%20Hyprland%20%C2%B7%20Wayland&descAlignY=58&descColor=bdae93"/>
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:242424,100:3c3836&height=180&section=header&text=nixconf&fontSize=36&fontColor=ebdbb2&fontAlignY=38&desc=Declarative%20NixOS%20%C2%B7%20Flakes%20%C2%B7%20Home%20Manager%20%C2%B7%20Niri%20%C2%B7%20Wayland&descAlignY=58&descColor=bdae93"/>
 
 [![Website](https://img.shields.io/badge/shaon.neocities.org-242424?style=for-the-badge&labelColor=3c3836&color=b8bb26)](https://shaon.neocities.org)
 [![NixOS](https://img.shields.io/badge/NixOS-25.11-242424?style=for-the-badge&logo=nixos&logoColor=7daea3&labelColor=3c3836)](https://nixos.org)
