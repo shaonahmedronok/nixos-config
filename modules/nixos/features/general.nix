@@ -80,6 +80,7 @@
     qt5.qtwayland
     brightnessctl
     swww
+    xwayland-satellite
 
     # Manual pages
     man-db
