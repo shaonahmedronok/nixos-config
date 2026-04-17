@@ -61,9 +61,11 @@
     
     # Screen recorders
     ffmpeg
+    obs-studio
 
     # Night light
     hyprsunset
+    wlsunset
 
     # Task manager
     btop
