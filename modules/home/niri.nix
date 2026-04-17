@@ -26,7 +26,6 @@
         mode "1280x1024@75"
     }
 
-spawn-at-startup "xwayland-satellite"
 
     layout {
         gaps 8
@@ -96,6 +95,8 @@ spawn-at-startup "xwayland-satellite"
     spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
     spawn-at-startup "wl-clip-persist" "--clipboard" "regular"
     spawn-at-startup "swww-daemon"
+    // Autostart the XWayland bridge
+    spawn-at-startup "xwayland-satellite"
 
     binds {
         Mod+Return { spawn "kitty"; }
