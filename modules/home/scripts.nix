@@ -30,7 +30,7 @@
       else
         hyprsunset -t 4500 &
       fi
-      pkill -RTMIN+8 waybar
+      pkill --signal SIGRTMIN+8 waybar
     '';
   };
 

@@ -4,7 +4,7 @@
     ../../features/nix.nix
     ../../features/pipewire.nix
     ../../features/gtk.nix
-    ../../features/niri.nix        # ← was hyprland.nix
+    ../../features/niri.nix
     ../../features/general.nix
     #../../features/r-studio.nix
   ];
@@ -45,7 +45,6 @@
     shell        = pkgs.fish;
   };
 
-  # hyprlock is still used as the lock screen under Niri
   security.pam.services.hyprlock = {};
 
   hardware.graphics.enable           = true;
@@ -58,7 +57,7 @@
     enable = true;
     settings.default_session = {
       user    = "az";
-      command = "niri-session";    # ← was "Hyprland"
+      command = "niri-session";
     };
   };
 
@@ -72,7 +71,8 @@
   ];
 
   stylix = {
-    enable = true;
+    enable   = true;
+    polarity = "dark";   # ← forces dark palette; fixes white GTK theme
     base16Scheme = {
       base00 = themeNoHash.base00;
       base01 = themeNoHash.base01;
@@ -108,6 +108,18 @@
       name    = "Noto Color Emoji";
       package = pkgs.noto-fonts-color-emoji;
     };
+  };
+
+  # These are written to /etc/environment and propagated by PAM to
+  # the systemd user session — the only scope that reaches apps
+  # launched by niri-session (KeepassXC, Chrome, Thunar, etc.).
+  environment.sessionVariables = {
+    NIXOS_OZONE_WL                      = "1";
+    XDG_CURRENT_DESKTOP                 = "niri";
+    XDG_SESSION_TYPE                    = "wayland";
+    XDG_SESSION_DESKTOP                 = "niri";
+    QT_QPA_PLATFORM                     = "wayland";
+    QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
   };
 
   environment.variables = {

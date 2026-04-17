@@ -1,6 +1,8 @@
 { config, pkgs, lib, theme, themeNoHash, ... }:
 {
-  home.sessionVariables = {
+  # Belt-and-suspenders: also set in systemd user scope so hypridle,
+  # hyprlock and any service started by systemd --user picks them up.
+  systemd.user.sessionVariables = {
     NIXOS_OZONE_WL                      = "1";
     XDG_CURRENT_DESKTOP                 = "niri";
     XDG_SESSION_TYPE                    = "wayland";
@@ -18,15 +20,23 @@
             repeat-delay 300
             repeat-rate  50
         }
+        mouse {
+            natural-scroll false
+        }
+        touchpad {
+            natural-scroll false
+        }
         focus-follows-mouse
     }
 
+    // Run: niri msg outputs   — to confirm exact name if 75Hz still shows as 60
     output "HDMI-A-2" {
-        mode "1280x1024@75"
+        mode "1280x1024@75.005"
+        refresh-rate 75
     }
 
     layout {
-        gaps 0
+        gaps 8
         center-focused-column "never"
         preset-column-widths {
             proportion 0.33333
@@ -40,7 +50,9 @@
             inactive-color "#${themeNoHash.base01}"
         }
         border {
-            off
+            width 2
+            active-color   "#${themeNoHash.base0B}"
+            inactive-color "#${themeNoHash.base01}"
         }
     }
 
@@ -77,6 +89,11 @@
     }
     window-rule {
         match app-id="imv"
+        open-floating true
+    }
+    // Fixes Inkscape initial dialog rendering at half size
+    window-rule {
+        match app-id="org.inkscape.Inkscape"
         open-floating true
     }
 
