@@ -26,7 +26,6 @@
         mode "1280x1024@75"
     }
 
-    // Enable XWayland so GTK/X11 apps (KeepassXC, Inkscape) work
     xwayland
 
     layout {
