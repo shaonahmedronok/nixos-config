@@ -3,7 +3,7 @@
 
 [![Website](https://img.shields.io/badge/shaon.neocities.org-242424?style=for-the-badge&labelColor=3c3836&color=b8bb26)](https://shaon.neocities.org)
 [![NixOS](https://img.shields.io/badge/NixOS-25.11-242424?style=for-the-badge&logo=nixos&logoColor=7daea3&labelColor=3c3836)](https://nixos.org)
-[![Hyprland](https://img.shields.io/badge/Hyprland-Wayland-242424?style=for-the-badge&logo=wayland&logoColor=8ec07c&labelColor=3c3836)](https://hyprland.org/)
+[![Niri](https://img.shields.io/badge/Niri-Wayland-242424?style=for-the-badge&logo=wayland&logoColor=7fc8ff&labelColor=3c3836)](https://github.com/YaLTeR/niri)
 [![Flakes](https://img.shields.io/badge/Flakes-Enabled-242424?style=for-the-badge&logo=nixos&logoColor=fabd2f&labelColor=3c3836)](https://nixos.wiki/wiki/Flakes)
 [![Home Manager](https://img.shields.io/badge/Home_Manager-25.11-242424?style=for-the-badge&logoColor=e089a1&labelColor=3c3836)](https://nix-community.github.io/home-manager/)
 
@@ -22,7 +22,7 @@
 | | |
 |---|---|
 | **OS** | NixOS 25.11 |
-| **WM** | Hyprland (Wayland) |
+| **WM** | Niri (Wayland) |
 | **Terminal** | Kitty |
 | **Shell** | Bash + Starship |
 | **Editor** | Neovim + LazyVim |
@@ -62,14 +62,14 @@
     │   │   ├── nix.nix                  ← flakes, allowUnfree
     │   │   ├── pipewire.nix             ← audio
     │   │   ├── gtk.nix                  ← GTK + icon theme system-wide
-    │   │   ├── hyprland.nix             ← Hyprland + portals
+    │   │   ├── niri.nix                 ← Niri + portals
     │   │   └── general.nix              ← all system packages + services
     │   └── hosts/
     │       └── az-pc/
     │           └── configuration.nix    ← boot, locale, users, stylix, fonts
     └── home/
         ├── default.nix                  ← shell, git, gtk, qt, imports
-        ├── hyprland.nix                 ← keybinds, rules, hypridle, hyprlock
+        ├── niri.nix                     ← keybinds, rules, hypridle, hyprlock
         ├── waybar.nix                   ← bar config + style
         ├── programs.nix                 ← kitty, mpv, fuzzel, mako, yazi, nvim
         └── scripts.nix                  ← screenshot, wallpaper, nightlight
