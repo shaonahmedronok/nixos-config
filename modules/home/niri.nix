@@ -21,8 +21,6 @@
             repeat-rate  50
         }
         }
-        focus-follows-mouse
-    }
 
 
     layout {
