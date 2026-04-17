@@ -20,20 +20,10 @@
             repeat-delay 300
             repeat-rate  50
         }
-        mouse {
-            natural-scroll false
-        }
-        touchpad {
-            natural-scroll false
         }
         focus-follows-mouse
     }
 
-    // Run: niri msg outputs   — to confirm exact name if 75Hz still shows as 60
-    output "HDMI-A-2" {
-        mode "1280x1024@75.005"
-        refresh-rate 75
-    }
 
     layout {
         gaps 8
