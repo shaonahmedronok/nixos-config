@@ -34,7 +34,8 @@
     wiremix
     wireplumber
     pamixer
-    
+    sonic-pi
+
     # Clipboard
     wl-clipboard
     cliphist
@@ -61,7 +62,6 @@
     
     # Screen recorders
     ffmpeg
-    obs-studio
     wf-recorder
 
     # Night light
