@@ -1,5 +1,10 @@
 { config, pkgs, lib, theme, themeNoHash, ... }:
 {
+
+home.packages = with pkgs; [
+    xwayland-satellite
+  ];
+
   systemd.user.sessionVariables = {
     NIXOS_OZONE_WL                      = "1";
     XDG_CURRENT_DESKTOP                 = "niri";
