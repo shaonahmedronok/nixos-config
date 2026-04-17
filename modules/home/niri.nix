@@ -2,7 +2,9 @@
 {
 
 home.packages = with pkgs; [
-    xwayland-satellite
+    xwayland-satellite  # The X11 bridge
+    qt5.qtwayland       # Wayland support for Qt5 apps (KeePassXC)
+    qt6.qtwayland       # Wayland support for Qt6 apps
   ];
 
   systemd.user.sessionVariables = {
