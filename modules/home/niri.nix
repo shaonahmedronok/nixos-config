@@ -1,14 +1,13 @@
 { config, pkgs, lib, theme, themeNoHash, ... }:
 {
-  # Belt-and-suspenders: systemd user scope reaches hypridle, hyprlock,
-  # and every app launched by niri-session (KeepassXC, Chrome, Thunar…).
   systemd.user.sessionVariables = {
-    NIXOS_OZONE_WL                    = "1";
-    XDG_CURRENT_DESKTOP               = "niri";
-    XDG_SESSION_TYPE                  = "wayland";
-    XDG_SESSION_DESKTOP               = "niri";
-    QT_QPA_PLATFORM                   = "wayland";
+    NIXOS_OZONE_WL                      = "1";
+    XDG_CURRENT_DESKTOP                 = "niri";
+    XDG_SESSION_TYPE                    = "wayland";
+    XDG_SESSION_DESKTOP                 = "niri";
+    QT_QPA_PLATFORM                     = "wayland";
     QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
+    GDK_BACKEND                         = "wayland,x11";
   };
 
   xdg.configFile."niri/config.kdl".text = ''
@@ -26,6 +25,9 @@
     output "HDMI-A-2" {
         mode "1280x1024@75"
     }
+
+    // Enable XWayland so GTK/X11 apps (KeepassXC, Inkscape) work
+    xwayland
 
     layout {
         gaps 8
