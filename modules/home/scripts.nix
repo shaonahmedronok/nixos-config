@@ -31,7 +31,7 @@
         hyprsunset -t 4500 &
       fi
       # bash built-in kill understands SIGRTMIN arithmetic reliably
-      kill -SIGRTMIN+8 $(pgrep -x waybar) 2>/dev/null || true
+      pkill -RTMIN+8 waybar 2>/dev/null || true
     '';
   };
 
