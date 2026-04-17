@@ -62,6 +62,7 @@
     # Screen recorders
     ffmpeg
     obs-studio
+    wf-recorder
 
     # Night light
     hyprsunset
