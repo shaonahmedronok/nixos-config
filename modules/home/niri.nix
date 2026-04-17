@@ -1,13 +1,13 @@
 { config, pkgs, lib, theme, themeNoHash, ... }:
 {
-  # Belt-and-suspenders: also set in systemd user scope so hypridle,
-  # hyprlock and any service started by systemd --user picks them up.
+  # Belt-and-suspenders: systemd user scope reaches hypridle, hyprlock,
+  # and every app launched by niri-session (KeepassXC, Chrome, Thunar…).
   systemd.user.sessionVariables = {
-    NIXOS_OZONE_WL                      = "1";
-    XDG_CURRENT_DESKTOP                 = "niri";
-    XDG_SESSION_TYPE                    = "wayland";
-    XDG_SESSION_DESKTOP                 = "niri";
-    QT_QPA_PLATFORM                     = "wayland";
+    NIXOS_OZONE_WL                    = "1";
+    XDG_CURRENT_DESKTOP               = "niri";
+    XDG_SESSION_TYPE                  = "wayland";
+    XDG_SESSION_DESKTOP               = "niri";
+    QT_QPA_PLATFORM                   = "wayland";
     QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
   };
 
@@ -20,8 +20,12 @@
             repeat-delay 300
             repeat-rate  50
         }
-        }
+        focus-follows-mouse
+    }
 
+    output "HDMI-A-2" {
+        mode "1280x1024@75"
+    }
 
     layout {
         gaps 8
@@ -79,7 +83,6 @@
         match app-id="imv"
         open-floating true
     }
-    // Fixes Inkscape initial dialog rendering at half size
     window-rule {
         match app-id="org.inkscape.Inkscape"
         open-floating true

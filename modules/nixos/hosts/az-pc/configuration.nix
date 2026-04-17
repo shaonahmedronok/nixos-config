@@ -72,7 +72,7 @@
 
   stylix = {
     enable   = true;
-    polarity = "dark";   # ← forces dark palette; fixes white GTK theme
+    polarity = "dark";   # forces dark palette — fixes white/light GTK theme
     base16Scheme = {
       base00 = themeNoHash.base00;
       base01 = themeNoHash.base01;
@@ -110,15 +110,15 @@
     };
   };
 
-  # These are written to /etc/environment and propagated by PAM to
-  # the systemd user session — the only scope that reaches apps
-  # launched by niri-session (KeepassXC, Chrome, Thunar, etc.).
+  # Written to /etc/environment — PAM propagates this to the systemd user
+  # session, so every app niri-session launches (KeepassXC, Chrome, Thunar)
+  # receives these variables.
   environment.sessionVariables = {
-    NIXOS_OZONE_WL                      = "1";
-    XDG_CURRENT_DESKTOP                 = "niri";
-    XDG_SESSION_TYPE                    = "wayland";
-    XDG_SESSION_DESKTOP                 = "niri";
-    QT_QPA_PLATFORM                     = "wayland";
+    NIXOS_OZONE_WL                    = "1";
+    XDG_CURRENT_DESKTOP               = "niri";
+    XDG_SESSION_TYPE                  = "wayland";
+    XDG_SESSION_DESKTOP               = "niri";
+    QT_QPA_PLATFORM                   = "wayland";
     QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
   };
 
