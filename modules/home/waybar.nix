@@ -50,7 +50,7 @@
         },
         "custom/nightlight": {
           "format": "{}",
-          "exec": "if pgrep -x hyprsunset > /dev/null; then echo '󰛨'; else echo '󰛩'; fi",
+          "exec": "if pgrep -x wlsunset > /dev/null; then echo '󰛨'; else echo '󰛩'; fi",
           "interval": 2,
           "on-click": "bash ~/.local/bin/wlsunset-toggle.sh",
           "signal": 8,

@@ -98,7 +98,7 @@ home.packages = with pkgs; [
     spawn-at-startup "waybar"
     spawn-at-startup "mako"
     spawn-at-startup "udiskie" "-t"
-    spawn-at-startup "hyprsunset" "-t" "4500"
+    spawn-at-startup "wlsunset" "-t" "4500" "-T" "4500"
     spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
     spawn-at-startup "wl-clip-persist" "--clipboard" "regular"
     spawn-at-startup "swww-daemon"

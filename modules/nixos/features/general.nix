@@ -65,7 +65,6 @@
     wf-recorder
 
     # Night light
-    hyprsunset
     wlsunset
 
     # Task manager

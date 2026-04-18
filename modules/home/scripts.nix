@@ -25,13 +25,13 @@
     executable = true;
     text = ''
       #!/bin/bash
-      if pgrep -x hyprsunset > /dev/null; then
-        pkill hyprsunset
+      if pgrep -x wlsunset > /dev/null; then
+        pkill wlsunset
       else
-        hyprsunset -t 4500 &
+        wlsunset -t 4500 -T 4500 &
       fi
       # bash built-in kill understands SIGRTMIN arithmetic reliably
-      pkill -RTMIN+8 waybar 2>/dev/null || true
+      pkill -RTMIN+8 -f waybar 2>/dev/null || true
     '';
   };
 
