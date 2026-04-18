@@ -154,7 +154,9 @@ home.packages = with pkgs; [
         Mod+Page_Up   { spawn "ddcutil" "setvcp" "10" "+" "15"; }
         Mod+Page_Down { spawn "ddcutil" "setvcp" "10" "-" "15"; }
 
-        Mod+1 { focus-workspace 1; }
+        Mod+Shift+W { spawn "sh" "-c" "pgrep wlsunset && pkill wlsunset || nohup wlsunset -t 3500 -T 3501 -l 90 -L 0 &"; }
+
+	Mod+1 { focus-workspace 1; }
         Mod+2 { focus-workspace 2; }
         Mod+3 { focus-workspace 3; }
         Mod+4 { focus-workspace 4; }
