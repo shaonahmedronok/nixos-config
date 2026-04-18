@@ -33,7 +33,7 @@
 | **Clipboard** | cliphist + wl-clipboard |
 | **Screen Lock** | Hyprlock |
 | **Idle Daemon** | Hypridle |
-| **Warm Light** | hyprsunset |
+| **Warm Light** | wlsunset |
 | **File Manager** | Yazi + Thunar |
 | **WiFi TUI** | Impala |
 | **Theme** | Gruvbox Hard Dark |
