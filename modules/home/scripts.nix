@@ -39,7 +39,7 @@
     executable = true;
     text = ''
       #!/bin/bash
-      WALLPAPER_DIR="$HOME/.config/hypr/wallpapers"
+      WALLPAPER_DIR="$HOME/dirrr/wallpapers"
       WALLPAPER=$(find "$WALLPAPER_DIR" -type f \( -name "*.jpg" -o -name "*.png" -o -name "*.jpeg" -o -name "*.gif" \) | shuf -n 1)
       swww img "$WALLPAPER" --transition-type fade --transition-duration 1
     '';
