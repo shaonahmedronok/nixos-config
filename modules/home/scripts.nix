@@ -35,7 +35,7 @@
     '';
   };
 
-  home.file.".config/hypr/cycle-wallpaper.sh" = {
+  home.file."~/dirrr/wallpapers/cycle-wallpaper.sh" = {
     executable = true;
     text = ''
       #!/bin/bash
