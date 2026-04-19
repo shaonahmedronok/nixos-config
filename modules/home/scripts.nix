@@ -35,13 +35,20 @@
     '';
   };
 
-  home.file."~/dirrr/wallpapers/cycle-wallpaper.sh" = {
-    executable = true;
-    text = ''
-      #!/bin/bash
-      WALLPAPER_DIR="$HOME/dirrr/wallpapers"
-      WALLPAPER=$(find "$WALLPAPER_DIR" -type f \( -name "*.jpg" -o -name "*.png" -o -name "*.jpeg" -o -name "*.gif" \) | shuf -n 1)
+
+home.file."dirrr/wallpapers/cycle-wallpaper.sh" = {
+  executable = true;
+  text = ''
+    #!/usr/bin/env bash
+    WALLPAPER_DIR="$HOME/dirrr/wallpapers"
+
+    # Find a random wallpaper file
+    WALLPAPER=$(find "$WALLPAPER_DIR" -type f \( -name "*.jpg" -o -name "*.png" -o -name "*.jpeg" -o -name "*.gif" \) | shuf -n 1)
+
+    # Only try to set it if a file was actually found
+    if [ -n "$WALLPAPER" ]; then
       swww img "$WALLPAPER" --transition-type fade --transition-duration 1
-    '';
-  };
+    fi
+  '';
+};
 }

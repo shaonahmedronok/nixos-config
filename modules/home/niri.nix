@@ -117,7 +117,7 @@ home.packages = with pkgs; [
         Mod+Shift+N { spawn "makoctl" "dismiss" "--all"; }
         Mod+Z       { spawn "bash" "/home/az/.local/bin/screenshot-capture-wayland.sh" "region"; }
         Mod+Shift+Z { spawn "bash" "/home/az/.local/bin/screenshot-capture-wayland.sh"; }
-        Mod+W       { spawn "bash" "/home/az/dirrr/wallpapers/cycle-wallpaper.sh"; }
+        Mod+W { spawn "/home/az/dirrr/wallpapers/cycle-wallpaper.sh"; }
 
         Mod+C           { close-window; }
         Mod+F           { maximize-column; }
