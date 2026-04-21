@@ -35,7 +35,7 @@ home.packages = with pkgs; [
 
 
     layout {
-        gaps 13
+        gaps 3
         center-focused-column "never"
         preset-column-widths {
             proportion 0.33333
