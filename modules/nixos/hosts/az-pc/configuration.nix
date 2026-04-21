@@ -18,7 +18,7 @@
   networking.networkmanager.enable = true;
   networking.firewall.enable       = true;
 
-  time.timeZone      = "America/Los_Angeles";
+  time.timeZone      = "Asia/Dhaka";
   i18n.defaultLocale = "en_US.UTF-8";
   i18n.extraLocaleSettings = {
     LC_ADDRESS        = "en_US.UTF-8";
