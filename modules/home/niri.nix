@@ -35,7 +35,7 @@ home.packages = with pkgs; [
 
 
     layout {
-        gaps 8
+        gaps 13
         center-focused-column "never"
         preset-column-widths {
             proportion 0.33333
@@ -49,7 +49,7 @@ home.packages = with pkgs; [
             inactive-color "#${themeNoHash.base01}"
         }
         border {
-            width 2
+            width 1
             active-color   "#${themeNoHash.base0B}"
             inactive-color "#${themeNoHash.base01}"
         }
