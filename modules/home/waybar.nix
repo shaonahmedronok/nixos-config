@@ -21,7 +21,7 @@
           "pulseaudio"
         ],
         "niri/window": {
-          "format": "{title}",
+          "format": "{app_id}",
           "max-length": 35,
           "separate-outputs": true,
           "rewrite": {
@@ -91,7 +91,7 @@
           "format-icons": {
             "headphone": "",
             "headset": "",
-            "default": ["󰕿", "󰖀", "󰕾"]
+            "default": ["", "", ""]
           }
         },
         "network": {
