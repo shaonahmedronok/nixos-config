@@ -49,7 +49,7 @@ home.packages = with pkgs; [
             inactive-color "#${themeNoHash.base01}"
         }
         border {
-            width 1
+            width 2
             active-color   "#${themeNoHash.base0B}"
             inactive-color "#${themeNoHash.base01}"
         }
