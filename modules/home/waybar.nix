@@ -21,31 +21,33 @@
           "pulseaudio"
         ],
         "niri/window": {
-          "format": "{app_id}",
-          "max-length": 35,
-          "separate-outputs": true,
-          "rewrite": {
-            "google-chrome": " Chrome",
-            "tor-browser": " Tor",
-            "kitty": " Terminal",
-            "nvim": " Neovim",
-            "inkscape": " Inkscape",
-            "evince": "󰈦 PDF Viewer",
-            "mpv": " MPV Player",
-            "imv": "󰋩 Image Viewer",
-            "org.keepassxc.KeePassXC": " KeePassXC",
-            "btop": "󰍛 Btop",
-            "yazi": "󰇥 Yazi",
-            "typst": "󰏫 Typst",
-            "org.gnome.Nautilus": "󰉋 Files",
-            "org.pulseaudio.pavucontrol": "󰓃 Audio",
-            "nm-connection-editor": "󰤨 Network",
-            "fastfetch": "󱄄 Fetch",
-            "nh": "󱄄 Nix Helper",
-            "^$": "󰖳 Desktop",
-            "(.*)": "󱂬 $1"
-          }
-        },
+  "format": "{title}", // Change this from {app_id} to {title} to use rewrite correctly
+  "max-length": 35,
+  "separate-outputs": true,
+  "rewrite": {
+    "google-chrome": " Chrome",
+    "tor-browser": " Tor",
+    "kitty": " Terminal",
+    "nvim": " Neovim",
+    "inkscape": " Inkscape",
+    "evince": "󰈦 PDF Viewer",
+    "mpv": " MPV Player",
+    "imv": "󰋩 Image Viewer",
+    "org.keepassxc.KeePassXC": " KeePassXC",
+    "btop": "󰍛 Btop",
+    "yazi": "󰇥 Yazi",
+    "typst": "󰏫 Typst",
+    "org.gnome.Nautilus": "󰉋 Files",
+    "org.pulseaudio.pavucontrol": "󰓃 Audio",
+    "nm-connection-editor": "󰤨 Network",
+    "fastfetch": "󱄄 Fetch",
+    "nh": "󱄄 Nix Helper",
+    "^$": "󰖳 Desktop",
+    # This is the "clean" catch-all. No extra symbols.
+    "(.*)": "$1" 
+  }
+},
+
         "clock": {
           "format": "{:%A %H:%M}",
           "format-alt": "{:%d %B W%V %Y}",
