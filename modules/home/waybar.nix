@@ -168,7 +168,29 @@
         color: ${theme.base06};
         font-weight: 700;
         margin-left: 8.75px;
+      
+
+/* 1. Hide by default */
+        opacity: 0;
+        
+        /* 2. Target a specific width so you have a "zone" to touch with the mouse */
+        min-width: 140px; 
+
+        /* 3. This transition handles the "disappearing" part */
+        transition: opacity 0.5s ease-in-out;
+        transition-delay: 3s; /* Wait 3 seconds before starting the fade-out */
       }
+
+      #clock:hover {
+        /* 4. Show when mouse touches it */
+        opacity: 1;
+        
+        /* 5. Show INSTANTLY when touched (overwrite the delay) */
+        transition-delay: 0s;
+        transition: opacity 0.1s ease-in-out;
+      }
+
+
       #cpu,
       #memory,
       #pulseaudio,
