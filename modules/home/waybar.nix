@@ -8,7 +8,7 @@
         "position": "top",
         "spacing": 0,
         "height": 16,
-        "modules-left": ["custom/logo", "niri/workspaces"],
+        "modules-left": ["custom/logo", "niri/workspaces", "niri/window"],
         "modules-center": ["clock"],
         "modules-right": [
           "custom/nightlight",
@@ -17,11 +17,23 @@
           "group/tray-expander",
           "bluetooth",
           "network",
-          "pulseaudio",
-          "cpu",
-          "memory"
+          "pulseaudio"
         ],
-        "clock": {
+       
+"niri/window": {
+    "format": "{}",
+    "max-length": 35,
+    "separate-outputs": true,
+    "rewrite": {
+        "(.*) — Mozilla Firefox": "󰈹 Firefox",
+        "(.*) - Google Chrome": " Chrome",
+        "(.*) - kitty": " Terminal",
+        "": "Empty Space" 
+    }
+},
+
+
+       "clock": {
           "format": "{:%A %H:%M}",
           "format-alt": "{:%d %B W%V %Y}",
           "tooltip": false
@@ -144,6 +156,16 @@
         color: ${theme.base04};
         opacity: 0.6;
       }
+
+      #window {
+    color: ${theme.base0E}; /* This uses a purple/magenta color from your theme */
+    font-weight: 600;
+    margin-left: 15px;
+    padding-right: 15px;
+    border-right: 1px solid ${theme.base03}; /* A subtle separator */
+}
+
+
       #custom-logo {
         color: ${theme.base0D};
         font-size: 18px;
