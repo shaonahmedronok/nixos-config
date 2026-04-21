@@ -8,10 +8,11 @@
         "position": "top",
         "spacing": 0,
         "height": 16,
-        "modules-left": ["custom/logo", "niri/workspaces", "niri/window"],
-        "modules-center": ["clock"],
+        "modules-left": ["custom/logo", "niri/workspaces"],
+        "modules-center": ["niri/window"],
         "modules-right": [
-          "custom/nightlight",
+          "clock",
+	  "custom/nightlight",
           "custom/media",
           "custom/screenshot",
           "group/tray-expander",
@@ -20,16 +21,43 @@
           "pulseaudio"
         ],
        
-"niri/window": {
-    "format": "{}",
-    "max-length": 35,
-    "separate-outputs": true,
-    "rewrite": {
-        "(.*) — Mozilla Firefox": "󰈹 Firefox",
-        "(.*) - Google Chrome": " Chrome",
-        "(.*) - kitty": " Terminal",
-        "": "Empty Space" 
-    }
+
+      "niri/window": {
+  "format": "{app_id}",
+  "max-length": 35,
+  "separate-outputs": true,
+  "rewrite": {
+    # Browsers
+    "google-chrome": " Chrome",
+    "tor-browser": " Tor",
+    
+    # Terminal & Editors
+    "kitty": " Terminal",
+    "nvim": " Neovim",
+    "inkscape": " Inkscape",
+    "evince": "󰈦 PDF Viewer",
+    
+    # Media & Images
+    "mpv": " MPV Player",
+    "imv": "󰋩 Image Viewer",
+    
+    # Tools & System
+    "org.keepassxc.KeePassXC": " KeePassXC",
+    "btop": "󰍛 Btop",
+    "yazi": "󰇥 Yazi",
+    "typst": "󰏫 Typst",
+    "org.gnome.Nautilus": "󰉋 Files",
+    "org.pulseaudio.pavucontrol": "󰓃 Audio",
+    "nm-connection-editor": "󰤨 Network",
+    
+    # Scripts / Utils
+    "fastfetch": "󱄄 Fetch",
+    "nh": "󱄄 Nix Helper",
+    
+    # Catch-all for anything else
+    "^$": "󰖳 Desktop",
+    "(.*)": "󱂬 $1"
+  }
 },
 
 
@@ -158,11 +186,8 @@
       }
 
       #window {
-    color: ${theme.base0E}; /* This uses a purple/magenta color from your theme */
+    color: ${theme.base0E};
     font-weight: 600;
-    margin-left: 15px;
-    padding-right: 15px;
-    border-right: 1px solid ${theme.base03}; /* A subtle separator */
 }
 
 
@@ -186,32 +211,27 @@
         background-color: ${theme.base08};
         opacity: 1.0;
       }
-      #clock {
+
+
+    #clock {
         color: ${theme.base06};
         font-weight: 700;
-        margin-left: 8.75px;
-      
-
-/* 1. Hide by default */
-        opacity: 0;
+        margin-right: 10px; /* Space between clock and nightlight */
         
-        /* 2. Target a specific width so you have a "zone" to touch with the mouse */
-        min-width: 140px; 
-
-        /* 3. This transition handles the "disappearing" part */
+        opacity: 0;
+        /* Smaller width since it's in a list of icons now */
+        min-width: 45px; 
+        
         transition: opacity 0.5s ease-in-out;
-        transition-delay: 3s; /* Wait 3 seconds before starting the fade-out */
+        transition-delay: 3s;
       }
 
       #clock:hover {
-        /* 4. Show when mouse touches it */
         opacity: 1;
-        
-        /* 5. Show INSTANTLY when touched (overwrite the delay) */
         transition-delay: 0s;
         transition: opacity 0.1s ease-in-out;
-      }
-
+      }      
+      
 
       #cpu,
       #memory,
