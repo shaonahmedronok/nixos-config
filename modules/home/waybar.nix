@@ -12,7 +12,7 @@
         "modules-center": ["niri/window"],
         "modules-right": [
           "clock",
-	  "custom/nightlight",
+          "custom/nightlight",
           "custom/media",
           "custom/screenshot",
           "group/tray-expander",
@@ -20,48 +20,33 @@
           "network",
           "pulseaudio"
         ],
-       
-
-      "niri/window": {
-  "format": "{app_id}",
-  "max-length": 35,
-  "separate-outputs": true,
-  "rewrite": {
-    # Browsers
-    "google-chrome": " Chrome",
-    "tor-browser": " Tor",
-    
-    # Terminal & Editors
-    "kitty": " Terminal",
-    "nvim": " Neovim",
-    "inkscape": " Inkscape",
-    "evince": "󰈦 PDF Viewer",
-    
-    # Media & Images
-    "mpv": " MPV Player",
-    "imv": "󰋩 Image Viewer",
-    
-    # Tools & System
-    "org.keepassxc.KeePassXC": " KeePassXC",
-    "btop": "󰍛 Btop",
-    "yazi": "󰇥 Yazi",
-    "typst": "󰏫 Typst",
-    "org.gnome.Nautilus": "󰉋 Files",
-    "org.pulseaudio.pavucontrol": "󰓃 Audio",
-    "nm-connection-editor": "󰤨 Network",
-    
-    # Scripts / Utils
-    "fastfetch": "󱄄 Fetch",
-    "nh": "󱄄 Nix Helper",
-    
-    # Catch-all for anything else
-    "^$": "󰖳 Desktop",
-    "(.*)": "󱂬 $1"
-  }
-},
-
-
-       "clock": {
+        "niri/window": {
+          "format": "{app_id}",
+          "max-length": 35,
+          "separate-outputs": true,
+          "rewrite": {
+            "google-chrome": " Chrome",
+            "tor-browser": " Tor",
+            "kitty": " Terminal",
+            "nvim": " Neovim",
+            "inkscape": " Inkscape",
+            "evince": "󰈦 PDF Viewer",
+            "mpv": " MPV Player",
+            "imv": "󰋩 Image Viewer",
+            "org.keepassxc.KeePassXC": " KeePassXC",
+            "btop": "󰍛 Btop",
+            "yazi": "󰇥 Yazi",
+            "typst": "󰏫 Typst",
+            "org.gnome.Nautilus": "󰉋 Files",
+            "org.pulseaudio.pavucontrol": "󰓃 Audio",
+            "nm-connection-editor": "󰤨 Network",
+            "fastfetch": "󱄄 Fetch",
+            "nh": "󱄄 Nix Helper",
+            "^$": "󰖳 Desktop",
+            "(.*)": "󱂬 $1"
+          }
+        },
+        "clock": {
           "format": "{:%A %H:%M}",
           "format-alt": "{:%d %B W%V %Y}",
           "tooltip": false
@@ -184,13 +169,10 @@
         color: ${theme.base04};
         opacity: 0.6;
       }
-
       #window {
-    color: ${theme.base0E};
-    font-weight: 600;
-}
-
-
+        color: ${theme.base0E};
+        font-weight: 600;
+      }
       #custom-logo {
         color: ${theme.base0D};
         font-size: 18px;
@@ -211,28 +193,20 @@
         background-color: ${theme.base08};
         opacity: 1.0;
       }
-
-
-    #clock {
+      #clock {
         color: ${theme.base06};
         font-weight: 700;
-        margin-right: 10px; /* Space between clock and nightlight */
-        
+        margin-right: 10px;
         opacity: 0;
-        /* Smaller width since it's in a list of icons now */
         min-width: 45px; 
-        
         transition: opacity 0.5s ease-in-out;
         transition-delay: 3s;
       }
-
       #clock:hover {
         opacity: 1;
         transition-delay: 0s;
         transition: opacity 0.1s ease-in-out;
       }      
-      
-
       #cpu,
       #memory,
       #pulseaudio,
@@ -243,14 +217,14 @@
         margin: 0 7.5px;
         color: ${theme.base05};
       }
-      #tray               { margin-right: 16px; }
-      #bluetooth          { margin-right: 17px; }
-      #network            { margin-right: 13px; }
-      #custom-expand-icon { margin-right: 18px; }
-      .tray-group-item    { margin: 0 4px; }
-      #pulseaudio.muted       { color: ${theme.base08}; }
-      #network.disconnected   { color: ${theme.base08}; }
-      #bluetooth.off          { color: ${theme.base02}; }
+      #tray                { margin-right: 16px; }
+      #bluetooth           { margin-right: 17px; }
+      #network             { margin-right: 13px; }
+      #custom-expand-icon  { margin-right: 18px; }
+      .tray-group-item     { margin: 0 4px; }
+      #pulseaudio.muted    { color: ${theme.base08}; }
+      #network.disconnected { color: ${theme.base08}; }
+      #bluetooth.off       { color: ${theme.base02}; }
       #custom-screenshot {
         margin: 0 7.5px;
         color: ${theme.base06};
