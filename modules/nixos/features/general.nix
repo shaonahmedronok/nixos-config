@@ -30,6 +30,9 @@
     # Application launcher
     fuzzel
 
+    #TUI/CLI-tools
+    ttyper
+
     # Audio
     wiremix
     wireplumber
