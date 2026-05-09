@@ -8,8 +8,8 @@
         "position": "top",
         "spacing": 0,
         "height": 16,
-        "modules-left": ["custom/logo", "niri/workspaces"],
-        "modules-center": ["niri/window"],
+        "modules-left": ["custom/logo", "niri/window"],
+        "modules-center": ["niri/workspaces"],
         "modules-right": [
           "clock",
           "custom/nightlight",
