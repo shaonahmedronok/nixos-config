@@ -38,6 +38,10 @@
     wireplumber
     pamixer
     
+    
+    #bluetooth
+    blueman
+
     # Clipboard
     wl-clipboard
     cliphist
