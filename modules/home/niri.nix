@@ -49,8 +49,8 @@ home.packages = with pkgs; [
             inactive-color "#${themeNoHash.base01}"
         }
         border {
-            width 2
-            active-color   "#${themeNoHash.base0B}"
+            width 4
+            active-color   "#${themeNoHash.base0D}"
             inactive-color "#${themeNoHash.base01}"
         }
     }
@@ -101,7 +101,7 @@ home.packages = with pkgs; [
     spawn-at-startup "wlsunset" "-t" "4500" "-T" "4500"
     spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
     spawn-at-startup "wl-clip-persist" "--clipboard" "regular"
-    spawn-at-startup "swww-daemon"
+    spawn-at-startup "awww-daemon"
     // Autostart the XWayland bridge
     spawn-at-startup "xwayland-satellite"
 
