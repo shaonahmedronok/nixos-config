@@ -76,6 +76,7 @@
   stylix = {
     enable   = true;
     polarity = "dark";   # forces dark palette — fixes white/light GTK theme
+    
     base16Scheme = {
       base00 = themeNoHash.base00;
       base01 = themeNoHash.base01;
