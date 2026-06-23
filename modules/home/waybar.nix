@@ -7,7 +7,7 @@
         "layer": "top",
         "position": "top",
         "spacing": 0,
-        "height": 16,
+        "height": 13,
         "modules-left": ["custom/logo", "niri/window"],
         "modules-center": ["niri/workspaces"],
         "modules-right": [
@@ -22,18 +22,18 @@
         ],
         "niri/window": {
           "format": "{app_id}",
-          "max-length": 35,
+          "max-length": 13,
           "separate-outputs": true,
           "rewrite": {
-            "google-chrome": " Chrome",
-            "tor-browser": " Tor",
-            "kitty": " Terminal",
-            "nvim": " Neovim",
-            "inkscape": " Inkscape",
+            "google-chrome": " Chrome",
+            "tor-browser": " Tor",
+            "kitty": " Terminal",
+            "nvim": " Neovim",
+            "inkscape": " Inkscape",
             "evince": "󰈦 PDF Viewer",
-            "mpv": " MPV Player",
+            "mpv": " MPV Player",
             "imv": "󰋩 Image Viewer",
-            "org.keepassxc.KeePassXC": " KeePassXC",
+            "org.keepassxc.KeePassXC": " KeePassXC",
             "btop": "󰍛 Btop",
             "yazi": "󰇥 Yazi",
             "typst": "󰏫 Typst",
@@ -51,20 +51,9 @@
           "format-alt": "{:%d %B W%V %Y}",
           "tooltip": false
         },
-        "cpu": {
-          "interval": 5,
-          "format": "󰍛 {usage}%",
-          "tooltip": true,
-          "on-click": "kitty -e btop"
-        },
         "custom/logo": {
           "format": "",
           "tooltip": false
-        },
-        "memory": {
-          "interval": 5,
-          "format": "󰾆 {percentage}%",
-          "tooltip-format": "{used:0.1f}G / {total:0.1f}G"
         },
         "custom/media": {
           "format": "{}",
@@ -144,61 +133,94 @@
   home.file.".config/waybar/style.css" = {
     text = ''
       * {
-        font-family: 'JetBrainsMono Nerd Font';
+        font-family: "JetBrainsMono Nerd Font";
         font-size: 13px;
         font-weight: 600;
         min-height: 0;
         border: none;
         border-radius: 0;
       }
+
       window#waybar {
-        background-color: ${theme.base00};
-        color: ${theme.base06};
-        border-bottom: 2px solid ${theme.base0D};
+        background: linear-gradient(to bottom, #2f2f2f, #2a2a2a);
+        border-bottom: none;
+        color: #ebdbb2;
       }
+
       .modules-left  { margin-left:  3px; }
-      .modules-right { margin-right: 8px; }
+      .modules-right { margin-right: 4px;  }
+
+      /* ── shared block base ── */
+      #clock,
+      #custom-nightlight,
+      #custom-media,
+      #custom-screenshot,
+      #custom-expand-icon,
+      #tray,
+      #bluetooth,
+      #network,
+      #pulseaudio {
+        margin: 3px 2px;
+        padding: 0 11px;
+        border-radius: 6px;
+        min-height: 13px;
+        color: #282828;
+      }
+
+      /* ── logo ── */
+      #custom-logo {
+        background: linear-gradient(to bottom, #83a598, #6f8f8a);
+        color: #282828;
+        font-size: 18px;
+        padding: 0 10px;
+        border-radius: 6px;
+        min-height: 29px;
+        margin: 3px 6px 3px 3px;
+      }
+
+      /* ── window title ── */
+      #window {
+        color: #ebdbb2;
+        font-weight: 600;
+        padding: 0 8px;
+      }
+
+      /* ── workspaces ── */
       #workspaces button {
         all: initial;
-        font-family: 'JetBrainsMono Nerd Font';
+        font-family: "JetBrainsMono Nerd Font";
         font-size: 13px;
         font-weight: 600;
-        padding: 0 4px;
-        margin: 0 1.5px;
+        padding: 0 11px;
+        margin: 3px 2px;
         min-width: 9px;
-        color: ${theme.base04};
-        opacity: 0.6;
-      }
-      #window {
-        color: ${theme.base0E};
-        font-weight: 600;
-      }
-      #custom-logo {
-        color: ${theme.base0D};
-        font-size: 18px;
-        margin-left: 3px;
-        margin-right: 10px;
+        min-height: 13px;
+        border-radius: 6px;
+        background: linear-gradient(to bottom, #4f4844, #3f3835);
+        color: #ebdbb2;
       }
       #workspaces button.active {
-        color: ${theme.base00};
-        background-color: ${theme.base0B};
-        opacity: 1.0;
+        background: linear-gradient(to bottom, #83a598, #6f8f8a);
+        color: #282828;
       }
       #workspaces button.nonempty {
-        color: ${theme.base0A};
-        opacity: 1.0;
+        background: linear-gradient(to bottom, #675e57, #514a44);
+        color: #ebdbb2;
       }
       #workspaces button.urgent {
-        color: ${theme.base07};
-        background-color: ${theme.base08};
-        opacity: 1.0;
+        background: linear-gradient(to bottom, #cc241d, #9d0006);
+        color: #ebdbb2;
       }
+      #workspaces button:hover {
+        background: linear-gradient(to bottom, #675e57, #514a44);
+      }
+
+      /* ── clock — tan, hidden until hover ── */
       #clock {
-        color: ${theme.base06};
+        background: linear-gradient(to bottom, #d5c4a1, #b8a785);
         font-weight: 700;
-        margin-right: 10px;
+        min-width: 45px;
         opacity: 0;
-        min-width: 45px; 
         transition: opacity 0.5s ease-in-out;
         transition-delay: 3s;
       }
@@ -206,43 +228,73 @@
         opacity: 1;
         transition-delay: 0s;
         transition: opacity 0.1s ease-in-out;
-      }      
-      #cpu,
-      #memory,
-      #pulseaudio,
-      #network,
-      #bluetooth,
-      #custom-expand-icon {
-        min-width: 12px;
-        margin: 0 7.5px;
-        color: ${theme.base05};
       }
-      #tray                 { margin-right: 16px; }
-      #bluetooth            { margin-right: 17px; }
-      #network              { margin-right: 13px; }
-      #custom-expand-icon   { margin-right: 18px; }
-      .tray-group-item      { margin: 0 4px; }
-      #pulseaudio.muted     { color: ${theme.base08}; }
-      #network.disconnected { color: ${theme.base08}; }
-      #bluetooth.off        { color: ${theme.base02}; }
-      #custom-screenshot {
-        margin: 0 7.5px;
-        color: ${theme.base06};
-      }
-      #custom-screenshot:hover { color: ${theme.base0D}; }
-      #custom-media             { color: ${theme.base06}; }
-      #custom-media.Paused      { color: ${theme.base03}; }
+
+      /* ── nightlight — warm amber (perfect fit!) ── */
       #custom-nightlight {
-        color: ${theme.base06};
-        margin: 0 7.5px;
+        background: linear-gradient(to bottom, #e0af4a, #c49632);
       }
-      #custom-nightlight:hover { color: ${theme.base09}; }
+
+      /* ── media — green ── */
+      #custom-media {
+        background: linear-gradient(to bottom, #97b87a, #7d9e62);
+      }
+      #custom-media.Paused {
+        background: linear-gradient(to bottom, #4f4844, #3f3835);
+        color: #ebdbb2;
+      }
+
+      /* ── screenshot — teal ── */
+      #custom-screenshot {
+        background: linear-gradient(to bottom, #83a598, #6f8f8a);
+      }
+
+      /* ── tray expander — dark ── */
+      #custom-expand-icon {
+        background: linear-gradient(to bottom, #4f4844, #3f3835);
+        color: #ebdbb2;
+      }
+      #tray {
+        background: linear-gradient(to bottom, #4f4844, #3f3835);
+        color: #ebdbb2;
+      }
+      .tray-group-item { margin: 0 2px; }
+
+      /* ── bluetooth — teal ── */
+      #bluetooth {
+        background: linear-gradient(to bottom, #83a598, #6f8f8a);
+      }
+      #bluetooth.off,
+      #bluetooth.disabled {
+        background: linear-gradient(to bottom, #4f4844, #3f3835);
+        color: #ebdbb2;
+      }
+
+      /* ── network — green ── */
+      #network {
+        background: linear-gradient(to bottom, #97b87a, #7d9e62);
+      }
+      #network.disconnected {
+        background: linear-gradient(to bottom, #cc241d, #9d0006);
+        color: #ebdbb2;
+      }
+
+      /* ── pulseaudio — tan ── */
+      #pulseaudio {
+        background: linear-gradient(to bottom, #d5c4a1, #b8a785);
+      }
+      #pulseaudio.muted {
+        background: linear-gradient(to bottom, #cc241d, #9d0006);
+        color: #ebdbb2;
+      }
+
+      /* ── tooltips ── */
       tooltip {
-        background-color: ${theme.base01};
-        border: 1px solid ${theme.base0D};
+        background-color: #282828;
+        border: 1px solid #83a598;
         padding: 2px;
       }
-      tooltip label { color: ${theme.base07}; }
+      tooltip label { color: #ebdbb2; }
     '';
   };
 }
