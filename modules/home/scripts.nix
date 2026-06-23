@@ -47,7 +47,7 @@ home.file."dirrr/wallpapers/cycle-wallpaper.sh" = {
 
     # Only try to set it if a file was actually found
     if [ -n "$WALLPAPER" ]; then
-      swww img "$WALLPAPER" --transition-type fade --transition-duration 1
+      awww img "$WALLPAPER" --transition-type fade --transition-duration 1
     fi
   '';
 };
