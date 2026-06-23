@@ -21,12 +21,12 @@
 
 | | |
 |---|---|
-| **OS** | NixOS 25.11 |
+| **OS** | NixOS 26.05 |
 | **WM** | Niri (Wayland) |
 | **Terminal** | Kitty |
 | **Shell** | Bash + Starship |
 | **Editor** | Neovim + LazyVim |
-| **Browser** | Google Chrome + LibreWolf + Firefox |
+| **Browser** | Google Chrome |
 | **Launcher** | Fuzzel |
 | **Bar** | Waybar |
 | **Notifications** | Mako |
