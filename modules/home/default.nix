@@ -25,6 +25,7 @@
   stylix.targets.starship.enable = false;
   stylix.targets.hyprlock.enable = false;
   stylix.targets.mpv.enable      = false;
+  stylix.targets.gnome.enable = false;
   stylix.targets.fuzzel.enable   = false;
 
   programs.bash = {
