@@ -4,6 +4,7 @@
 
     # IDEs / Text editors
     neovim
+    geany
 
     # Writings
     typst
@@ -13,8 +14,7 @@
     
     # Browsers
     google-chrome
-    tor-browser
-
+    
     # Image viewer
     imv
 
@@ -22,8 +22,7 @@
     mpv
 
     # Image / Video editors
-    inkscape
-
+    
     # Topbar
     waybar
 
@@ -40,8 +39,7 @@
     
     
     #bluetooth
-    blueman
-
+    
     # Clipboard
     wl-clipboard
     cliphist
@@ -87,7 +85,7 @@
     polkit_gnome
     qt5.qtwayland
     brightnessctl
-    swww
+    awww
     xwayland-satellite
 
     # Manual pages
