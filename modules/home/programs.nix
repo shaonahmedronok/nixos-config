@@ -158,41 +158,87 @@
     };
   };
 
-  home.file.".config/fastfetch/config.jsonc".text = ''
-    {
-      "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
-      "logo": {
-        "type": "kitty-direct",
-        "source": "/home/az/dirrr/nix-gruvbox.png",
-        "width": 32,
-        "height": 15,
-        "padding": { "top": 1, "left": 1, "right": 4 }
+
+
+
+
+
+
+
+
+
+
+home.file.".config/fastfetch/config.jsonc".text = ''
+  {
+    "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+    "logo": {
+      "type": "kitty-direct",
+      "source": "/home/az/dirrr/nix-gruvbox.png",
+      "width": 32,
+      "height": 15,
+      "padding": { "top": 1, "left": 1, "right": 4 }
+    },
+    "display": {
+  "separator": "  ",
+  "key": { "width": 13 }
+},
+    "modules": [
+      "break",
+      {
+        "type": "command",
+        "key": "OS",
+        "keyColor": "38;2;125;174;163",
+        "text": "nixos-version | awk '{split($1,a,\".\"); print \"nixos \" a[1]\".\"a[2] \" (Yarara)\"}'"
       },
-      "display": { "separator": " : " },
-      "modules": [
-        "break",
-        { "type": "custom", "format": "\u001b[90m " },
-        { "type": "command", "key": "\ue900 OS",  "keyColor": "blue", "text": "version=$(nixos-version); echo \"nixos $version\"" },
-        { "type": "command", "key": "│ ├󰘬",       "keyColor": "blue", "text": "branch=$(nixos-version-branch); echo \"$branch\"" },
-        { "type": "command", "key": "│ ├󰔫",       "keyColor": "blue", "text": "channel=$(nixos-version-channel); echo \"$channel\"" },
-        { "type": "kernel",  "key": "│ ├",        "keyColor": "blue" },
-        { "type": "wm",      "key": "│ ├",        "keyColor": "blue" },
-        { "type": "de",      "key": " DE",        "keyColor": "blue" },
-        { "type": "terminal","key": "│ ├",        "keyColor": "blue" },
-        { "type": "packages","key": "│ ├󰏖",       "keyColor": "blue" },
-        { "type": "wmtheme", "key": "│ ├󰉼",       "keyColor": "blue" },
-        { "type": "command", "key": "│ ├󰸌",       "keyColor": "blue", "text": "theme=$(nixos-theme-current); echo -e \"$theme \\e[38m●\\e[37m●\\e[36m●\\e[35m●\\e[34m●\\e[33m●\\e[32m●\\e[31m●\"" },
-        { "type": "terminalfont", "key": "└ └",   "keyColor": "blue" },
-        { "type": "custom", "format": "\u001b[90m " },
-        "break",
-        { "type": "custom", "format": "\u001b[90m " },
-        { "type": "uptime",  "key": "󱫐 Uptime", "keyColor": "magenta" },
-        { "type": "command", "key": " Update",  "keyColor": "magenta", "text": "updated=$(nixos-version-pkgs); echo \"$updated\"" },
-        { "type": "custom", "format": "\u001b[90m " },
-        "break"
-      ]
-    }
-  '';
+      {
+        "type": "kernel",
+        "key": "Kernel",
+        "keyColor": "38;2;125;174;163",
+        "format": "{release}"
+      },
+      {
+        "type": "packages",
+        "key": "pkgs",
+        "keyColor": "38;2;125;174;163"
+      },
+      {
+        "type": "shell",
+        "key": "Shell",
+        "keyColor": "38;2;125;174;163",
+        "format": "{pretty-name}"
+      },
+      {
+        "type": "wm",
+        "key": "WM",
+        "keyColor": "38;2;125;174;163",
+        "format": "{pretty-name}"
+      },
+      {
+        "type": "uptime",
+        "key": "Uptime",
+        "keyColor": "38;2;125;174;163"
+      },
+      {
+        "type": "terminal",
+        "key": "Terminal",
+        "keyColor": "38;2;125;174;163",
+        "format": "{pretty-name}"
+      },
+      {
+  "type": "terminalfont",
+  "key": "Font",
+  "keyColor": "38;2;125;174;163"
+},
+      "break"
+    ]
+  }
+'';
+
+
+
+
+
+
 
 
   home.file.".config/yazi/yazi.toml".text = ''
