@@ -73,6 +73,16 @@
     font-awesome
   ];
 
+
+fonts.fontconfig = {
+  defaultFonts = {
+    sansSerif = [ "Noto Sans" "Noto Sans Bengali" ];
+    serif     = [ "Noto Serif" "Noto Serif Bengali" ];
+  };
+};
+
+
+
   stylix = {
     enable   = true;
     polarity = "dark";   # forces dark palette — fixes white/light GTK theme
@@ -119,7 +129,7 @@
   # receives these variables.
   environment.sessionVariables = {
     NIXOS_OZONE_WL                    = "1";
-    XDG_CURRENT_DESKTOP               = "niri";
+    XDG_CURRENT_DESKTOP               = "niri:GNOME";
     XDG_SESSION_TYPE                  = "wayland";
     XDG_SESSION_DESKTOP               = "niri";
     QT_QPA_PLATFORM                   = "wayland";
