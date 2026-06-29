@@ -1,5 +1,11 @@
 { pkgs, ... }:
 {
+
+environment.sessionVariables = {
+  NIXOS_OZONE_WL        = "1";
+};
+
+
   environment.systemPackages = with pkgs; [
 
     # IDEs / Text editors
@@ -17,6 +23,9 @@
     
     # Image viewer
     imv
+    
+    # Graphics n stuff
+    inkscape
 
     # Media player
     mpv
@@ -49,6 +58,8 @@
 
     # File managers / drive mounting
     yazi
+    kdePackages.dolphin
+    thunar
     udiskie
     unzip
     p7zip
