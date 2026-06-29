@@ -25,7 +25,7 @@
 | **WM** | Niri (Wayland) |
 | **Terminal** | Kitty |
 | **Shell** | Bash + Starship |
-| **Editor** | Neovim + LazyVim |
+| **Editor** | Doom Emacs, Neovim |
 | **Browser** | Google Chrome |
 | **Launcher** | Fuzzel |
 | **Bar** | Waybar |
