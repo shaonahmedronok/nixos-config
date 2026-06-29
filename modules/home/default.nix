@@ -1,9 +1,10 @@
 { config, pkgs, lib, ... }:
 {
   imports = [
-    ./niri.nix        # ← was hyprland.nix
+    ./niri.nix
     ./waybar.nix
     ./programs.nix
+    ./emacs.nix
     ./scripts.nix
   ];
 
@@ -12,20 +13,18 @@
   home.stateVersion  = "25.11";
   programs.home-manager.enable = true;
 
-  # Stylix targets — disable everything we theme manually.
-  # gtk MUST be false so your system gtk.nix (Gruvbox-Green-Dark-Medium)
-  # wins instead of Stylix writing its own settings.ini over it.
   stylix.targets.gtk.enable      = false;
   stylix.targets.niri.enable     = false;
   stylix.targets.qt.enable       = false;
   stylix.targets.kitty.enable    = false;
   stylix.targets.waybar.enable   = false;
   stylix.targets.neovim.enable   = false;
+  stylix.targets.emacs.enable    = false;
   stylix.targets.hyprland.enable = false;
   stylix.targets.starship.enable = false;
   stylix.targets.hyprlock.enable = false;
   stylix.targets.mpv.enable      = false;
-  stylix.targets.gnome.enable = false;
+  stylix.targets.gnome.enable    = false;
   stylix.targets.fuzzel.enable   = false;
 
   programs.bash = {
@@ -36,7 +35,7 @@
       ll  = "eza -la --icons";
       cat = "bat";
       cd  = "z";
-      vim = "nvim";
+      vim = "emacsclient -t";
     };
   };
 
@@ -53,7 +52,7 @@
       ls  = "eza --icons";
       ll  = "eza -la --icons";
       cat = "bat";
-      vim = "nvim";
+      vim = "emacsclient -t";
     };
   };
 
@@ -117,8 +116,15 @@
   xdg.mimeApps = {
     enable = true;
     defaultApplications = {
-      "inode/directory"                  = "thunar.desktop";
-      "application/x-gnome-saved-search" = "thunar.desktop";
+      "inode/directory"                  = [ "thunar.desktop" ];
+      "application/x-gnome-saved-search" = [ "thunar.desktop" ];
+      "text/plain"                       = [ "emacsclient.desktop" ];
+      "text/x-nix"                       = [ "emacsclient.desktop" ];
+      "text/markdown"                    = [ "emacsclient.desktop" ];
+      "text/x-python"                    = [ "emacsclient.desktop" ];
+      "application/json"                 = [ "emacsclient.desktop" ];
+      "text/x-shellscript"               = [ "emacsclient.desktop" ];
+      "text/x-org"                       = [ "emacsclient.desktop" ];
     };
   };
 
