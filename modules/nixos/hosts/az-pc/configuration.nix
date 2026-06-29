@@ -32,6 +32,14 @@
     LC_TIME           = "en_US.UTF-8";
   };
 
+
+  services.emacs = {
+    enable = true;
+    package = pkgs.emacs; # or pkgs.emacs-gtk, etc.
+  };
+
+
+
   services.xserver.xkb = {
     layout  = "us";
     variant = "";
