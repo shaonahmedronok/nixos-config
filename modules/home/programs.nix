@@ -246,7 +246,7 @@ home.file.".config/fastfetch/config.jsonc".text = ''
     show_hidden = true
     [opener]
     edit = [
-        { run = 'nvim "$@"', block = true, for = "unix" },
+        { run = 'emacsclient -c "$@"', orphan = true },
     ]
     open = [
         { run = 'xdg-open "$@"', desc = "Open", for = "unix" },
