@@ -64,6 +64,22 @@
     };
   };
 
+
+   
+  
+  programs.starship = {
+    enable = true;
+    settings = {
+      character = {
+        # Wrap the value in lib.mkForce to resolve the conflict
+        success_symbol = lib.mkForce "[❯](fg:${theme.base0E})";
+        error_symbol   = lib.mkForce "[❯](fg:${theme.base08})";
+      };
+    };
+  };
+
+
+
   programs.kitty = {
     enable = true;
     settings = {
@@ -85,7 +101,7 @@
       inactive_tab_foreground = theme.base03;
       color0  = theme.base00; color8  = theme.base02;
       color1  = theme.base08; color9  = theme.base08;
-      color2  = theme.base0B; color10 = theme.base0B;
+      color2  = theme.base0D; color10 = theme.base0D;
       color3  = theme.base0A; color11 = theme.base0A;
       color4  = theme.base0D; color12 = theme.base0D;
       color5  = theme.base0E; color13 = theme.base0E;
@@ -187,52 +203,67 @@ home.file.".config/fastfetch/config.jsonc".text = ''
       {
         "type": "command",
         "key": "OS",
-        "keyColor": "38;2;125;174;163",
+        "keyColor": "38;2;224;137;161",
         "text": "nixos-version | awk '{split($1,a,\".\"); print \"nixos \" a[1]\".\"a[2] \" (Yarara)\"}'"
       },
       {
         "type": "kernel",
         "key": "Kernel",
-        "keyColor": "38;2;125;174;163",
+        "keyColor": "38;2;224;137;161",
         "format": "{release}"
       },
       {
         "type": "packages",
         "key": "pkgs",
-        "keyColor": "38;2;125;174;163"
+        "keyColor": "38;2;224;137;161"
       },
       {
         "type": "shell",
         "key": "Shell",
-        "keyColor": "38;2;125;174;163",
+        "keyColor": "38;2;224;137;161",
         "format": "{pretty-name}"
       },
       {
         "type": "wm",
         "key": "WM",
-        "keyColor": "38;2;125;174;163",
+        "keyColor": "38;2;224;137;161",
         "format": "{pretty-name}"
       },
       {
         "type": "uptime",
         "key": "Uptime",
-        "keyColor": "38;2;125;174;163"
+        "keyColor": "38;2;224;137;161"
       },
       {
         "type": "terminal",
         "key": "Terminal",
-        "keyColor": "38;2;125;174;163",
+        "keyColor": "38;2;224;137;161",
         "format": "{pretty-name}"
       },
       {
   "type": "terminalfont",
   "key": "Font",
-  "keyColor": "38;2;125;174;163"
+  "keyColor": "38;2;224;137;161"
 },
       "break"
     ]
   }
 '';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
