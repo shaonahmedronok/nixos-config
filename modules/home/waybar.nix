@@ -200,7 +200,7 @@
         color: #ebdbb2;
       }
       #workspaces button.active {
-        background: linear-gradient(to bottom, #83a598, #6f8f8a);
+        background: linear-gradient(to bottom, #e089a1, #e089a1);
         color: #282828;
       }
       #workspaces button.nonempty {
@@ -232,12 +232,12 @@
 
       /* ── nightlight — warm amber (perfect fit!) ── */
       #custom-nightlight {
-        background: linear-gradient(to bottom, #e0af4a, #c49632);
+        background: linear-gradient(to bottom, #7daea3, #7daea3);
       }
 
       /* ── media — green ── */
       #custom-media {
-        background: linear-gradient(to bottom, #97b87a, #7d9e62);
+        background: linear-gradient(to bottom, #d5c4a1, #d5c4a1);
       }
       #custom-media.Paused {
         background: linear-gradient(to bottom, #4f4844, #3f3835);
@@ -272,7 +272,7 @@
 
       /* ── network — green ── */
       #network {
-        background: linear-gradient(to bottom, #97b87a, #7d9e62);
+        background: linear-gradient(to bottom, #e089a1, #e089a1);
       }
       #network.disconnected {
         background: linear-gradient(to bottom, #cc241d, #9d0006);
