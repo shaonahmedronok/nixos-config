@@ -277,7 +277,7 @@ home.file.".config/fastfetch/config.jsonc".text = ''
     show_hidden = true
     [opener]
     edit = [
-        { run = 'emacsclient -c "$@"', orphan = true },
+        { run = 'kitty -e nvim "$@"', orphan = true },
     ]
     open = [
         { run = 'xdg-open "$@"', desc = "Open", for = "unix" },
