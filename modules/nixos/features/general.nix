@@ -10,6 +10,7 @@ environment.sessionVariables = {
 
     # IDEs / Text editors
     neovim
+    vscode
     geany
 
     # Writings
@@ -18,6 +19,9 @@ environment.sessionVariables = {
     # Terminal emulators
     kitty
     
+    # IRC-clint
+    halloy    
+
     # Browsers
     google-chrome
     
@@ -101,6 +105,10 @@ environment.sessionVariables = {
 
     # Manual pages
     man-db
+    
+
+    gzdoom
+
 
     # Network
     iwd
