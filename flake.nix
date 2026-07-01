@@ -1,6 +1,5 @@
 {
   description = "shaon's NixOS config";
-
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-26.05";
     home-manager = {
@@ -12,8 +11,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-
-  outputs = { self, nixpkgs, home-manager, stylix, ... }:
+  outputs = { self, nixpkgs, home-manager, stylix, ... }@inputs:
   let
     themeLib = import ./theme.nix;
   in {
@@ -27,18 +25,16 @@
         home-manager.nixosModules.home-manager
         {
           home-manager = {
-            useGlobalPkgs    = true;
-            useUserPackages  = true;
-            users.az         = import ./modules/home;
+            useGlobalPkgs       = true;
+            useUserPackages     = true;
+            users.az            = import ./modules/home;
             backupFileExtension = "backup";
-            extraSpecialArgs = { inherit (themeLib) theme themeNoHash; };
+            extraSpecialArgs    = { inherit (themeLib) theme themeNoHash; };
             sharedModules = [
-              ({ lib, ... }: {
-                options.stylix.targets.niri.enable = lib.mkOption {
-                  type    = lib.types.bool;
-                  default = false;
-                };
-              })
+              {
+                options.stylix.targets.niri.enable =
+                  nixpkgs.lib.mkOption { type = nixpkgs.lib.types.bool; default = false; };
+              }
             ];
           };
         }
