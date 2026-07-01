@@ -19,9 +19,6 @@ environment.sessionVariables = {
     # Terminal emulators
     kitty
     
-    # IRC-clint
-    halloy    
-
     # Browsers
     google-chrome
     
@@ -106,10 +103,7 @@ environment.sessionVariables = {
     # Manual pages
     man-db
     
-
-    gzdoom
-
-
+    
     # Network
     iwd
     networkmanagerapplet
