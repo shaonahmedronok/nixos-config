@@ -33,11 +33,6 @@
   };
 
 
-  services.emacs = {
-    enable = true;
-    package = pkgs.emacs; # or pkgs.emacs-gtk, etc.
-  };
-
 
 
   services.xserver.xkb = {
