@@ -4,7 +4,6 @@
     ./niri.nix
     ./waybar.nix
     ./programs.nix
-    ./emacs.nix
     ./scripts.nix
   ];
 
@@ -19,7 +18,6 @@
   stylix.targets.kitty.enable    = false;
   stylix.targets.waybar.enable   = false;
   stylix.targets.neovim.enable   = false;
-  stylix.targets.emacs.enable    = false;
   stylix.targets.hyprland.enable = false;
   stylix.targets.starship.enable = false;
   stylix.targets.hyprlock.enable = false;
@@ -35,7 +33,7 @@
       ll  = "eza -la --icons";
       cat = "bat";
       cd  = "z";
-      vim = "emacsclient -t";
+      vim = "nvim";
     };
   };
 
@@ -113,20 +111,35 @@
     };
   };
 
+  
+ 
+
+  xdg.desktopEntries.nvim = {
+  name    = "Neovim";
+  genericName = "Text Editor";
+  exec    = "kitty -e nvim %F";
+  terminal = false;
+  categories = [ "Utility" "TextEditor" ];
+  mimeType = [ "text/plain" "text/x-nix" "text/markdown" "application/json" "text/x-shellscript" "text/x-org" ];
+};
+  
+  
+
+
   xdg.mimeApps = {
-    enable = true;
-    defaultApplications = {
-      "inode/directory"                  = [ "thunar.desktop" ];
-      "application/x-gnome-saved-search" = [ "thunar.desktop" ];
-      "text/plain"                       = [ "emacsclient.desktop" ];
-      "text/x-nix"                       = [ "emacsclient.desktop" ];
-      "text/markdown"                    = [ "emacsclient.desktop" ];
-      "text/x-python"                    = [ "emacsclient.desktop" ];
-      "application/json"                 = [ "emacsclient.desktop" ];
-      "text/x-shellscript"               = [ "emacsclient.desktop" ];
-      "text/x-org"                       = [ "emacsclient.desktop" ];
-    };
+  enable = true;
+  defaultApplications = {
+    "inode/directory"                  = [ "thunar.desktop" ];
+    "application/x-gnome-saved-search" = [ "thunar.desktop" ];
+    "text/plain"                       = [ "nvim.desktop" ];
+    "text/x-nix"                       = [ "nvim.desktop" ];
+    "text/markdown"                    = [ "nvim.desktop" ];
+    "application/json"                 = [ "nvim.desktop" ];
+    "text/x-shellscript"               = [ "nvim.desktop" ];
+    "text/x-org"                       = [ "nvim.desktop" ];
   };
+};
+
 
   gtk = {
     enable = true;
