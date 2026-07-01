@@ -6,7 +6,7 @@
     ../../features/gtk.nix
     ../../features/niri.nix
     ../../features/general.nix
-    #../../features/r-studio.nix
+    ../../features/academia.nix
   ];
 
   boot.loader.systemd-boot.enable      = true;
@@ -131,6 +131,18 @@ fonts.fontconfig = {
       package = pkgs.noto-fonts-color-emoji;
     };
   };
+
+  
+
+  swapDevices = [
+  {
+    device   = "/var/lib/swapfile";
+    size     = 8 * 1024;  # 8 GiB, in MiB — official syntax confirmed at wiki.nixos.org/wiki/Swap
+    priority = 0;         # lower than zram's default priority (5), used only as overflow
+  }
+];
+
+
 
   # Written to /etc/environment — PAM propagates this to the systemd user
   # session, so every app niri-session launches (KeepassXC, Chrome, Thunar)
