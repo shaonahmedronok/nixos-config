@@ -24,8 +24,9 @@
 | **OS** | NixOS 26.05 |
 | **WM** | Niri (Wayland) |
 | **Terminal** | Kitty |
-| **Shell** | Bash + Starship |
-| **Editor** | Doom Emacs, Neovim |
+| **Shell** | Fish (default) + Bash, Starship prompt |
+| **Editor** | Neovim (LazyVim) |
+| **Code Editor** | VS Code (official Microsoft build, `pkgs.vscode`) |
 | **Browser** | Google Chrome |
 | **Launcher** | Fuzzel |
 | **Bar** | Waybar |
@@ -33,12 +34,15 @@
 | **Clipboard** | cliphist + wl-clipboard |
 | **Screen Lock** | Hyprlock |
 | **Idle Daemon** | Hypridle |
-| **Warm Light** | wlsunset |
+| **Warm Light** | wlsunset (declarative warmth control script, `Super+Shift+W` toggle) |
 | **File Manager** | Yazi + Thunar |
 | **WiFi TUI** | Impala |
 | **Theme** | Gruvbox Hard Dark |
 | **Font** | JetBrainsMono Nerd Font |
+| **Bengali Font** | Noto Sans/Serif Bengali (Latin-priority fallback) |
 | **Icons** | Gruvbox-Plus-Dark |
+| **Academic Stack** | R + RStudio (`rWrapper`/`rstudioWrapper`), Pandoc, TeX Live (scheme-small), Zotero, Xournal++, Zoom |
+| **Swap** | zram (3.8G, priority 5) + disk swapfile (8G, priority 0) |
 
 ---
 
@@ -62,17 +66,18 @@
     │   │   ├── nix.nix                  ← flakes, allowUnfree
     │   │   ├── pipewire.nix             ← audio
     │   │   ├── gtk.nix                  ← GTK + icon theme system-wide
-    │   │   ├── niri.nix                 ← Niri + portals
-    │   │   └── general.nix              ← all system packages + services
+    │   │   ├── niri.nix                 ← Niri + portals (xdg-desktop-portal-gtk explicit)
+    │   │   ├── general.nix              ← all system packages + services
+    │   │   └── academia.nix             ← R, RStudio, Zotero, TeX Live, Zoom, Xournal++
     │   └── hosts/
     │       └── az-pc/
-    │           └── configuration.nix    ← boot, locale, users, stylix, fonts
+    │           └── configuration.nix    ← boot, locale, users, stylix, fonts, swap
     └── home/
-        ├── default.nix                  ← shell, git, gtk, qt, imports
+        ├── default.nix                  ← shell, git, gtk, qt, imports, mimeApps, desktopEntries
         ├── niri.nix                     ← keybinds, rules, hypridle, hyprlock
         ├── waybar.nix                   ← bar config + style
-        ├── programs.nix                 ← kitty, mpv, fuzzel, mako, yazi, nvim
-        └── scripts.nix                  ← screenshot, wallpaper, nightlight
+        ├── programs.nix                 ← kitty, mpv, fuzzel, mako, yazi, nvim, fastfetch
+        └── scripts.nix                  ← screenshot, wallpaper, nightlight, brightness/warmth
 </pre>
 
 ---
@@ -89,7 +94,7 @@
 sudo nixos-generate-config
 
 # 2. Clone repo
-git clone https://github.com/shaonahmedronok1/nixconf /tmp/nixconf
+git clone https://github.com/shaonahmedronok1/nixos-config /tmp/nixconf
 
 # 3. Copy everything EXCEPT hardware-configuration.nix
 sudo cp -r /tmp/nixconf/modules /etc/nixos/
@@ -141,11 +146,11 @@ sudo nixos-rebuild switch --rollback
 |---|---|
 | New system package | `modules/nixos/features/general.nix` |
 | New system service | `modules/nixos/features/general.nix` or new feature file |
-| New keybind | `modules/home/hyprland.nix` → `bind = [...]` |
-| New autostart | `modules/home/hyprland.nix` → `exec-once = [...]` |
+| New keybind | `modules/home/niri.nix` |
 | New program config | `modules/home/programs.nix` |
 | New shell script | `modules/home/scripts.nix` |
 | Waybar changes | `modules/home/waybar.nix` |
+| Academic/R packages | `modules/nixos/features/academia.nix` |
 | Color changes | `theme.nix` only — never hardcode hex anywhere else |
 
 ---
@@ -165,6 +170,7 @@ sudo nixos-rebuild switch --rollback
 - `hardware-configuration.nix` is machine-specific — always regenerate fresh.
 - `flake.lock` is committed — guarantees identical rebuild anywhere, anytime.
 - Colors live in `theme.nix` only — change once, propagates everywhere.
+- RStudio ignores ad-hoc R package installs — packages must be declared via `rstudioWrapper.override`, never `install.packages()`.
 
 ---
 
