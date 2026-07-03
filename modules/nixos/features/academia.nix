@@ -30,6 +30,10 @@ in
     xclip
     blanket    
     zotero
+    neovim
+    vscode
+    typst
+    geany
     zoom-us
     xournalpp
     obsidian
