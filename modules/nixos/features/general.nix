@@ -102,7 +102,11 @@ environment.sessionVariables = {
 
     # Manual pages
     man-db
-    
+   
+    (pipx.overridePythonAttrs (old: {
+  doCheck = false;
+}))
+   
     
     # Network
     iwd
@@ -139,6 +143,7 @@ environment.sessionVariables = {
   ];
 
   services.udisks2.enable             = true;
+  services.stirling-pdf.enable = true;
   services.avahi.enable               = true;
   services.avahi.nssmdns4             = true;
   services.power-profiles-daemon.enable = true;
