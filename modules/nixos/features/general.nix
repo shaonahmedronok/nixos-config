@@ -8,88 +8,39 @@ environment.sessionVariables = {
 
   environment.systemPackages = with pkgs; [
 
-    # IDEs / Text editors
-    neovim
-    vscode
-    geany
-
-    # Writings
-    typst
-
-    # Terminal emulators
     kitty
-    
-    # Browsers
     google-chrome
-    
-    # Image viewer
     imv
-    
-    # Graphics n stuff
     inkscape
-
-    # Media player
     mpv
-
-    # Image / Video editors
-    
-    # Topbar
     waybar
-
-    # Application launcher
     fuzzel
-
-    #TUI/CLI-tools
     ttyper
-
-    # Audio
     wiremix
     wireplumber
-    pamixer
-    
-    
-    #bluetooth
-    
-    # Clipboard
+    pamixer  
+    discord
     wl-clipboard
     cliphist
     wl-clip-persist
     xdg-terminal-exec
     wtype
-
-    # File managers / drive mounting
     yazi
     kdePackages.dolphin
     thunar
     udiskie
     unzip
     p7zip
-
-    # Password manager
     keepassxc
-
-    # Notifications
     mako
     libnotify
-
-    # Screenshots
     slurp
     grim
-    
-    # Screen recorders
     ffmpeg
     wf-recorder
-
-    # Night light
     wlsunset
-
-    # Task manager
     btop
-
-    # System info
     fastfetch
-
-    # Display
     ddcutil
     wlr-randr
     hypridle
@@ -99,8 +50,6 @@ environment.sessionVariables = {
     brightnessctl
     awww
     xwayland-satellite
-
-    # Manual pages
     man-db
    
     (pipx.overridePythonAttrs (old: {
@@ -108,11 +57,8 @@ environment.sessionVariables = {
 }))
    
     
-    # Network
     iwd
     networkmanagerapplet
-    
-    # Utils
     nh
     bat
     starship
