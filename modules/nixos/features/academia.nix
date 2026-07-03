@@ -21,7 +21,14 @@ in
 
     pandoc
     texlive.combined.scheme-small
-
+    quarto
+    onlyoffice-desktopeditors
+    kdePackages.okular
+    foliate
+    calibre
+    zettlr
+    xclip
+    blanket    
     zotero
     zoom-us
     xournalpp
