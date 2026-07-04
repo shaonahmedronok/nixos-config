@@ -144,9 +144,9 @@
         background      = "${themeNoHash.base00}ff";
         text            = "${themeNoHash.base06}ff";
         match           = "${themeNoHash.base0B}ff";
-        selection       = "${themeNoHash.base01}ff";
+        selection       = "${themeNoHash.base0E}ff";
         selection-text  = "${themeNoHash.base06}ff";
-        selection-match = "${themeNoHash.base0A}ff";
+        selection-match = "${themeNoHash.base00}ff";
         border          = "${themeNoHash.base0D}ff";
       };
       border = {
@@ -405,31 +405,31 @@ home.file.".config/fastfetch/config.jsonc".text = ''
         opts = {
           contrast = "hard",
           overrides = {
-            Normal         = { bg = "${theme.base00}" },
-            NormalNC       = { bg = "${theme.base00}" },
-            SignColumn     = { bg = "${theme.base00}" },
-            EndOfBuffer    = { bg = "${theme.base00}" },
-            NormalFloat    = { bg = "${theme.base00}" },
+            Normal         = { bg = "${theme.base06}" },
+            NormalNC       = { bg = "${theme.base06}" },
+            SignColumn     = { bg = "${theme.base06}" },
+            EndOfBuffer    = { bg = "${theme.base06}" },
+            NormalFloat    = { bg = "${theme.base06}" },
             Boolean        = { fg = "${theme.base0E}", bg = "NONE" },
             Number         = { fg = "${theme.base0E}", bg = "NONE" },
             Float          = { fg = "${theme.base0E}", bg = "NONE" },
-            String         = { fg = "${theme.base0B}", bg = "NONE", italic = true },
-            Function       = { fg = "${theme.base0B}", bold = true, italic = true },
-            Keyword        = { fg = "${theme.base08}" },
-            Type           = { fg = "${theme.base0A}" },
-            Operator       = { fg = "${theme.base09}" },
-            Comment        = { fg = "${theme.base03}", italic = true },
-            ["@string"]    = { fg = "${theme.base0B}", italic = true },
+            String         = { fg = "${theme.base0D}", bg = "NONE", italic = true },
+            Function       = { fg = "${theme.base0D}", bold = true, italic = true },
+            Keyword        = { fg = "${theme.base0E}" },
+            Type           = { fg = "${theme.base0D}" },
+            Operator       = { fg = "${theme.base0E}" },
+            Comment        = { fg = "${theme.base06}", italic = true },
+            ["@string"]    = { fg = "${theme.base0D}", italic = true },
             ["@number"]    = { fg = "${theme.base0E}" },
             ["@boolean"]   = { fg = "${theme.base0E}" },
-            ["@function"]  = { fg = "${theme.base0B}", bold = true, italic = true },
-            ["@keyword"]   = { fg = "${theme.base08}" },
-            ["@type"]      = { fg = "${theme.base0C}", bold = true },
+            ["@function"]  = { fg = "${theme.base0D}", bold = true, italic = true },
+            ["@keyword"]   = { fg = "${theme.base0E}" },
+            ["@type"]      = { fg = "${theme.base0D}", bold = true },
             ["@variable"]  = { fg = "${theme.base0D}" },
-            ["@field"]     = { fg = "${theme.base09}" },
-            ["@property"]  = { fg = "${theme.base09}" },
-            ["@attribute"] = { fg = "${theme.base09}" },
-            ["@punctuation"] = { fg = "${theme.base09}" },
+            ["@field"]     = { fg = "${theme.base0E}" },
+            ["@property"]  = { fg = "${theme.base0E}" },
+            ["@attribute"] = { fg = "${theme.base0E}" },
+            ["@punctuation"] = { fg = "${theme.base0E}" },
           },
         },
       },
