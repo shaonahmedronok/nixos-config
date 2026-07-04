@@ -29,8 +29,8 @@
     enable    = true;
     initExtra = "";
     shellAliases = {
-      ls  = "eza --icons";
-      ll  = "eza -la --icons";
+      ls  = "eza -l -a -a -h --icons";
+      ll  = "eza -l -a -a -h --icons";
       cat = "bat";
       cd  = "z";
       vim = "nvim";
@@ -47,8 +47,8 @@
       bind -M insert alt-backspace backward-kill-word
     '';
     shellAliases = {
-      ls  = "eza --icons";
-      ll  = "eza -la --icons";
+      ls  = "eza -l -a -a -h --icons";
+      ll  = "eza -l -a -a -h --icons";
       cat = "bat";
       vim = "emacsclient -t";
     };
