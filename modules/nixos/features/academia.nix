@@ -4,6 +4,9 @@ let
     tidyverse
     ggplot2
     dplyr
+    tidyr
+    readr
+    swirl
     rmarkdown
     knitr
     tinytex
