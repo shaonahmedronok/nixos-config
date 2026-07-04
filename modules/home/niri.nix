@@ -9,7 +9,7 @@ home.packages = with pkgs; [
 
   systemd.user.sessionVariables = {
     NIXOS_OZONE_WL                      = "1";
-    XDG_CURRENT_DESKTOP                 = "niri";
+    XDG_CURRENT_DESKTOP = "niri:GNOME";
     XDG_SESSION_TYPE                    = "wayland";
     XDG_SESSION_DESKTOP                 = "niri";
     QT_QPA_PLATFORM                     = "wayland;xcb";
@@ -154,7 +154,15 @@ home.packages = with pkgs; [
         Mod+Page_Up   { spawn "ddcutil" "setvcp" "10" "+" "15"; }
         Mod+Page_Down { spawn "ddcutil" "setvcp" "10" "-" "15"; }
 
-        Mod+Shift+W { spawn "sh" "-c" "pgrep wlsunset && pkill wlsunset || nohup wlsunset -t 3500 -T 3501 -l 90 -L 0 &"; }
+        Mod+Shift+W { spawn "sh" "-c" "pgrep wlsunset && pkill wlsunset || nohup wlsunset -t 1000 -T 1001 -l 90 -L 0 &"; }
+
+
+
+
+
+
+
+
 
 	Mod+1 { focus-workspace 1; }
         Mod+2 { focus-workspace 2; }
