@@ -7,15 +7,15 @@ let
     base04 = "#bdae93";
     base05 = "#d5c4a1";
     base06 = "#ebdbb2"; # fg
-    base07 = "#fbf1c7"; # light fg
-    base08 = "#fb4934"; # red
-    base09 = "#fe8019"; # orange
-    base0A = "#fabd2f"; # yellow
-    base0B = "#b8bb26"; # green
-    base0C = "#8ec07c"; # cyan
+    base07 = "#ebdbb2"; # light fg (using fg)
+    base08 = "#e089a1"; # red (using magenta)
+    base09 = "#7daea3"; # orange (using blue)
+    base0A = "#e089a1"; # yellow (using magenta)
+    base0B = "#7daea3"; # green (using blue)
+    base0C = "#7daea3"; # cyan (using blue)
     base0D = "#7daea3"; # blue
     base0E = "#e089a1"; # magenta
-    base0F = "#f28534"; # orange2
+    base0F = "#e089a1"; # orange2 (using magenta)
   };
   stripHash = str:
     if builtins.substring 0 1 str == "#"
