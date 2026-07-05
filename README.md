@@ -25,7 +25,7 @@
 | **WM** | Niri (Wayland) |
 | **Terminal** | Kitty |
 | **Shell** | Fish (default) + Bash, Starship prompt |
-| **Editor** | Neovim (LazyVim) |
+| **Editor** | Neovim |
 | **Code Editor** | VS Code (official Microsoft build, `pkgs.vscode`) |
 | **Browser** | Google Chrome |
 | **Launcher** | Fuzzel |
@@ -39,7 +39,6 @@
 | **WiFi TUI** | Impala |
 | **Theme** | Gruvbox Hard Dark |
 | **Font** | JetBrainsMono Nerd Font |
-| **Bengali Font** | Noto Sans/Serif Bengali (Latin-priority fallback) |
 | **Icons** | Gruvbox-Plus-Dark |
 | **Academic Stack** | R + RStudio (`rWrapper`/`rstudioWrapper`), Pandoc, TeX Live (scheme-small), Zotero, Xournal++, Zoom |
 | **Swap** | zram (3.8G, priority 5) + disk swapfile (8G, priority 0) |
@@ -56,7 +55,7 @@
 /etc/nixos/
 ├── flake.nix                            ← entry point, versions pinned
 ├── flake.lock                           ← exact snapshot — always commit
-├── theme.nix                            ← ONE place for all colors (base00–base0F)
+├── theme.nix                            ← ONE place for all colors
 ├── wallpaper.jpg
 ├── hardware-configuration.nix           ← machine-specific — regenerate on new PC
 ├── docs/                                ← cheatsheets and reference documents
