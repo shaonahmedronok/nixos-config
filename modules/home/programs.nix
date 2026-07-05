@@ -397,74 +397,10 @@ home.file.".config/fastfetch/config.jsonc".text = ''
     ]
   '';
 
-  home.file.".config/nvim/lua/plugins/colorscheme.lua".text = ''
-    return {
-      {
-        "ellisonleao/gruvbox.nvim",
-        priority = 1000,
-        opts = {
-          contrast = "hard",
-          overrides = {
-            Normal         = { bg = "${theme.base06}" },
-            NormalNC       = { bg = "${theme.base06}" },
-            SignColumn     = { bg = "${theme.base06}" },
-            EndOfBuffer    = { bg = "${theme.base06}" },
-            NormalFloat    = { bg = "${theme.base06}" },
-            Boolean        = { fg = "${theme.base0E}", bg = "NONE" },
-            Number         = { fg = "${theme.base0E}", bg = "NONE" },
-            Float          = { fg = "${theme.base0E}", bg = "NONE" },
-            String         = { fg = "${theme.base0D}", bg = "NONE", italic = true },
-            Function       = { fg = "${theme.base0D}", bold = true, italic = true },
-            Keyword        = { fg = "${theme.base0E}" },
-            Type           = { fg = "${theme.base0D}" },
-            Operator       = { fg = "${theme.base0E}" },
-            Comment        = { fg = "${theme.base06}", italic = true },
-            ["@string"]    = { fg = "${theme.base0D}", italic = true },
-            ["@number"]    = { fg = "${theme.base0E}" },
-            ["@boolean"]   = { fg = "${theme.base0E}" },
-            ["@function"]  = { fg = "${theme.base0D}", bold = true, italic = true },
-            ["@keyword"]   = { fg = "${theme.base0E}" },
-            ["@type"]      = { fg = "${theme.base0D}", bold = true },
-            ["@variable"]  = { fg = "${theme.base0D}" },
-            ["@field"]     = { fg = "${theme.base0E}" },
-            ["@property"]  = { fg = "${theme.base0E}" },
-            ["@attribute"] = { fg = "${theme.base0E}" },
-            ["@punctuation"] = { fg = "${theme.base0E}" },
-          },
-        },
-      },
-      {
-        "LazyVim/LazyVim",
-        opts = { colorscheme = "gruvbox" },
-      },
-    }
-  '';
 
-  home.file.".config/nvim/lua/plugins/lsp.lua".text = ''
-    return {
-      {
-        "mason-org/mason.nvim",
-        opts = {
-          ensure_installed = {
-            "pyright", "ruff-lsp", "html-lsp", "css-lsp",
-            "typescript-language-server", "prettier", "eslint-lsp",
-          },
-        },
-      },
-      {
-        "neovim/nvim-lspconfig",
-        opts = {
-          servers = {
-            pyright  = {},
-            ruff_lsp = {},
-            html     = {},
-            cssls    = {},
-            tsserver = {},
-          },
-        },
-      },
-    }
-  '';
+
+
+
 
   home.file.".config/.emoji".text = ''
     😏 Smirking Face
