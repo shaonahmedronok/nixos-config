@@ -8,9 +8,6 @@ let
     readr
     swirl
     rmarkdown
-    knitr
-    tinytex
-    devtools
     languageserver
     lintr
     haven
@@ -23,22 +20,19 @@ in
     (rstudioWrapper.override { packages = rPkgs; })
 
     pandoc
-    texlive.combined.scheme-small
     quarto
-    onlyoffice-desktopeditors
     kdePackages.okular
     foliate
     calibre
     zettlr
-    xclip
     blanket    
     zotero
     neovim
     vscode
     typst
+    tinymist
+    typstyle
     geany
     zoom-us
-    xournalpp
-    obsidian
   ];
 }
