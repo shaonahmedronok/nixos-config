@@ -73,7 +73,6 @@ environment.sessionVariables = {
     curl
     clang
     python3
-    luarocks
     yt-dlp
     evince
     gnome-keyring
