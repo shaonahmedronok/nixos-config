@@ -20,6 +20,8 @@ in
     (rstudioWrapper.override { packages = rPkgs; })
 
     pandoc
+    texlive.combined.scheme-full
+    texstudio
     quarto
     kdePackages.okular
     foliate
