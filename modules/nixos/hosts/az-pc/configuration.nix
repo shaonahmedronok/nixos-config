@@ -73,6 +73,7 @@
     noto-fonts-color-emoji
     nerd-fonts.jetbrains-mono
     atkinson-hyperlegible
+    google-fonts
     font-awesome
   ];
 
