@@ -31,6 +31,7 @@ in
     pandoc
     texlive.combined.scheme-full
     texstudio
+    python313Packages.pandas
     quarto
     zathura       # PDF reader: vim keybindings, Ctrl-R = instant dark/light toggle
     entr          # runs a command whenever a watched file changes — key for live .qmd→PDF
@@ -43,12 +44,13 @@ in
     zettlr
     blanket    
     zotero
-    neovim
     vscode
     typst
     tinymist
     typstyle
     geany
+    neovim
+    helix
     zoom-us
   ];
 }
