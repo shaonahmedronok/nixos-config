@@ -25,7 +25,7 @@
 | **WM** | Niri (Wayland) |
 | **Terminal** | Kitty |
 | **Shell** | Fish (default) + Bash, Starship prompt |
-| **Editor** | Neovim |
+| **Editor** | Helix | VS code | Neovim
 | **Code Editor** | VS Code (official Microsoft build, `pkgs.vscode`) |
 | **Browser** | Google Chrome |
 | **Launcher** | Fuzzel |
@@ -37,7 +37,7 @@
 | **Warm Light** | wlsunset (declarative warmth control script, `Super+Shift+W` toggle) |
 | **File Manager** | Yazi + Thunar |
 | **WiFi TUI** | Impala |
-| **Theme** | Gruvbox Hard Dark |
+| **Theme** | Custom Gruvbox |
 | **Font** | JetBrainsMono Nerd Font |
 | **Icons** | Gruvbox-Plus-Dark |
 | **Academic Stack** | R + RStudio (`rWrapper`/`rstudioWrapper`), Pandoc, TeX Live (scheme-small), Zotero, Xournal++, Zoom |
