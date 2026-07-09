@@ -123,10 +123,11 @@
   mimeType = [ "text/plain" "text/x-nix" "text/markdown" "application/json" "text/x-shellscript" "text/x-org" ];
 };
   
-  
 
 
-  xdg.mimeApps = {
+
+
+xdg.mimeApps = {
   enable = true;
   defaultApplications = {
     "inode/directory"                  = [ "thunar.desktop" ];
@@ -137,8 +138,10 @@
     "application/json"                 = [ "nvim.desktop" ];
     "text/x-shellscript"               = [ "nvim.desktop" ];
     "text/x-org"                       = [ "nvim.desktop" ];
+    "application/pdf"                  = [ "zathura.desktop" ];  # ← ADD THIS
   };
 };
+
 
 
   gtk = {
