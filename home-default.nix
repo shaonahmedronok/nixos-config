@@ -31,11 +31,8 @@
     shellAliases = {
       ls  = "eza -l -a -a -h --icons";
       ll  = "eza -l -a -a -h --icons";
-      cat = "bat";
-      cd  = "z";
-      vim = "nvim";
-    };
-  };
+     };
+   };
 
   programs.fish = {
     enable = true;
@@ -114,10 +111,10 @@
   
  
 
-  xdg.desktopEntries.nvim = {
-  name    = "Neovim";
+  xdg.desktopEntries.helix = {
+  name    = "Helix";
   genericName = "Text Editor";
-  exec    = "kitty -e nvim %F";
+  exec    = "kitty -e hx %F";
   terminal = false;
   categories = [ "Utility" "TextEditor" ];
   mimeType = [ "text/plain" "text/x-nix" "text/markdown" "application/json" "text/x-shellscript" "text/x-org" ];
@@ -132,12 +129,12 @@ xdg.mimeApps = {
   defaultApplications = {
     "inode/directory"                  = [ "thunar.desktop" ];
     "application/x-gnome-saved-search" = [ "thunar.desktop" ];
-    "text/plain"                       = [ "nvim.desktop" ];
-    "text/x-nix"                       = [ "nvim.desktop" ];
-    "text/markdown"                    = [ "nvim.desktop" ];
-    "application/json"                 = [ "nvim.desktop" ];
-    "text/x-shellscript"               = [ "nvim.desktop" ];
-    "text/x-org"                       = [ "nvim.desktop" ];
+    "text/plain"                       = [ "helix.desktop" ];
+    "text/x-nix"                       = [ "helix.desktop" ];
+    "text/markdown"                    = [ "helix.desktop" ];
+    "application/json"                 = [ "helix.desktop" ];
+    "text/x-shellscript"               = [ "helix.desktop" ];
+    "text/x-org"                       = [ "helix.desktop" ];
     "application/pdf"                  = [ "zathura.desktop" ];  # ← ADD THIS
   };
 };
