@@ -64,6 +64,7 @@ environment.sessionVariables = {
     bat
     starship
     ncdu
+    gdu
     gnome-disk-utility
     localsend
     nix-output-monitor
@@ -90,6 +91,13 @@ environment.sessionVariables = {
     hyprpicker
     tree-sitter
     wev
+    tlrc
+    better-control        
+    easyeffects
+    exiftool    
+    manix
+    wdisplays
+    disko
     git
   ];
 
