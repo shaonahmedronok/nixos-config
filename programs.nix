@@ -177,114 +177,136 @@
 
 
 
+
+
+
 programs.helix = {
-    enable = true;
-    defaultEditor = true;
+  enable = true;
+  defaultEditor = true;
 
-    # General Editor Settings
-    settings = {
-      theme = lib.mkForce "gruvbox";
-      editor = {
-        line-number = "relative";
-        mouse = true;
-        cursor-shape = {
-          normal = "block";
-          insert = "bar";
-          select = "underline";
+  # Your original theme override to lock the background
+  themes = {
+    gruvbox_242424 = {
+      inherits = "gruvbox";
+      "ui.background" = { bg = "#242424"; };
+    };
+  };
+
+  # General Editor Settings
+  settings = {
+    theme = lib.mkForce "gruvbox_242424";
+    editor = {
+      line-number = "relative";
+      mouse = true;
+      clipboard-provider = "wayland";
+      cursor-shape = {
+        normal = "block";
+        insert = "bar";
+        select = "underline";
+      };
+      lsp = {
+        display-messages = true;
+        display-inlay-hints = true;
+      };
+      # The Statusline Configuration
+      statusline = {
+        left = [ "mode" "spinner" ];
+        center = [ "file-name" "file-modification-indicator" ];
+        # 'file-type' is what prints "nix" or "typst" at the bottom right
+        right = [ "diagnostics" "selections" "position" "file-encoding" "file-type" ];
+        
+        # You CAN use standard emoji or Nerd Font icons here for your modes
+        mode = {
+          normal = "🟢 NORMAL";
+          insert = "🔴 INSERT";
+          select = "🔵 SELECT";
         };
-        lsp = {
-          display-messages = true;
-          display-inlay-hints = true;
-        };
+      };
+    };
 
-
-# The Statusline Configuration
-        statusline = {
-          left = [ "mode" "spinner" ];
-          center = [ "file-name" "file-modification-indicator" ];
-          # 'file-type' is what prints "nix" or "typst" at the bottom right
-          right = [ "diagnostics" "selections" "position" "file-encoding" "file-type" ];
-          
-          # You CAN use standard emoji or Nerd Font icons here for your modes
-          mode = {
-            normal = "🟢 NORMAL";
-            insert = "🔴 INSERT";
-            select = "🔵 SELECT";
-	};
+    keys = {
+      normal = {
+        "C-c" = "yank_main_selection_to_clipboard";
+        "C-v" = "paste_clipboard_after";
+      };
+      select = {
+        "C-c" = "yank_main_selection_to_clipboard";
+      };
+      insert = {
+        "C-v" = "paste_clipboard_after";
       };
     };
   };
 
-    # Explicit package declarations
-    extraPackages = [
-      pkgs.nixd
-      pkgs.nixfmt-rfc-style
-      pkgs.tinymist
-      pkgs.typstyle
-      pkgs.typst
-      pkgs.texlab
-      pkgs.texlive.combined.scheme-medium
-      pkgs.zathura
+  # Explicit package declarations
+  extraPackages = [
+    pkgs.nixd
+    pkgs.nixfmt-rfc-style
+    pkgs.tinymist
+    pkgs.typstyle
+    pkgs.typst
+    pkgs.texlab
+    pkgs.texlive.combined.scheme-medium
+    pkgs.wl-clipboard
+    pkgs.zathura
+  ];
+
+  # Language Specific Configurations
+  languages = {
+    language = [
+      {
+        name = "nix";
+        auto-format = true;
+        formatter = { command = "${pkgs.nixfmt-rfc-style}/bin/nixfmt"; };
+        language-servers = [ "nixd" ];
+      }
+      {
+        name = "typst";
+        auto-format = true;
+        formatter = { command = "${pkgs.typstyle}/bin/typstyle"; };
+        language-servers = [ "tinymist" ];
+      }
+      {
+        name = "latex";
+        auto-format = true;
+        language-servers = [ "texlab" ];
+      }
     ];
 
-    # Language Specific Configurations
-    languages = {
-      language = [
-        {
-          name = "nix";
-          auto-format = true;
-          formatter = { command = "${pkgs.nixfmt-rfc-style}/bin/nixfmt"; };
-          language-servers = [ "nixd" ];
-        }
-        {
-          name = "typst";
-          auto-format = true;
-          formatter = { command = "${pkgs.typstyle}/bin/typstyle"; };
-          language-servers = [ "tinymist" ];
-        }
-        {
-          name = "latex";
-          auto-format = true;
-          language-servers = [ "texlab" ];
-        }
-      ];
-
-      # Language Server Options
-      language-server = {
-        nixd = {
-          command = "${pkgs.nixd}/bin/nixd";
+    # Language Server Options
+    language-server = {
+      nixd = {
+        command = "${pkgs.nixd}/bin/nixd";
+      };
+      
+      tinymist = {
+        command = "${pkgs.tinymist}/bin/tinymist";
+        config = {
+          exportPdf = "onType"; 
+          outputPath = "$root/target/$dir/$name";
+          formatterMode = "typstyle";
         };
-        
-        tinymist = {
-          command = "${pkgs.tinymist}/bin/tinymist";
-          config = {
-            exportPdf = "onType"; 
-            outputPath = "$root/target/$dir/$name";
-            formatterMode = "typstyle";
-          };
-        };
+      };
 
-        texlab = {
-          command = "${pkgs.texlab}/bin/texlab";
-          config = {
-            texlab = {
-              build = {
-                executable = "latexmk";
-                args = [ "-pdf" "-interaction=nonstopmode" "-synctex=1" "%doc" ];
-                onSave = true;
-              };
-              forwardSearch = {
-                executable = "${pkgs.zathura}/bin/zathura";
-                args = [ "--synctex-forward" "%l:1:%c" "%p" ];
-              };
+      texlab = {
+        command = "${pkgs.texlab}/bin/texlab";
+        config = {
+          texlab = {
+            build = {
+              executable = "latexmk";
+              args = [ "-pdf" "-interaction=nonstopmode" "-synctex=1" "%doc" ];
+              onSave = true;
+            };
+            forwardSearch = {
+              executable = "${pkgs.zathura}/bin/zathura";
+              args = [ "--synctex-forward" "%l:1:%c" "%p" ];
             };
           };
         };
       };
     };
   };
-
-
+};
 
 
 
