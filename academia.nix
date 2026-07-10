@@ -48,8 +48,6 @@ in
     typst
     tinymist
     typstyle
-    geany
-    neovim
     helix
     zoom-us
   ];
