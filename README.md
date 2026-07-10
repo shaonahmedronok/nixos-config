@@ -134,25 +134,6 @@ sudo nixos-rebuild switch --rollback
 
 <div align="center">
 
-## Where to add new things
-
-</div>
-
-| What | Where |
-|---|---|
-| New system package | `modules/nixos/features/general.nix` |
-| New system service | `modules/nixos/features/general.nix` or new feature file |
-| New keybind | `modules/home/niri.nix` |
-| New program config | `modules/home/programs.nix` |
-| New shell script | `modules/home/scripts.nix` |
-| Waybar changes | `modules/home/waybar.nix` |
-| Academic/R packages | `modules/nixos/features/academia.nix` |
-| Color changes | `theme.nix` only — never hardcode hex anywhere else |
-
----
-
-<div align="center">
-
 ## Design Principles
 
 </div>
