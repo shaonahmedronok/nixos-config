@@ -71,6 +71,7 @@
 ├── theme.nix                            ← ONE place for all colors
 ├── wallpaper.jpg                        ← Wallpaper
 └── waybar.nix                           ← bar config + style
+
 ├── docs/                                ← cheatsheets and reference documents
 ├── asset/                               ← materials for my wallpaper & stuff
 </pre>
