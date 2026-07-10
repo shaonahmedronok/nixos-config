@@ -9,7 +9,7 @@
 
   home.username      = "az";
   home.homeDirectory = "/home/az";
-  home.stateVersion  = "25.11";
+  home.stateVersion  = "26.05";
   programs.home-manager.enable = true;
 
   stylix.targets.gtk.enable      = false;
@@ -17,7 +17,7 @@
   stylix.targets.qt.enable       = false;
   stylix.targets.kitty.enable    = false;
   stylix.targets.waybar.enable   = false;
-  stylix.targets.neovim.enable   = false;
+  stylix.targets.helix.enable    = false;
   stylix.targets.hyprland.enable = false;
   stylix.targets.starship.enable = false;
   stylix.targets.hyprlock.enable = false;
