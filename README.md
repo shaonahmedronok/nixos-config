@@ -53,30 +53,24 @@
 
 <pre>
 /etc/nixos/
-├── flake.nix                            ← entry point, versions pinned
-├── flake.lock                           ← exact snapshot — always commit
-├── theme.nix                            ← ONE place for all colors
-├── wallpaper.jpg
+├── academia.nix                         ← R, RStudio, Zotero, TeX Live, Zoom & so on
+├── configuration.nix                    ← boot, locale, users, stylix, fonts, swap
+├── flake.lock                           ← exact snapshot — always commit 
+├── flake.nix                            ← versions pinned
+├── general.nix                          ← all system packages + services
+├── gtk.nix                              ← GTK + icon theme system-wide
 ├── hardware-configuration.nix           ← machine-specific — regenerate on new PC
-├── docs/                                ← cheatsheets and reference documents
-└── modules/
-    ├── nixos/
-    │   ├── features/
-    │   │   ├── nix.nix                  ← flakes, allowUnfree
-    │   │   ├── pipewire.nix             ← audio
-    │   │   ├── gtk.nix                  ← GTK + icon theme system-wide
-    │   │   ├── niri.nix                 ← Niri + portals (xdg-desktop-portal-gtk explicit)
-    │   │   ├── general.nix              ← all system packages + services
-    │   │   └── academia.nix             ← R, RStudio, Zotero, TeX Live, Zoom, Xournal++
-    │   └── hosts/
-    │       └── az-pc/
-    │           └── configuration.nix    ← boot, locale, users, stylix, fonts, swap
-    └── home/
-        ├── default.nix                  ← shell, git, gtk, qt, imports, mimeApps, desktopEntries
-        ├── niri.nix                     ← keybinds, rules, hypridle, hyprlock
-        ├── waybar.nix                   ← bar config + style
-        ├── programs.nix                 ← kitty, mpv, fuzzel, mako, yazi, nvim, fastfetch
-        └── scripts.nix                  ← screenshot, wallpaper, nightlight, brightness/warmth
+├── home-default.nix                     ← shell, git, gtk, qt, imports, mimeApps, desktopEntries
+├── home-niri.nix                        ← Niri + portals (xdg-desktop-portal-gtk explicit)
+├── nix.nix                              ← flakes, allowUnfree
+├── nixos-niri.nix                       ← keybinds, rules, hypridle, hyprlock
+├── pipewire.nix                         ← audio
+├── programs.nix                         ← kitty, mpv, fuzzel, mako, yazi, nvim, fastfetch   
+├── scripts.nix                          ← screenshot, wallpaper, nightlight, brightness/warmth
+├── theme.nix                            ← ONE place for all colors
+├── wallpaper.jpg                        ← Wallpaper
+└── waybar.nix                           ← bar config + style
+├── docs/                                ← cheatsheets and reference documents                    
 </pre>
 
 ---
