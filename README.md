@@ -25,7 +25,7 @@
 | **WM** | Niri (Wayland) |
 | **Terminal** | Kitty |
 | **Shell** | Fish (default) + Bash, Starship prompt |
-| **Editor** | Helix | VS code | Neovim
+| **Editor** | Helix |
 | **Code Editor** | VS Code (official Microsoft build, `pkgs.vscode`) |
 | **Browser** | Google Chrome |
 | **Launcher** | Fuzzel |
