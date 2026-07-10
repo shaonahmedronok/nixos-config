@@ -53,6 +53,7 @@
 
 <pre>
 /etc/nixos/
+  
 ├── academia.nix                         ← R, RStudio, Zotero, TeX Live, Zoom & so on
 ├── configuration.nix                    ← boot, locale, users, stylix, fonts, swap
 ├── flake.lock                           ← exact snapshot — always commit 
