@@ -134,25 +134,6 @@ sudo nixos-rebuild switch --rollback
 
 <div align="center">
 
-## Design Principles
-
-</div>
-
-- Everything declared. Nothing manual.
-- Reproducible from scratch with one rebuild.
-- Minimal — nothing installed without a reason.
-- Flakes for version pinning — exact reproducibility guaranteed.
-- Home Manager as NixOS module — all dotfiles declared in nix files.
-- `~/.config` is entirely symlinks to `/nix/store/` — never edited directly.
-- `hardware-configuration.nix` is machine-specific — always regenerate fresh.
-- `flake.lock` is committed — guarantees identical rebuild anywhere, anytime.
-- Colors live in `theme.nix` only — change once, propagates everywhere.
-- RStudio ignores ad-hoc R package installs — packages must be declared via `rstudioWrapper.override`, never `install.packages()`.
-
----
-
-<div align="center">
-
 ## Rules — never break these
 
 </div>
@@ -173,7 +154,6 @@ MIT — use freely.
 
 ---
 
-*"The burden of proof lies with the addition."*
 
 <div align="center">
 <img src="https://capsule-render.vercel.app/api?type=waving&color=0:3c3836,100:242424&height=120&section=footer"/>
