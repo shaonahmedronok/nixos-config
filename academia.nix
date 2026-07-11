@@ -29,8 +29,7 @@ in
     (rstudioWrapper.override { packages = rPkgs; })
 
     pandoc
-    texlive.combined.scheme-full
-    texstudio
+    texlive.combined.scheme-medium
     python313Packages.pandas
     quarto
     zathura       # PDF reader: vim keybindings, Ctrl-R = instant dark/light toggle
@@ -38,11 +37,6 @@ in
     xlsx2csv      # convert .xlsx to .csv for R ingestion without Excel
     img2pdf       # batch PNG → PDF (hp-scan workflow: img2pdf *.png -o output.pdf)
     graphviz      # network/relationship diagrams — useful for political network analysis
-    kdePackages.okular
-    foliate
-    calibre
-    zettlr
-    blanket    
     zotero
     vscode
     typst
