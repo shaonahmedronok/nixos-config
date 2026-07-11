@@ -16,19 +16,15 @@ environment.sessionVariables = {
     mpv
     waybar
     fuzzel
-    ttyper
     wiremix
     wireplumber
     pamixer  
-    discord
     wl-clipboard
     cliphist
     wl-clip-persist
     xdg-terminal-exec
     wtype
     yazi
-    kdePackages.dolphin
-    thunar
     udiskie
     unzip
     p7zip
@@ -44,61 +40,40 @@ environment.sessionVariables = {
     fastfetch
     ddcutil
     wlr-randr
-    hypridle
     xdg-desktop-portal-gtk
     polkit_gnome
     qt5.qtwayland
     brightnessctl
     awww
-    tree
     xwayland-satellite
-    man-db
-   
+       
     (pipx.overridePythonAttrs (old: {
   doCheck = false;
 }))
-   
-    
+       
     iwd
     networkmanagerapplet
     nh
-    bat
     starship
     ncdu
-    gdu
     gnome-disk-utility
-    localsend
     nix-output-monitor
-    tlrc
     atuin
     zoxide
     fd
     ripgrep
-    fzf
     eza
-    jq
     playerctl
     curl
     clang
     python3
     yt-dlp
-    evince
     gnome-keyring
     libqalculate
     fcitx5
     fcitx5-gtk
-    snapper
-    gum
-    hyprpicker
-    tree-sitter
-    wev
-    tlrc
     better-control        
     easyeffects
-    exiftool    
-    manix
-    wdisplays
-    disko
     git
   ];
 
