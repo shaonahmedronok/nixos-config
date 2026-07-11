@@ -10,6 +10,7 @@ environment.sessionVariables = {
 
     kitty
     google-chrome
+    nautilus
     imv
     inkscape
     mpv
