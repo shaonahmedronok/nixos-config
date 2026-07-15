@@ -61,6 +61,7 @@ environment.sessionVariables = {
     nh
     starship
     ncdu
+    dysk
     gnome-disk-utility
     nix-output-monitor
     atuin
