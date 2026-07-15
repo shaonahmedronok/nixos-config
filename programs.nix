@@ -113,23 +113,6 @@
     };
   };
 
-  services.mako = {
-    enable = true;
-    settings = {
-      border-size       = 2;
-      border-radius     = 6;
-      font              = lib.mkForce "JetBrainsMono Nerd Font 13";
-      width             = 400;
-      height            = 120;
-      padding           = "12";
-      margin            = "10";
-      default-timeout   = 11000;
-      ignore-timeout    = 0;
-      background-color  = lib.mkForce theme.base01;
-      text-color        = lib.mkForce theme.base06;
-      border-color      = lib.mkForce theme.base0D;
-    };
-  };
 
   programs.fuzzel = {
     enable = true;
@@ -242,13 +225,8 @@ programs.helix = {
   extraPackages = [
     pkgs.nixd
     pkgs.nixfmt-rfc-style
-    pkgs.tinymist
-    pkgs.typstyle
-    pkgs.typst
     pkgs.texlab
-    pkgs.texlive.combined.scheme-medium
-    pkgs.wl-clipboard
-    pkgs.zathura
+    pkgs.desktop-file-utils
   ];
 
   # Language Specific Configurations
