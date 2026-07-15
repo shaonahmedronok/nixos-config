@@ -4,8 +4,7 @@
 [![Website](https://img.shields.io/badge/shaon.neocities.org-242424?style=for-the-badge&labelColor=3c3836&color=b8bb26)](https://shaon.neocities.org)
 [![NixOS](https://img.shields.io/badge/NixOS-26.05-242424?style=for-the-badge&logo=nixos&logoColor=7daea3&labelColor=3c3836)](https://nixos.org)
 [![Niri](https://img.shields.io/badge/Niri-Wayland-242424?style=for-the-badge&logo=wayland&logoColor=7fc8ff&labelColor=3c3836)](https://github.com/YaLTeR/niri)
-[![Noctalia Shell](https://img.shields.io/badge/Noctalia-Shell-242424?style=for-the-badge&logo=wayland&logoColor=7fc8ff&labelColor=3c3836)](https://github.com/noctalia-dev/noctalia-shell)
-[![Flakes](https://img.shields.io/badge/Flakes-Enabled-242424?style=for-the-badge&logo=nixos&logoColor=fabd2f&labelColor=3c3836)](https://nixos.wiki/wiki/Flakes)
+[![Noctalia Shell](https://img.shields.io/badge/Noctalia-Shell-242424?style=for-the-badge&labelColor=3c3836)](https://github.com/noctalia-dev/noctalia-shell)[![Flakes](https://img.shields.io/badge/Flakes-Enabled-242424?style=for-the-badge&logo=nixos&logoColor=fabd2f&labelColor=3c3836)](https://nixos.wiki/wiki/Flakes)
 [![Home Manager](https://img.shields.io/badge/Home_Manager-26.05-242424?style=for-the-badge&logoColor=e089a1&labelColor=3c3836)](https://nix-community.github.io/home-manager/)
 
 *Everything declared. Nothing manual. Reproducible from scratch with one rebuild.*
