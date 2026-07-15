@@ -14,7 +14,12 @@ environment.sessionVariables = {
     imv
     inkscape
     mpv
-    waybar
+    gnumake
+    droidcam
+    android-tools
+    pulseaudio      # gives pactl
+    v4l-utils       # gives v4l2-ctl  
+    psmisc          # gives fuser
     fuzzel
     wiremix
     wireplumber
