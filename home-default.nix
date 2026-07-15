@@ -1,11 +1,11 @@
 { config, pkgs, lib, ... }:
 {
   imports = [
-  ./home-niri.nix
-  ./waybar.nix
-  ./programs.nix
-  ./scripts.nix
-];
+    ./home-niri.nix
+    ./noctalia.nix
+    ./programs.nix
+    ./scripts.nix
+  ];
 
   home.username      = "az";
   home.homeDirectory = "/home/az";
@@ -16,7 +16,7 @@
   stylix.targets.niri.enable     = false;
   stylix.targets.qt.enable       = false;
   stylix.targets.kitty.enable    = false;
-  stylix.targets.waybar.enable   = false;
+  # waybar target removed — waybar is gone
   stylix.targets.helix.enable    = false;
   stylix.targets.hyprland.enable = false;
   stylix.targets.starship.enable = false;
@@ -29,10 +29,10 @@
     enable    = true;
     initExtra = "";
     shellAliases = {
-      ls  = "eza -l -a -a -h --icons";
-      ll  = "eza -l -a -a -h --icons";
-     };
-   };
+      ls = "eza -l -a -a -h --icons";
+      ll = "eza -l -a -a -h --icons";
+    };
+  };
 
   programs.fish = {
     enable = true;
@@ -108,38 +108,32 @@
     };
   };
 
-  
- 
-
   xdg.desktopEntries.helix = {
-  name    = "Helix";
-  genericName = "Text Editor";
-  exec    = "kitty -e hx %F";
-  terminal = false;
-  categories = [ "Utility" "TextEditor" ];
-  mimeType = [ "text/plain" "text/x-nix" "text/markdown" "application/json" "text/x-shellscript" "text/x-org" ];
-};
-  
-
-
-
-
-xdg.mimeApps = {
-  enable = true;
-  defaultApplications = {
-    "inode/directory"                  = [ "thunar.desktop" ];
-    "application/x-gnome-saved-search" = [ "thunar.desktop" ];
-    "text/plain"                       = [ "helix.desktop" ];
-    "text/x-nix"                       = [ "helix.desktop" ];
-    "text/markdown"                    = [ "helix.desktop" ];
-    "application/json"                 = [ "helix.desktop" ];
-    "text/x-shellscript"               = [ "helix.desktop" ];
-    "text/x-org"                       = [ "helix.desktop" ];
-    "application/pdf"                  = [ "zathura.desktop" ];  # ← ADD THIS
+    name        = "Helix";
+    genericName = "Text Editor";
+    exec        = "kitty -e hx %F";
+    terminal    = false;
+    categories  = [ "Utility" "TextEditor" ];
+    mimeType    = [
+      "text/plain" "text/x-nix" "text/markdown"
+      "application/json" "text/x-shellscript" "text/x-org"
+    ];
   };
-};
 
-
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      "inode/directory"                  = [ "thunar.desktop" ];
+      "application/x-gnome-saved-search" = [ "thunar.desktop" ];
+      "text/plain"                       = [ "helix.desktop" ];
+      "text/x-nix"                       = [ "helix.desktop" ];
+      "text/markdown"                    = [ "helix.desktop" ];
+      "application/json"                 = [ "helix.desktop" ];
+      "text/x-shellscript"               = [ "helix.desktop" ];
+      "text/x-org"                       = [ "helix.desktop" ];
+      "application/pdf"                  = [ "zathura.desktop" ];
+    };
+  };
 
   gtk = {
     enable = true;
