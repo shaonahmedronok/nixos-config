@@ -44,12 +44,12 @@ home.packages = with pkgs; [
         }
         default-column-width { proportion 0.5; }
         focus-ring {
-            width 4
+            width 3
             active-color   "#${themeNoHash.base0B}"
             inactive-color "#${themeNoHash.base01}"
         }
         border {
-            width 4
+            width 3
             active-color   "#${themeNoHash.base0D}"
             inactive-color "#${themeNoHash.base01}"
         }
@@ -95,7 +95,6 @@ home.packages = with pkgs; [
         open-floating true
     }
 
-    spawn-at-startup "waybar"
     spawn-at-startup "mako"
     spawn-at-startup "udiskie" "-t"
     spawn-at-startup "wlsunset" "-t" "4500" "-T" "4500"
