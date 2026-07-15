@@ -10,14 +10,24 @@
       url = "github:danth/stylix/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    noctalia = {
+      url = "github:noctalia-dev/noctalia";
+      # Builds noctalia v5 against your 26.05 nixpkgs.
+      # If rebuild fails with "attribute not found", remove this line
+      # so noctalia uses its own pinned nixpkgs.
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
-  outputs = { self, nixpkgs, home-manager, stylix, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, stylix, noctalia, ... }@inputs:
   let
     themeLib = import ./theme.nix;
   in {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
-      specialArgs = { inherit (themeLib) theme themeNoHash; };
+      specialArgs = {
+        inherit inputs;
+        inherit (themeLib) theme themeNoHash;
+      };
       modules = [
         ./hardware-configuration.nix
         ./configuration.nix
@@ -27,9 +37,12 @@
           home-manager = {
             useGlobalPkgs       = true;
             useUserPackages     = true;
-            users.az = import ./home-default.nix;
+            users.az            = import ./home-default.nix;
             backupFileExtension = "backup";
-            extraSpecialArgs    = { inherit (themeLib) theme themeNoHash; };
+            extraSpecialArgs    = {
+              inherit inputs;
+              inherit (themeLib) theme themeNoHash;
+            };
             sharedModules = [
               {
                 options.stylix.targets.niri.enable =
