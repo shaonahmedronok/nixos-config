@@ -72,8 +72,8 @@
 ├── theme.nix
 └── wallpaper.jpg
 
-├── docs/                                ← cheatsheets and reference documents
-├── asset/                               ← materials for my wallpaper & stuff
+├── docs/                                
+├── asset/                               
 </pre>
 
 ---
