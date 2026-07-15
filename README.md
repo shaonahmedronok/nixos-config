@@ -1,13 +1,13 @@
 <div align="center">
 <img src="https://capsule-render.vercel.app/api?type=waving&color=0:242424,100:3c3836&height=180&section=header&text=nixos-config&fontSize=36&fontColor=ebdbb2&fontAlignY=38&desc=Declarative%20NixOS%20%C2%B7%20Flakes%20%C2%B7%20Home%20Manager%20%C2%B7%20Niri%20%C2%B7%20Wayland&descAlignY=58&descColor=bdae93"/>
 
-[![Website](https://img.shields.io/badge/shaon.neocities.org-242424?style=for-the-badge&labelColor=3c3836&color=2f4858)](https://shaon.neocities.org)
+
 [![NixOS](https://img.shields.io/badge/NixOS-26.05-242424?style=for-the-badge&logo=nixos&logoColor=7daea3&labelColor=3c3836)](https://nixos.org)
 [![Niri](https://img.shields.io/badge/Niri-Wayland-242424?style=for-the-badge&labelColor=3c3836)](https://github.com/YaLTeR/niri)
 [![Noctalia Shell](https://img.shields.io/badge/Noctalia-Shell-242424?style=for-the-badge&labelColor=3c3836)](https://github.com/noctalia-dev/noctalia-shell)[![Flakes](https://img.shields.io/badge/Flakes-Enabled-242424?style=for-the-badge&logo=nixos&logoColor=fabd2f&labelColor=3c3836)](https://nixos.wiki/wiki/Flakes)
 [![Home Manager](https://img.shields.io/badge/Home_Manager-26.05-242424?style=for-the-badge&logoColor=e089a1&labelColor=3c3836)](https://nix-community.github.io/home-manager/)
 
-*Everything declared. Nothing manual. Reproducible from scratch with one rebuild.*
+[![Website](https://img.shields.io/badge/shaon.neocities.org-242424?style=for-the-badge&labelColor=3c3836&color=2f4858)](https://shaon.neocities.org)
 
 </div>
 
