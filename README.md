@@ -29,7 +29,7 @@
 | **Code Editor** | VS Code (official Microsoft build, `pkgs.vscode`) |
 | **Browser** | Google Chrome |
 | **Launcher** | Fuzzel |
-| **Bar** | Waybar |
+| **Bar** | Noctalia |
 | **Notifications** | Mako |
 | **Clipboard** | cliphist + wl-clipboard |
 | **Screen Lock** | Hyprlock |
@@ -53,24 +53,24 @@
 
 <pre>
 /etc/nixos/
-  
-├── academia.nix                         ← R, RStudio, Zotero, TeX Live, Zoom & so on
-├── configuration.nix                    ← boot, locale, users, stylix, fonts, swap
-├── flake.lock                           ← exact snapshot — always commit 
-├── flake.nix                            ← versions pinned
-├── general.nix                          ← all system packages + services
-├── gtk.nix                              ← GTK + icon theme system-wide
-├── hardware-configuration.nix           ← machine-specific — regenerate on new PC
-├── home-default.nix                     ← shell, git, gtk, qt, imports, mimeApps, desktopEntries
-├── home-niri.nix                        ← Niri + portals (xdg-desktop-portal-gtk explicit)
-├── nix.nix                              ← flakes, allowUnfree
-├── nixos-niri.nix                       ← keybinds, rules, hypridle, hyprlock
-├── pipewire.nix                         ← audio
-├── programs.nix                         ← kitty, mpv, fuzzel, mako, yazi, nvim, fastfetch   
-├── scripts.nix                          ← screenshot, wallpaper, nightlight, brightness/warmth
-├── theme.nix                            ← ONE place for all colors
-├── wallpaper.jpg                        ← Wallpaper
-└── waybar.nix                           ← bar config + style
+
+├── academia.nix
+├── configuration.nix
+├── flake.lock
+├── flake.nix
+├── general.nix
+├── gtk.nix
+├── hardware-configuration.nix
+├── home-default.nix
+├── home-niri.nix
+├── nix.nix
+├── nixos-niri.nix
+├── noctalia.nix
+├── pipewire.nix
+├── programs.nix
+├── scripts.nix
+├── theme.nix
+└── wallpaper.jpg
 
 ├── docs/                                ← cheatsheets and reference documents
 ├── asset/                               ← materials for my wallpaper & stuff
