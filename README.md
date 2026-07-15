@@ -30,7 +30,6 @@
 | **Browser** | Google Chrome |
 | **Launcher** | Fuzzel |
 | **Bar** | Noctalia |
-| **Notifications** | Mako |
 | **Clipboard** | cliphist + wl-clipboard |
 | **Screen Lock** | Hyprlock |
 | **Idle Daemon** | Hypridle |
