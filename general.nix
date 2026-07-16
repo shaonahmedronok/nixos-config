@@ -15,6 +15,9 @@ environment.sessionVariables = {
     inkscape
     mpv
     gnumake
+    discord
+    adwaita-icon-theme
+    apple-cursor
     droidcam
     android-tools
     pulseaudio      # gives pactl
