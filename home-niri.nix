@@ -114,6 +114,7 @@ home.packages = with pkgs; [
         Mod+Space  { spawn "fuzzel"; }
         Mod+B      { spawn "google-chrome-stable" "--gtk-version=3"; }
         Mod+E      { spawn "thunar"; }
+        Mod+Alt+W { spawn "noctalia" "msg" "panel-toggle" "noctalia/wallhaven:browser"; }
         Mod+V      { spawn "sh" "-c" "cliphist list | fuzzel --dmenu | cliphist decode | wl-copy"; }
         Mod+Shift+X { spawn "hyprlock"; }
         Mod+N       { spawn "makoctl" "dismiss"; }
