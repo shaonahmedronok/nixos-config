@@ -29,6 +29,11 @@ home.packages = with pkgs; [
         focus-follows-mouse
     }
 
+    cursor {
+        xcursor-theme "macOS"
+        xcursor-size 24
+    }
+    
     output "HDMI-A-2" {
         mode "1280x1024@75"
     }
@@ -95,7 +100,6 @@ home.packages = with pkgs; [
         open-floating true
     }
 
-    spawn-at-startup "mako"
     spawn-at-startup "udiskie" "-t"
     spawn-at-startup "wlsunset" "-t" "4500" "-T" "4500"
     spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
@@ -191,7 +195,7 @@ home.packages = with pkgs; [
     enable = true;
     settings = {
       general = {
-        hide_cursor        = true;
+        hide_cursor        = false;
         ignore_empty_input = true;
       };
       background = [{
