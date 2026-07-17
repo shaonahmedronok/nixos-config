@@ -16,6 +16,7 @@ environment.sessionVariables = {
     mpv
     gnumake
     discord
+    usbutils   # provides lsusb — needed to diagnose USB device detection
     adwaita-icon-theme
     apple-cursor
     droidcam
@@ -45,6 +46,40 @@ environment.sessionVariables = {
     wf-recorder
     wlsunset
     btop
+
+
+################################
+
+    figlet
+    toilet
+    cowsay
+    lolcat
+    banner
+    boxes
+    jp2a
+    cmatrix
+    sl
+    asciiquarium
+    nyancat
+    ascii-image-converter
+    imgcat
+    chafa
+    tiv
+    viu
+    html2text
+    fortune
+    pipes
+
+    weathr
+    astroterm
+    audacity
+    kdePackages.kdenlive
+    shotcut
+    openshot-qt
+    obs-studio
+
+################################
+    
     fastfetch
     ddcutil
     wlr-randr
