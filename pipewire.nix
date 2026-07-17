@@ -14,4 +14,20 @@
       actions = { update-props = { "priority.session" = 2000; }; };
     }];
   };
+
+ # ← ADD THIS BLOCK (volume knob fine-grained control)
+  services.pipewire.extraConfig.pipewire-pulse."context.modules" = [
+    {
+      name = "libpipewire-module-pulse-device";
+      args = {
+        "pulse.min.req" = 128;
+        "pulse.default.req" = 512;
+        "pulse.max.req" = 512;
+        "pulse.min.frag" = 128;
+        "pulse.default.frag" = 512;
+        "pulse.max.frag" = 512;
+      };
+    }
+  ];
 }
+
