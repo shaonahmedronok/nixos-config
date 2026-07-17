@@ -29,7 +29,7 @@ in
     (rstudioWrapper.override { packages = rPkgs; })
 
     pandoc
-    texlive.combined.scheme-medium
+    texlive.combined.scheme-full
     python313Packages.pandas
     quarto
     zathura       # PDF reader: vim keybindings, Ctrl-R = instant dark/light toggle
@@ -38,11 +38,9 @@ in
     img2pdf       # batch PNG → PDF (hp-scan workflow: img2pdf *.png -o output.pdf)
     graphviz      # network/relationship diagrams — useful for political network analysis
     zotero
-    vscode
     typst
     tinymist
     typstyle
     helix
-    zoom-us
   ];
 }

@@ -15,15 +15,14 @@
   stylix.targets.gtk.enable      = false;
   stylix.targets.niri.enable     = false;
   stylix.targets.qt.enable       = false;
-  stylix.targets.kitty.enable    = false;
-  # waybar target removed — waybar is gone
-  stylix.targets.helix.enable    = false;
+  stylix.targets.kitty.enable    = true;
+  stylix.targets.helix.enable    = true;
   stylix.targets.hyprland.enable = false;
-  stylix.targets.starship.enable = false;
+  stylix.targets.starship.enable = true;
   stylix.targets.hyprlock.enable = false;
   stylix.targets.mpv.enable      = false;
   stylix.targets.gnome.enable    = false;
-  stylix.targets.fuzzel.enable   = false;
+  stylix.targets.fuzzel.enable   = true;
 
   programs.bash = {
     enable    = true;

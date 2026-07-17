@@ -12,6 +12,7 @@ environment.sessionVariables = {
     google-chrome
     nautilus
     imv
+    awww
     inkscape
     mpv
     gnumake
@@ -19,8 +20,6 @@ environment.sessionVariables = {
     usbutils   # provides lsusb — needed to diagnose USB device detection
     adwaita-icon-theme
     apple-cursor
-    droidcam
-    android-tools
     pulseaudio      # gives pactl
     v4l-utils       # gives v4l2-ctl  
     psmisc          # gives fuser
@@ -45,49 +44,13 @@ environment.sessionVariables = {
     ffmpeg
     wf-recorder
     wlsunset
-    btop
-
-
-################################
-
-    figlet
-    toilet
-    cowsay
-    lolcat
-    banner
-    boxes
-    jp2a
-    cmatrix
-    sl
-    asciiquarium
-    nyancat
-    ascii-image-converter
-    imgcat
-    chafa
-    tiv
-    viu
-    html2text
-    fortune
-    pipes
-
-    weathr
-    astroterm
-    audacity
-    kdePackages.kdenlive
-    shotcut
-    openshot-qt
-    obs-studio
-
-################################
-    
-    fastfetch
+    btop  
     ddcutil
     wlr-randr
     xdg-desktop-portal-gtk
     polkit_gnome
     qt5.qtwayland
     brightnessctl
-    awww
     xwayland-satellite
        
     (pipx.overridePythonAttrs (old: {
@@ -116,7 +79,6 @@ environment.sessionVariables = {
     libqalculate
     fcitx5
     fcitx5-gtk
-    better-control        
     easyeffects
     git
   ];

@@ -12,8 +12,10 @@
   boot.loader.systemd-boot.enable      = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages                  = pkgs.linuxPackages_latest;
-  boot.kernelModules                   = [ "i2c-dev" ];
-
+  boot.kernelModules = [ "i2c-dev" "v4l2loopback" "snd-aloop" ];
+  
+  boot.extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
+  
   networking.hostName              = "nixos";
   networking.networkmanager.enable = true;
   networking.firewall.enable       = true;
@@ -71,6 +73,7 @@
 
   fonts.packages = with pkgs; [
     noto-fonts
+    eb-garamond
     noto-fonts-color-emoji
     nerd-fonts.jetbrains-mono
   ];

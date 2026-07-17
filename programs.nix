@@ -1,26 +1,5 @@
 { config, pkgs, lib, theme, themeNoHash, ... }:
 {
-  programs.btop = {
-    enable = true;
-    settings = {
-      theme_background = false;
-      truecolor        = true;
-      force_tty        = false;
-      shown_boxes      = "cpu net proc";
-      update_ms        = 2000;
-      presets          = "cpu:1:default,proc:0:default cpu:0:default,mem:0:default,net:0:default cpu:0:block,net:0:tty";
-      vim_keys         = true;
-      rounded_corners  = true;
-      graph_symbol     = "braille";
-      proc_sorting     = "cpu lazy";
-      proc_colors      = true;
-      proc_gradient    = true;
-      proc_mem_bytes   = true;
-      proc_cpu_graphs  = true;
-      base_10_sizes    = true;
-    };
-  };
-
   programs.mpv = {
     enable = true;
     config = {
@@ -64,49 +43,22 @@
     };
   };
 
-
-   
   
   programs.starship = {
     enable = true;
     settings = {
-      character = {
-        # Wrap the value in lib.mkForce to resolve the conflict
-        success_symbol = lib.mkForce "[❯](fg:${theme.base0E})";
-        error_symbol   = lib.mkForce "[❯](fg:${theme.base08})";
-      };
     };
   };
-
 
 
   programs.kitty = {
     enable = true;
     settings = {
       window_padding_width    = 10;
-      background_opacity      = "1.0";
       cursor_shape            = "block";
       font_family             = "JetBrainsMono Nerd Font";
       font_size               = 16;
       cursor_trail            = 3;
-      background              = theme.base00;
-      foreground              = theme.base07;
-      cursor                  = theme.base07;
-      cursor_text_color       = theme.base00;
-      selection_background    = theme.base02;
-      selection_foreground    = theme.base05;
-      active_tab_background   = theme.base00;
-      active_tab_foreground   = theme.base06;
-      inactive_tab_background = theme.base01;
-      inactive_tab_foreground = theme.base03;
-      color0  = theme.base00; color8  = theme.base02;
-      color1  = theme.base08; color9  = theme.base08;
-      color2  = theme.base0D; color10 = theme.base0D;
-      color3  = theme.base0A; color11 = theme.base0A;
-      color4  = theme.base0D; color12 = theme.base0D;
-      color5  = theme.base0E; color13 = theme.base0E;
-      color6  = theme.base0C; color14 = theme.base0C;
-      color7  = theme.base03; color15 = theme.base03;
       enable_audio_bell   = "no";
       allow_remote_control = "yes";
       shell_integration   = "enabled";
@@ -122,15 +74,6 @@
         lines    = 12;
         width    = 45;
         terminal = "kitty";
-      };
-      colors = {
-        background      = "${themeNoHash.base00}ff";
-        text            = "${themeNoHash.base06}ff";
-        match           = "${themeNoHash.base0B}ff";
-        selection       = "${themeNoHash.base0E}ff";
-        selection-text  = "${themeNoHash.base06}ff";
-        selection-match = "${themeNoHash.base00}ff";
-        border          = "${themeNoHash.base0D}ff";
       };
       border = {
         width  = 2;
@@ -159,25 +102,13 @@
 
 
 
-
-
-
-
 programs.helix = {
   enable = true;
   defaultEditor = true;
 
-  # Your original theme override to lock the background
-  themes = {
-    gruvbox_242424 = {
-      inherits = "gruvbox";
-      "ui.background" = { bg = "#242424"; };
-    };
-  };
 
   # General Editor Settings
   settings = {
-    theme = lib.mkForce "gruvbox_242424";
     editor = {
       line-number = "relative";
       mouse = true;
@@ -285,100 +216,6 @@ programs.helix = {
     };
   };
 };
-
-
-
-
-
-
-
-
-
-home.file.".config/fastfetch/config.jsonc".text = ''
-  {
-    "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
-    "logo": {
-      "type": "kitty-direct",
-      "source": "/home/az/dirrr/nix-gruvbox.png",
-      "width": 32,
-      "height": 15,
-      "padding": { "top": 1, "left": 1, "right": 4 }
-    },
-    "display": {
-  "separator": "  ",
-  "key": { "width": 13 }
-},
-    "modules": [
-      "break",
-      {
-        "type": "command",
-        "key": "OS",
-        "keyColor": "38;2;224;137;161",
-        "text": "nixos-version | awk '{split($1,a,\".\"); print \"nixos \" a[1]\".\"a[2] \" (Yarara)\"}'"
-      },
-      {
-        "type": "kernel",
-        "key": "Kernel",
-        "keyColor": "38;2;224;137;161",
-        "format": "{release}"
-      },
-      {
-        "type": "packages",
-        "key": "pkgs",
-        "keyColor": "38;2;224;137;161"
-      },
-      {
-        "type": "shell",
-        "key": "Shell",
-        "keyColor": "38;2;224;137;161",
-        "format": "{pretty-name}"
-      },
-      {
-        "type": "wm",
-        "key": "WM",
-        "keyColor": "38;2;224;137;161",
-        "format": "{pretty-name}"
-      },
-      {
-        "type": "uptime",
-        "key": "Uptime",
-        "keyColor": "38;2;224;137;161"
-      },
-      {
-        "type": "terminal",
-        "key": "Terminal",
-        "keyColor": "38;2;224;137;161",
-        "format": "{pretty-name}"
-      },
-      {
-  "type": "terminalfont",
-  "key": "Font",
-  "keyColor": "38;2;224;137;161"
-},
-      "break"
-    ]
-  }
-'';
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -510,18 +347,11 @@ home.file.".config/fastfetch/config.jsonc".text = ''
   '';
 
 
-
-
-
-
   home.file.".config/.emoji".text = ''
-    😏 Smirking Face
     🎒 Backpack
     🤍 white heart
-    🦀 crab animal
     ❄️ snowflake winter
     📚 books study
-    ✏️ pencil write
     🩷 pink Heart 
     🧬 dna genetics
     ⚛️ atom science
@@ -530,9 +360,6 @@ home.file.".config/fastfetch/config.jsonc".text = ''
     🌸 cherry blossom
     ⚙️ Gear
     🩵 pastel heart
-    🔗 Link
-    ⛓️ Chains
-    🪝 Hook
     🩺 Stethoscope
     🚪 Door
     🪞 Mirror
@@ -544,6 +371,5 @@ home.file.".config/fastfetch/config.jsonc".text = ''
     🧼 Soap
     🪥 Toothbrush
     🧽 Sponge
-    🆒 Cool Button
   '';
 }
