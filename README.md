@@ -26,7 +26,6 @@
 | **Terminal** | Kitty |
 | **Shell** | Fish (default) + Bash, Starship prompt |
 | **Editor** | Helix |
-| **Code Editor** | VS Code (official Microsoft build, `pkgs.vscode`) |
 | **Browser** | Google Chrome |
 | **Launcher** | Fuzzel |
 | **Bar** | Noctalia |
@@ -36,7 +35,7 @@
 | **Warm Light** | wlsunset (declarative warmth control script, `Super+Shift+W` toggle) |
 | **File Manager** | Yazi + Thunar |
 | **WiFi TUI** | Impala |
-| **Theme** | Custom Gruvbox |
+| **Theme** | Gruvbox |
 | **Font** | JetBrainsMono Nerd Font |
 | **Icons** | Gruvbox-Plus-Dark |
 | **Academic Stack** | R + RStudio (`rWrapper`/`rstudioWrapper`), Pandoc, TeX Live (scheme-small), Zotero, Xournal++, Zoom |
