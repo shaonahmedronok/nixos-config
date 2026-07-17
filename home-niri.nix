@@ -149,8 +149,8 @@ home.packages = with pkgs; [
         Mod+Shift+comma  { move-column-to-monitor-left; }
 
         XF86AudioMute        { spawn "pactl" "set-sink-mute"   "@DEFAULT_SINK@" "toggle"; }
-        XF86AudioLowerVolume { spawn "pactl" "set-sink-volume" "@DEFAULT_SINK@" "-11%"; }
-        XF86AudioRaiseVolume { spawn "pactl" "set-sink-volume" "@DEFAULT_SINK@" "+11%"; }
+        XF86AudioLowerVolume { spawn "pactl" "set-sink-volume" "@DEFAULT_SINK@" "-1%"; }
+        XF86AudioRaiseVolume { spawn "pactl" "set-sink-volume" "@DEFAULT_SINK@" "+1%"; }
         Mod+F1 { spawn "pactl" "set-sink-mute"   "@DEFAULT_SINK@" "toggle"; }
         Mod+F2 { spawn "pactl" "set-sink-volume" "@DEFAULT_SINK@" "-5%"; }
         Mod+F3 { spawn "pactl" "set-sink-volume" "@DEFAULT_SINK@" "+5%"; }
