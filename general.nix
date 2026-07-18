@@ -83,6 +83,13 @@ environment.sessionVariables = {
     git
   ];
 
+
+  fileSystems."/mnt/storage" = {
+  device = "/dev/disk/by-uuid/754d7620-c457-44ba-8a4c-b98cb493fbde";
+  fsType = "ext4";
+  options = [ "defaults" "nofail" ];
+};
+
   services.udisks2.enable             = true;
   services.stirling-pdf.enable = true;
   services.avahi.enable               = true;
