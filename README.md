@@ -16,7 +16,7 @@
 <div align="center">
 
 ![](assets/my-NixOS-01.png)
-
+---
 ## System
 
 </div>
