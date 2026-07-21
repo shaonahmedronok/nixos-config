@@ -20,6 +20,8 @@ environment.sessionVariables = {
     usbutils   # provides lsusb — needed to diagnose USB device detection
     adwaita-icon-theme
     apple-cursor
+    poppler-utils
+    imagemagick
     pulseaudio      # gives pactl
     v4l-utils       # gives v4l2-ctl  
     psmisc          # gives fuser

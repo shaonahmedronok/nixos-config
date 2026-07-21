@@ -33,6 +33,7 @@ in
     python313Packages.pandas
     quarto
     zathura       # PDF reader: vim keybindings, Ctrl-R = instant dark/light toggle
+    glow
     entr          # runs a command whenever a watched file changes — key for live .qmd→PDF
     xlsx2csv      # convert .xlsx to .csv for R ingestion without Excel
     img2pdf       # batch PNG → PDF (hp-scan workflow: img2pdf *.png -o output.pdf)
