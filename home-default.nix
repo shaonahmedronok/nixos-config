@@ -17,7 +17,6 @@
   stylix.targets.qt.enable       = false;
   stylix.targets.kitty.enable    = true;
   stylix.targets.helix.enable    = true;
-  stylix.targets.hyprland.enable = false;
   stylix.targets.starship.enable = true;
   stylix.targets.hyprlock.enable = false;
   stylix.targets.mpv.enable      = false;
@@ -46,7 +45,7 @@
       ls  = "eza -l -a -a -h --icons";
       ll  = "eza -l -a -a -h --icons";
       cat = "bat";
-      vim = "emacsclient -t";
+      vim = "hx";
     };
   };
 
@@ -101,7 +100,7 @@
   programs.git = {
     enable   = true;
     settings = {
-      user.name      = "shaonahmedronok1";
+      user.name      = "shaonahmedronok";
       user.email     = "shaonbtw@gmail.com";
       safe.directory = "/etc/nixos";
     };
@@ -122,8 +121,8 @@
   xdg.mimeApps = {
     enable = true;
     defaultApplications = {
-      "inode/directory"                  = [ "thunar.desktop" ];
-      "application/x-gnome-saved-search" = [ "thunar.desktop" ];
+      "inode/directory"                  = [ "org.gnome.Nautilus.desktop" ];
+      "application/x-gnome-saved-search" = [ "org.gnome.Nautilus.desktop" ];
       "text/plain"                       = [ "helix.desktop" ];
       "text/x-nix"                       = [ "helix.desktop" ];
       "text/markdown"                    = [ "helix.desktop" ];
@@ -140,13 +139,13 @@
       name    = "Gruvbox-Plus-Dark";
       package = pkgs.gruvbox-plus-icons;
     };
-    gtk3.extraConfig.gtk-application-prefer-dark-theme = 1;
-    gtk4.extraConfig.gtk-application-prefer-dark-theme = 1;
+    gtk3.extraConfig.gtk-application-prefer-dark-theme = 0;
+    gtk4.extraConfig.gtk-application-prefer-dark-theme = 0;
   };
 
   qt = {
     enable             = true;
     platformTheme.name = lib.mkForce "gtk";
-    style.name         = lib.mkForce "adwaita-dark";
+    style.name         = lib.mkForce "adwaita";
   };
 }

@@ -30,8 +30,6 @@
       else
         wlsunset -t 4500 -T 4500 &
       fi
-      # bash built-in kill understands SIGRTMIN arithmetic reliably
-      pkill -RTMIN+8 -f waybar 2>/dev/null || true
     '';
   };
 

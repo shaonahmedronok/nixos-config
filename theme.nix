@@ -1,21 +1,21 @@
 let
   theme = {
-    base00 = "#242424"; # bg
-    base01 = "#3c3836"; # dark
-    base02 = "#504945";
-    base03 = "#665c54";
-    base04 = "#bdae93";
-    base05 = "#d5c4a1";
-    base06 = "#ebdbb2"; # fg
-    base07 = "#fbf1c7"; # light fg
-    base08 = "#fb4934"; # red
-    base09 = "#fe8019"; # orange
-    base0A = "#fabd2f"; # yellow
-    base0B = "#b8bb26"; # green
-    base0C = "#8ec07c"; # cyan
-    base0D = "#7daea3"; # blue
-    base0E = "#e089a1"; # magenta
-    base0F = "#f28534"; # orange
+  base00 = "#FDF6E3";  # bg cream
+  base01 = "#D9D3C3";  # selection bg
+  base02 = "#D9D3C3";  # selection bg
+  base03 = "#D9D3C3";  # selection bg
+  base04 = "#458588";  # blue
+  base05 = "#1A1A1A";  # fg black
+  base06 = "#1A1A1A";  # black
+  base07 = "#1A1A1A";  # black
+  base08 = "#1A1A1A";  # black
+  base09 = "#1A1A1A";  # black
+  base0A = "#458588";  # blue
+  base0B = "#1A1A1A";  # black
+  base0C = "#458588";  # blue
+  base0D = "#458588";  # blue
+  base0E = "#458588";  # blue
+  base0F = "#1A1A1A";  # black
   };
   stripHash = str:
     if builtins.substring 0 1 str == "#"

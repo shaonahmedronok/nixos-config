@@ -1,14 +1,14 @@
 { pkgs, lib, ... }:
 let
-  theme-name = "Gruvbox-Green-Dark-Medium";
+  theme-name = "Gruvbox-Green-Light-Medium";
   theme-package = pkgs.gruvbox-gtk-theme.override {
-    colorVariants = [ "dark" ];
+    colorVariants = [ "light" ];
     sizeVariants   = [ "standard" ];
     themeVariants  = [ "green" ];
     tweakVariants  = [ "medium" "macos" ];
   };
   icon-theme-package = pkgs.gruvbox-plus-icons;
-  icon-theme-name    = "Gruvbox-Plus-Dark";
+  icon-theme-name    = "Gruvbox-Plus-Light";
   gtksettings = ''
     [Settings]
     gtk-icon-theme-name = ${icon-theme-name}
@@ -31,7 +31,7 @@ in {
           "org/gnome/desktop/interface" = {
             gtk-theme    = theme-name;
             icon-theme   = icon-theme-name;
-            color-scheme = "prefer-dark";
+            color-scheme = "prefer-light";
           };
         };
       }

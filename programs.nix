@@ -54,11 +54,14 @@
   programs.kitty = {
     enable = true;
     settings = {
-      window_padding_width    = 10;
-      cursor_shape            = "block";
-      font_family             = "JetBrainsMono Nerd Font";
-      font_size               = 16;
-      cursor_trail            = 3;
+    window_padding_width    = 10;
+    cursor_shape            = "block";
+    font_family             = "JetBrainsMono Nerd Font";
+    font_size               = 16;
+    bold_font_family        = "JetBrainsMono Nerd Font Bold";
+    italic_font_family      = "JetBrainsMono Nerd Font Italic";
+    bold_italic_font_family = "JetBrainsMono Nerd Font Bold Italic";
+    cursor_trail            = 3;
       enable_audio_bell   = "no";
       allow_remote_control = "yes";
       shell_integration   = "enabled";
@@ -157,7 +160,6 @@ programs.helix = {
     pkgs.nixd
     pkgs.nixfmt-rfc-style
     pkgs.texlab
-    pkgs.desktop-file-utils
   ];
 
   # Language Specific Configurations
@@ -241,7 +243,7 @@ programs.helix = {
 ]
 
     [[opener.browser]]
-    run = 'firefox "$@"'
+    run = 'google-chrome-stable "$@"'
     orphan = true
     desc = "Open in Firefox"
     for = "unix"

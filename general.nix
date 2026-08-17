@@ -1,31 +1,21 @@
 { pkgs, ... }:
 {
 
-environment.sessionVariables = {
-  NIXOS_OZONE_WL        = "1";
-};
-
-
   environment.systemPackages = with pkgs; [
 
-    kitty
     google-chrome
     nautilus
-    imv
     awww
-    inkscape
-    mpv
+#    inkscape
     gnumake
-    discord
     usbutils   # provides lsusb — needed to diagnose USB device detection
     adwaita-icon-theme
     apple-cursor
     poppler-utils
+    wtype
     imagemagick
     pulseaudio      # gives pactl
-    v4l-utils       # gives v4l2-ctl  
     psmisc          # gives fuser
-    fuzzel
     wiremix
     wireplumber
     pamixer  
@@ -33,7 +23,6 @@ environment.sessionVariables = {
     cliphist
     wl-clip-persist
     xdg-terminal-exec
-    wtype
     yazi
     udiskie
     unzip
@@ -49,40 +38,27 @@ environment.sessionVariables = {
     btop  
     ddcutil
     wlr-randr
-    xdg-desktop-portal-gtk
     polkit_gnome
-    qt5.qtwayland
     brightnessctl
-    xwayland-satellite
-       
-    (pipx.overridePythonAttrs (old: {
-  doCheck = false;
-}))
-       
     iwd
     networkmanagerapplet
     nh
-    starship
     ncdu
     dysk
     gnome-disk-utility
     nix-output-monitor
-    atuin
-    zoxide
     fd
+    cpufetch
+    pastel
     ripgrep
     eza
     playerctl
     curl
     clang
-    python3
     yt-dlp
-    gnome-keyring
     libqalculate
     fcitx5
     fcitx5-gtk
-    easyeffects
-    git
   ];
 
 
@@ -93,7 +69,6 @@ environment.sessionVariables = {
 };
 
   services.udisks2.enable             = true;
-  services.stirling-pdf.enable = true;
   services.avahi.enable               = true;
   services.avahi.nssmdns4             = true;
   services.power-profiles-daemon.enable = true;

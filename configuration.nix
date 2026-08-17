@@ -12,10 +12,8 @@
   boot.loader.systemd-boot.enable      = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages                  = pkgs.linuxPackages_latest;
-  boot.kernelModules = [ "i2c-dev" "v4l2loopback" "snd-aloop" ];
-  
-  boot.extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
-  
+  boot.kernelModules = [ "i2c-dev" ];
+
   networking.hostName              = "nixos";
   networking.networkmanager.enable = true;
   networking.firewall.enable       = true;
@@ -57,8 +55,6 @@
   hardware.i2c.enable                = true;
 
   security.polkit.enable = true;
-  hardware.bluetooth.enable = true;
-  hardware.bluetooth.powerOnBoot = true;
 
   services.gvfs.enable = true;
   services.gnome.gnome-keyring.enable = true;
@@ -73,7 +69,6 @@
 
   fonts.packages = with pkgs; [
     noto-fonts
-    eb-garamond
     noto-fonts-color-emoji
     nerd-fonts.jetbrains-mono
   ];
@@ -90,7 +85,7 @@ fonts.fontconfig = {
 
   stylix = {
     enable   = true;
-    polarity = "dark";   # forces dark palette — fixes white/light GTK theme
+    polarity = "light";
     
     base16Scheme = {
       base00 = themeNoHash.base00;
@@ -114,14 +109,6 @@ fonts.fontconfig = {
     fonts.monospace = {
       name    = "JetBrainsMono Nerd Font Mono";
       package = pkgs.nerd-fonts.jetbrains-mono;
-    };
-    fonts.sansSerif = {
-      name    = "Noto Sans";
-      package = pkgs.noto-fonts;
-    };
-    fonts.serif = {
-      name    = "Noto Serif";
-      package = pkgs.noto-fonts;
     };
     fonts.emoji = {
       name    = "Noto Color Emoji";
@@ -149,7 +136,7 @@ fonts.fontconfig = {
     XDG_CURRENT_DESKTOP               = "niri:GNOME";
     XDG_SESSION_TYPE                  = "wayland";
     XDG_SESSION_DESKTOP               = "niri";
-    QT_QPA_PLATFORM                   = "wayland";
+    QT_QPA_PLATFORM                   = "wayland;xcb";
     QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
   };
 
