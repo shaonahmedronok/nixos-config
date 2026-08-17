@@ -51,14 +51,10 @@
     cpufetch
     pastel
     ripgrep
-    eza
     playerctl
-    curl
     clang
     yt-dlp
     libqalculate
-    fcitx5
-    fcitx5-gtk
   ];
 
 

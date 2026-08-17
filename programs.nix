@@ -44,12 +44,6 @@
   };
 
   
-  programs.starship = {
-    enable = true;
-    settings = {
-    };
-  };
-
 
   programs.kitty = {
     enable = true;
@@ -105,12 +99,11 @@
 
 
 
+
 programs.helix = {
   enable = true;
   defaultEditor = true;
 
-
-  # General Editor Settings
   settings = {
     editor = {
       line-number = "relative";
@@ -125,14 +118,10 @@ programs.helix = {
         display-messages = true;
         display-inlay-hints = true;
       };
-      # The Statusline Configuration
       statusline = {
         left = [ "mode" "spinner" ];
         center = [ "file-name" "file-modification-indicator" ];
-        # 'file-type' is what prints "nix" or "typst" at the bottom right
         right = [ "diagnostics" "selections" "position" "file-encoding" "file-type" ];
-        
-        # You CAN use standard emoji or Nerd Font icons here for your modes
         mode = {
           normal = "🟢 NORMAL";
           insert = "🔴 INSERT";
@@ -140,7 +129,6 @@ programs.helix = {
         };
       };
     };
-
     keys = {
       normal = {
         "C-c" = "yank_main_selection_to_clipboard";
@@ -155,69 +143,28 @@ programs.helix = {
     };
   };
 
-  # Explicit package declarations
   extraPackages = [
     pkgs.nixd
-    pkgs.nixfmt-rfc-style
-    pkgs.texlab
+    pkgs.nixfmt
   ];
 
-  # Language Specific Configurations
   languages = {
     language = [
       {
         name = "nix";
         auto-format = true;
-        formatter = { command = "${pkgs.nixfmt-rfc-style}/bin/nixfmt"; };
+        formatter = { command = "${pkgs.nixfmt}/bin/nixfmt"; };
         language-servers = [ "nixd" ];
       }
-      {
-        name = "typst";
-        auto-format = true;
-        formatter = { command = "${pkgs.typstyle}/bin/typstyle"; };
-        language-servers = [ "tinymist" ];
-      }
-      {
-        name = "latex";
-        auto-format = true;
-        language-servers = [ "texlab" ];
-      }
     ];
-
-    # Language Server Options
     language-server = {
       nixd = {
         command = "${pkgs.nixd}/bin/nixd";
       };
-      
-      tinymist = {
-        command = "${pkgs.tinymist}/bin/tinymist";
-        config = {
-          exportPdf = "onType"; 
-          outputPath = "$root/target/$dir/$name";
-          formatterMode = "typstyle";
-        };
-      };
-
-      texlab = {
-        command = "${pkgs.texlab}/bin/texlab";
-        config = {
-          texlab = {
-            build = {
-              executable = "latexmk";
-              args = [ "-pdf" "-interaction=nonstopmode" "-synctex=1" "%doc" ];
-              onSave = true;
-            };
-            forwardSearch = {
-              executable = "${pkgs.zathura}/bin/zathura";
-              args = [ "--synctex-forward" "%l:1:%c" "%p" ];
-            };
-          };
-        };
-      };
     };
   };
 };
+
 
 
 

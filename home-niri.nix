@@ -14,6 +14,8 @@ home.packages = with pkgs; [
     XDG_SESSION_DESKTOP                 = "niri";
     QT_QPA_PLATFORM                     = "wayland;xcb";
     QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
+    QT_IM_MODULE   = "fcitx";    # Qt apps (KeePassXC)
+    XMODIFIERS     = "@im=fcitx"; # XWayland apps
     GDK_BACKEND                         = "wayland,x11";
   };
 
