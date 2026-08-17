@@ -38,11 +38,8 @@
 | **Idle Daemon** | Hypridle |
 | **Warm Light** | wlsunset (declarative warmth control script, `Super+Shift+W` toggle) |
 | **File Manager** | Yazi + Thunar |
-| **WiFi TUI** | Impala |
 | **Theme** | Gruvbox |
 | **Font** | JetBrainsMono Nerd Font |
-| **Icons** | Gruvbox-Plus-Dark |
-| **Academic Stack** | R + RStudio (`rWrapper`/`rstudioWrapper`), Pandoc, TeX Live (scheme-small), Zotero, Xournal++, Zoom |
 | **Swap** | zram (3.8G, priority 5) + disk swapfile (8G, priority 0) |
 
 ---
