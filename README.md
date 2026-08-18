@@ -143,9 +143,3 @@ sudo nixos-rebuild switch --rollback
 ```
 
 ---
-
-## License
-
-MIT — use freely.
-
----
