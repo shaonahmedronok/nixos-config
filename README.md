@@ -1,5 +1,4 @@
 <div align="center">
-<img src="https://capsule-render.vercel.app/api?type=waving&color=FDF6E3&height=180&section=header&text=nixos-config&fontSize=36&fontColor=000000&fontAlignY=38&desc=Declarative%20NixOS%20%C2%B7%20Flakes%20%C2%B7%20Home%20Manager%20%C2%B7%20Niri%20%C2%B7%20Wayland&descAlignY=58&descColor=000000"/>
 
 [![NixOS](https://img.shields.io/badge/NixOS-26.05-FDF6E3?style=for-the-badge&logo=nixos&logoColor=000000&labelColor=458588)](https://nixos.org)
 [![Niri](https://img.shields.io/badge/Niri-Wayland-FDF6E3?style=for-the-badge&labelColor=458588)](https://github.com/YaLTeR/niri)
