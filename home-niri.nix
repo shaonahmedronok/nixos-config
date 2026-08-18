@@ -106,7 +106,6 @@ home.packages = with pkgs; [
     spawn-at-startup "wlsunset" "-t" "4500" "-T" "4500"
     spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
     spawn-at-startup "wl-clip-persist" "--clipboard" "regular"
-    spawn-at-startup "awww-daemon"
     // Autostart the XWayland bridge
     spawn-at-startup "xwayland-satellite"
 
@@ -115,7 +114,6 @@ home.packages = with pkgs; [
         Mod+period { spawn "sh" "-c" "cat ~/.config/.emoji | fuzzel --dmenu | awk '{print $1}' | wl-copy && wtype -M ctrl v"; }
         Mod+Space  { spawn "fuzzel"; }
         Mod+B      { spawn "google-chrome-stable" "--gtk-version=3"; }
-        Mod+E      { spawn "thunar"; }
         Mod+Alt+W { spawn "noctalia" "msg" "panel-toggle" "noctalia/wallhaven:browser"; }
         Mod+V      { spawn "sh" "-c" "cliphist list | fuzzel --dmenu | cliphist decode | wl-copy"; }
         Mod+Shift+X { spawn "hyprlock"; }
@@ -123,7 +121,6 @@ home.packages = with pkgs; [
         Mod+Shift+N { spawn "makoctl" "dismiss" "--all"; }
         Mod+Z       { spawn "bash" "/home/az/.local/bin/screenshot-capture-wayland.sh" "region"; }
         Mod+Shift+Z { spawn "bash" "/home/az/.local/bin/screenshot-capture-wayland.sh"; }
-        Mod+W { spawn "/home/az/dirrr/wallpapers/cycle-wallpaper.sh"; }
 
         Mod+C           { close-window; }
         Mod+F           { maximize-column; }

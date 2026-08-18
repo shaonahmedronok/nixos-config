@@ -5,7 +5,6 @@
 
     google-chrome
     nautilus
-    awww
 #    inkscape
     gnumake
     usbutils   # provides lsusb — needed to diagnose USB device detection
