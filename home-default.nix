@@ -49,6 +49,8 @@
     };
   };
 
+
+
   programs.starship = {
     enable                = true;
     enableBashIntegration = true;
@@ -63,10 +65,13 @@
       git_branch.symbol = " ";
       directory = {
         truncation_length = 3;
-        style             = "bold #ebdbb2";
+        style             = "bold #458588";
       };
     };
   };
+
+
+
 
   programs.zoxide = {
     enable                = true;
@@ -136,7 +141,7 @@
   gtk = {
     enable = true;
     iconTheme = {
-      name    = "Gruvbox-Plus-Dark";
+      name    = "Gruvbox-Plus-light";
       package = pkgs.gruvbox-plus-icons;
     };
     gtk3.extraConfig.gtk-application-prefer-dark-theme = 0;

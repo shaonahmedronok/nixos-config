@@ -157,9 +157,5 @@ i18n.inputMethod = {
     QT_QPA_PLATFORMTHEME = lib.mkForce "gtk2";
   };
 
-  nixpkgs.config.permittedInsecurePackages = [
-    "electron-38.8.4"
-  ];
-
   system.stateVersion = "26.05";
 }

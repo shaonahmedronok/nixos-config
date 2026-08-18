@@ -87,7 +87,6 @@ widget_order = [ "lockscreen-login-box@HDMI-A-2" ]
         show_caps_lock = true
         show_keyboard_layout = true
         show_login_button = true
-        show_password_hint = true
 
 [notification]
 enable_daemon = true
@@ -108,7 +107,7 @@ screen_time_enabled = true
 [theme]
 builtin = "Gruvbox"
 community_palette = "Oxocarbon"
-mode = "dark"
+mode = "light"
 source = "builtin"
 wallpaper_scheme = "m3-content"
 
