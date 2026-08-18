@@ -157,9 +157,9 @@ home.packages = with pkgs; [
         Mod+Page_Up   { spawn "ddcutil" "setvcp" "10" "+" "15"; }
         Mod+Page_Down { spawn "ddcutil" "setvcp" "10" "-" "15"; }
 
+        Mod+Alt+Up   { spawn "bash" "/home/az/.local/bin/wlsunset-adjust.sh" "up"; }
+        Mod+Alt+Down { spawn "bash" "/home/az/.local/bin/wlsunset-adjust.sh" "down"; }
         Mod+Shift+W { spawn "sh" "-c" "pgrep wlsunset && pkill wlsunset || nohup wlsunset -t 1000 -T 1001 -l 90 -L 0 &"; }
-
-
 
 
 

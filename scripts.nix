@@ -21,32 +21,32 @@
     '';
   };
 
-  home.file.".local/bin/wlsunset-toggle.sh" = {
-    executable = true;
-    text = ''
-      #!/bin/bash
-      if pgrep -x wlsunset > /dev/null; then
-        pkill wlsunset
-      else
-        wlsunset -t 4500 -T 4500 &
-      fi
-    '';
-  };
 
 
-home.file."dirrr/wallpapers/cycle-wallpaper.sh" = {
+
+
+home.file.".local/bin/wlsunset-adjust.sh" = {
   executable = true;
   text = ''
-    #!/usr/bin/env bash
-    WALLPAPER_DIR="$HOME/dirrr/wallpapers"
+    #!/bin/bash
+    STEP=200
+    STORE="$HOME/.wlsunset_temp"
+    [ -f "$STORE" ] && CURRENT=$(cat "$STORE") || CURRENT=3000
 
-    # Find a random wallpaper file
-    WALLPAPER=$(find "$WALLPAPER_DIR" -type f \( -name "*.jpg" -o -name "*.png" -o -name "*.jpeg" -o -name "*.gif" \) | shuf -n 1)
+    case "$1" in
+      up)   NEW=$((CURRENT + STEP)) ;;
+      down) NEW=$((CURRENT - STEP)) ;;
+      *)    NEW=$CURRENT ;;
+    esac
 
-    # Only try to set it if a file was actually found
-    if [ -n "$WALLPAPER" ]; then
-      awww img "$WALLPAPER" --transition-type fade --transition-duration 1
-    fi
+    [ "$NEW" -lt 1000 ] && NEW=1000
+    [ "$NEW" -gt 6500 ] && NEW=6500
+
+    echo "$NEW" > "$STORE"
+    pkill wlsunset 2>/dev/null
+    sleep 0.2
+    setsid wlsunset -t "$NEW" -T $((NEW + 1)) -l 90 -L 0 >/dev/null 2>&1 &
+    notify-send "🌡 wlsunset" "''${NEW}K" -t 1200
   '';
 };
 }

@@ -6,40 +6,30 @@
     google-chrome
     nautilus
 #    inkscape
-    gnumake
     usbutils   # provides lsusb — needed to diagnose USB device detection
     adwaita-icon-theme
     apple-cursor
-    poppler-utils
     wtype
     imagemagick
     pulseaudio      # gives pactl
     psmisc          # gives fuser
     wiremix
     wireplumber
-    pamixer  
     wl-clipboard
     cliphist
     wl-clip-persist
-    xdg-terminal-exec
     yazi
     udiskie
     unzip
     p7zip
     keepassxc
     mako
-    libnotify
     slurp
     grim
-    ffmpeg
-    wf-recorder
     wlsunset
     btop  
     ddcutil
-    wlr-randr
     polkit_gnome
-    brightnessctl
-    iwd
     networkmanagerapplet
     nh
     ncdu
@@ -48,12 +38,8 @@
     nix-output-monitor
     fd
     cpufetch
-    pastel
     ripgrep
-    playerctl
-    clang
     yt-dlp
-    libqalculate
   ];
 
 
