@@ -5,14 +5,13 @@
 
     google-chrome
     nautilus
-#    inkscape
-    usbutils   # provides lsusb — needed to diagnose USB device detection
+    usbutils
     adwaita-icon-theme
     apple-cursor
     wtype
     imagemagick
-    pulseaudio      # gives pactl
-    psmisc          # gives fuser
+    pulseaudio
+    psmisc
     wiremix
     wireplumber
     wl-clipboard
@@ -23,11 +22,9 @@
     unzip
     p7zip
     keepassxc
-    mako
     slurp
     grim
     wlsunset
-    btop  
     ddcutil
     polkit_gnome
     networkmanagerapplet
@@ -37,7 +34,7 @@
     gnome-disk-utility
     nix-output-monitor
     fd
-    cpufetch
+    # cpufetch
     ripgrep
     yt-dlp
   ];

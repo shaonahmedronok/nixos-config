@@ -192,7 +192,7 @@ programs.helix = {
     [[opener.browser]]
     run = 'google-chrome-stable "$@"'
     orphan = true
-    desc = "Open in Firefox"
+    desc = "Open in Chrome"
     for = "unix"
     [open]
     rules = [

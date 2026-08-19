@@ -3,7 +3,5 @@
   environment.systemPackages = with pkgs; [
     zathura
     img2pdf
-    glow
-    entr
   ];
 }

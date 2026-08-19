@@ -73,10 +73,7 @@ home.packages = with pkgs; [
         clip-to-geometry true
     }
 
-    window-rule {
-        match app-id="pavucontrol"
-        open-floating true
-    }
+
     window-rule {
         match app-id="nm-connection-editor"
         open-floating true
@@ -97,10 +94,7 @@ home.packages = with pkgs; [
         match app-id="imv"
         open-floating true
     }
-    window-rule {
-        match app-id="org.inkscape.Inkscape"
-        open-floating true
-    }
+
 
     spawn-at-startup "udiskie" "-t"
     spawn-at-startup "wlsunset" "-t" "4500" "-T" "4500"
@@ -117,8 +111,6 @@ home.packages = with pkgs; [
         Mod+Alt+W { spawn "noctalia" "msg" "panel-toggle" "noctalia/wallhaven:browser"; }
         Mod+V      { spawn "sh" "-c" "cliphist list | fuzzel --dmenu | cliphist decode | wl-copy"; }
         Mod+Shift+X { spawn "hyprlock"; }
-        Mod+N       { spawn "makoctl" "dismiss"; }
-        Mod+Shift+N { spawn "makoctl" "dismiss" "--all"; }
         Mod+Z       { spawn "bash" "/home/az/.local/bin/screenshot-capture-wayland.sh" "region"; }
         Mod+Shift+Z { spawn "bash" "/home/az/.local/bin/screenshot-capture-wayland.sh"; }
 

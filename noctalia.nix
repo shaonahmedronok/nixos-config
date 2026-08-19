@@ -106,7 +106,6 @@ screen_time_enabled = true
 
 [theme]
 builtin = "Gruvbox"
-community_palette = "Oxocarbon"
 mode = "light"
 source = "builtin"
 wallpaper_scheme = "m3-content"
