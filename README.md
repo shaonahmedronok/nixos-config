@@ -35,7 +35,7 @@
 | **Screen Lock** | Hyprlock |
 | **Idle Daemon** | Hypridle |
 | **Warm Light** | wlsunset (declarative warmth control script, `Super+Shift+W` toggle) |
-| **File Manager** | Yazi + Thunar |
+| **File Manager** | Yazi + nautilus |
 | **Font** | JetBrainsMono Nerd Font |
 | **Swap** | zram (3.8G, priority 5) + disk swapfile (8G, priority 0) |
 
