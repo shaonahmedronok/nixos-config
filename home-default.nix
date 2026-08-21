@@ -17,7 +17,6 @@
   stylix.targets.qt.enable       = false;
   stylix.targets.kitty.enable    = true;
   stylix.targets.helix.enable    = true;
-  stylix.targets.starship.enable = true;
   stylix.targets.hyprlock.enable = false;
   stylix.targets.mpv.enable      = false;
   stylix.targets.gnome.enable    = false;
@@ -32,58 +31,69 @@
     };
   };
 
-  programs.fish = {
-    enable = true;
-    interactiveShellInit = ''
-      set fish_greeting
-      fish_vi_key_bindings
-      zoxide init fish | source
-      bind -M insert ctrl-backspace backward-kill-word
-      bind -M insert alt-backspace backward-kill-word
-    '';
-    shellAliases = {
-      ls  = "eza -l -a -a -h --icons";
-      ll  = "eza -l -a -a -h --icons";
-      cat = "bat";
-      vim = "hx";
-    };
+
+programs.fish = {
+  enable = true;
+  interactiveShellInit = ''
+    set fish_greeting
+    fish_vi_key_bindings
+    bind -M insert ctrl-backspace backward-kill-word
+    bind -M insert alt-backspace backward-kill-word
+
+    function fish_mode_prompt
+    end
+
+    function fish_prompt
+      set -l last_status $status
+
+      # Permanent NixOS logo — teal
+      set_color --bold 458588
+      echo -n " "
+      set_color normal
+
+      # Nix shell indicator — extra snowflake when inside nix develop/shell
+      if test -n "$IN_NIX_SHELL"
+        set_color --bold 2E8B84
+        echo -n "❄ "
+        set_color normal
+      end
+
+      # Current directory — teal
+      set_color --bold 458588
+      echo -n (prompt_pwd --full-length-dirs 1 --dir-length 3)
+      set_color normal
+
+      # Git branch — pink
+      if git rev-parse --git-dir >/dev/null 2>&1
+        set_color e089a1
+        echo -n "  "(git branch --show-current)
+        set_color normal
+      end
+
+      echo ""
+
+      if test $last_status -eq 0
+        set_color --bold b8bb26
+      else
+        set_color --bold CC3333
+      end
+      echo -n "❯ "
+      set_color normal
+    end
+
+    function fish_right_prompt
+    end
+  '';
+  shellAliases = {
+    ls  = "eza -l -a -a -h --icons";
+    ll  = "eza -l -a -a -h --icons";
+    vim = "hx";
   };
-
-
-
-  programs.starship = {
-    enable                = true;
-    enableBashIntegration = true;
-    enableFishIntegration = true;
-    settings = {
-      add_newline = false;
-      character = {
-        success_symbol = "[❯](bold #b8bb26)";
-        error_symbol   = "[❯](bold #fb4934)";
-      };
-      nix_shell.symbol  = " ";
-      git_branch.symbol = " ";
-      directory = {
-        truncation_length = 3;
-        style             = "bold #458588";
-      };
-    };
-  };
+};
 
 
 
 
-  programs.zoxide = {
-    enable                = true;
-    enableBashIntegration = true;
-    enableFishIntegration = true;
-  };
-
-  programs.fzf = {
-    enable                = true;
-    enableBashIntegration = true;
-    enableFishIntegration = true;
-  };
 
   programs.eza = {
     enable                = true;
@@ -91,16 +101,6 @@
     enableFishIntegration = true;
   };
 
-  programs.bat.enable = true;
-
-  programs.atuin = {
-    enable                = true;
-    enableBashIntegration = true;
-    enableFishIntegration = true;
-    settings = {
-      filter_mode_shell_up_arrow_history = "global";
-    };
-  };
 
   programs.git = {
     enable   = true;
