@@ -25,7 +25,6 @@
 | **Editor** | Helix |
 | **Browser** | Google Chrome |
 | **Launcher** | Fuzzel |
-| **Bar** | Noctalia |
 | **Clipboard** | cliphist + wl-clipboard |
 | **Screen Lock** | Hyprlock |
 | **Idle Daemon** | Hypridle |
@@ -56,7 +55,6 @@
 ├── home-niri.nix
 ├── nix.nix
 ├── nixos-niri.nix
-├── noctalia.nix
 ├── pipewire.nix
 ├── programs.nix
 ├── scripts.nix
