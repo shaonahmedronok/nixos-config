@@ -10,7 +10,6 @@
     imagemagick     # colour picker
     swaybg
     mako
-    gpu-screen-recorder # screen record
   ];
 
   systemd.user.sessionVariables = {
@@ -124,6 +123,7 @@ window-rule {
         // ── Apps ──────────────────────────────────────────────────────
         Mod+Return      { spawn "kitty"; }
         Mod+Space       { spawn "fuzzel"; }
+        Mod+W { spawn "bash" "/home/az/.local/bin/wallpaper-cycle.sh"; }
         Mod+B           { spawn "google-chrome-stable" "--gtk-version=3"; }
         Mod+period      { spawn "sh" "-c" "cat ~/.config/.emoji | fuzzel --dmenu | awk '{print $1}' | wl-copy && wtype -M ctrl v"; }
         Mod+V           { spawn "sh" "-c" "cliphist list | fuzzel --dmenu | cliphist decode | wl-copy"; }
@@ -204,7 +204,6 @@ window-rule {
         Alt+K { spawn "bash" "/home/az/.local/bin/keybinds-cheatsheet.sh"; }
 
         // ── Tools ─────────────────────────────────────────────────────
-        Mod+R { spawn "bash" "/home/az/.local/bin/screen-record.sh"; }
         Mod+O { spawn "bash" "/home/az/.local/bin/ocr-extract.sh"; }
         Mod+P { spawn "bash" "/home/az/.local/bin/color-pick.sh"; }
 

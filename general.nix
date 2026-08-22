@@ -9,7 +9,6 @@
     wtype
     imagemagick
     pulseaudio
-    #               pactl is provided by pipewire itself
     psmisc
     wiremix
     wireplumber
@@ -37,7 +36,6 @@
     yt-dlp
     libnotify       # notify-send for all scripts
     tesseract       # OCR script
-    gpu-screen-recorder # screen record script
   ];
 
   # fileSystems."/mnt/storage" = {

@@ -124,6 +124,40 @@ Uptime: $UPTIME" -t 6000
     '';
   };
 
+
+
+home.file.".local/bin/wallpaper-cycle.sh" = {
+  executable = true;
+  text = ''
+    #!/bin/bash
+WALLDIR="$HOME/dirrr/wallpapers"
+STORE="$HOME/.current_wallpaper"
+
+# Get all images
+mapfile -t WALLS < <(find "$WALLDIR" -type f \( -name "*.jpg" -o -name "*.png" -o -name "*.jpeg" \) | sort)
+
+if [ ''${#WALLS[@]} -eq 0 ]; then
+  notify-send "🖼 Wallpaper" "No images found in ~/dirrr/wallpapers" -t 2000
+  exit 1
+fi
+
+# Get current index
+CURRENT=$(cat "$STORE" 2>/dev/null || echo "-1")
+NEXT=$(( (CURRENT + 1) % ''${#WALLS[@]} ))
+echo "$NEXT" > "$STORE"
+
+WALL="''${WALLS[$NEXT]}"
+pkill swaybg 2>/dev/null
+sleep 0.1
+swaybg -i "$WALL" -m fill &
+notify-send "🖼 Wallpaper" "$(basename $WALL)" -t 1500
+  '';
+};
+
+
+
+
+
   # ── Network status ────────────────────────────────────────────────────────
   home.file.".local/bin/network-status.sh" = {
     executable = true;
@@ -210,27 +244,7 @@ $WEEK" -t 4000
     '';
   };
 
-  # ── Screen recording toggle ───────────────────────────────────────────────
-  home.file.".local/bin/screen-record.sh" = {
-    executable = true;
-    text = ''
-      #!/bin/bash
-      PIDFILE="$HOME/.screen_record.pid"
-      OUTDIR="$HOME/Videos"
-      mkdir -p "$OUTDIR"
 
-      if [ -f "$PIDFILE" ] && kill -0 "$(cat $PIDFILE)" 2>/dev/null; then
-        kill -SIGINT "$(cat $PIDFILE)"
-        rm -f "$PIDFILE"
-        notify-send "⏹ Recording stopped" "Saved to ~/Videos" -t 3000
-      else
-        OUTFILE="$OUTDIR/rec-$(date +%Y%m%d-%H%M%S).mp4"
-        gpu-screen-recorder -w screen -f 60 -a default_speakers -o "$OUTFILE" &
-        echo $! > "$PIDFILE"
-        notify-send "⏺ Recording" "Mod+R again to stop" -t 2000
-      fi
-    '';
-  };
 
   # ── Keybinding cheatsheet (the beast) ────────────────────────────────────
   # Press Alt+K (or whatever you bind) → fuzzel dmenu popup showing all binds
@@ -286,7 +300,6 @@ $WEEK" -t 4000
       Alt+A               Audio info
       Alt+K               THIS cheatsheet
       ── Screen ────────────────────────────
-      Mod+R               Screen record toggle
       Mod+O               OCR (copy text from screen)
       Mod+P               Colour picker
       ── Session ───────────────────────────
