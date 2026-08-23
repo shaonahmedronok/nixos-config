@@ -23,12 +23,10 @@
 | **Terminal** | Kitty |
 | **Shell** | Fish (default) + Bash |
 | **Editor** | Helix |
-| **Browser** | Google Chrome |
 | **Launcher** | Fuzzel |
 | **Clipboard** | cliphist + wl-clipboard |
 | **Screen Lock** | Hyprlock |
-| **Idle Daemon** | Hypridle |
-| **Warm Light** | wlsunset (declarative warmth control script) |
+| **Warm Light** | wlsunset |
 | **File Manager** | Yazi + nautilus |
 | **Font** | JetBrainsMono Nerd Font |
 | **Swap** | zram (3.8G, priority 5) + disk swapfile (8G, priority 0) |
