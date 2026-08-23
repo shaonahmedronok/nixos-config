@@ -124,7 +124,7 @@ window-rule {
         Mod+Return      { spawn "kitty"; }
         Mod+Space       { spawn "fuzzel"; }
         Mod+W { spawn "bash" "/home/az/.local/bin/wallpaper-cycle.sh"; }
-        Mod+B           { spawn "google-chrome-stable" "--gtk-version=3"; }
+        Mod+B { spawn "helium"; }
         Mod+period      { spawn "sh" "-c" "cat ~/.config/.emoji | fuzzel --dmenu | awk '{print $1}' | wl-copy && wtype -M ctrl v"; }
         Mod+V           { spawn "sh" "-c" "cliphist list | fuzzel --dmenu | cliphist decode | wl-copy"; }
 

@@ -1,7 +1,6 @@
 { pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
-    google-chrome
     nautilus
     usbutils
     adwaita-icon-theme

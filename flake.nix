@@ -10,15 +10,13 @@
       url = "github:danth/stylix/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    noctalia = {
-      url = "github:noctalia-dev/noctalia";
-      # Builds noctalia v5 against your 26.05 nixpkgs.
-      # If rebuild fails with "attribute not found", remove this line
-      # so noctalia uses its own pinned nixpkgs.
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+
+    helium = {
+  url = "github:oxcl/nix-flake-helium-browser";
+  inputs.nixpkgs.follows = "nixpkgs";
+};
   };
-  outputs = { self, nixpkgs, home-manager, stylix, noctalia, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, stylix, helium, ... }@inputs:
   let
     themeLib = import ./theme.nix;
   in {

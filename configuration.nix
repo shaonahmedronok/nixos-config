@@ -1,4 +1,4 @@
-{ config, pkgs, lib, themeNoHash, ... }:
+{ config, pkgs, lib, themeNoHash, inputs, ... }:
 {
   imports = [
   ./nix.nix
@@ -7,6 +7,7 @@
   ./nixos-niri.nix
   ./general.nix
   ./academia.nix
+  inputs.helium.nixosModules.default
 ];
 
   boot.loader.systemd-boot.enable      = true;
@@ -94,7 +95,13 @@ i18n.inputMethod = {
 };
 
 
-
+programs.helium = {
+  enable = true;
+  flags = [
+    "--ozone-platform-hint=auto"
+    "--enable-wayland-ime"
+  ];
+};
 
   stylix = {
     enable   = true;
