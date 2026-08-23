@@ -18,7 +18,7 @@
 
 | | |
 |---|---|
-| **OS** | NixOS 26.05 |
+| **OS** | NixOS 26.05 (Yarara) |
 | **WM** | Niri (Wayland) |
 | **Terminal** | Kitty |
 | **Shell** | Fish (default) + Bash |
