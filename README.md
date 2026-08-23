@@ -118,19 +118,3 @@ sudo nixos-rebuild switch --rollback
 ```
 
 ---
-
-<div align="center">
-
-## Rules — never break these
-
-</div>
-```bash
-# Always git add . BEFORE nixos-rebuild — flakes only see tracked files
-# Never edit ~/.config directly — symlinks, will be overwritten on rebuild
-# Never copy hardware-configuration.nix to a new machine — always regenerate
-# Always commit flake.lock after nix flake update
-# Never change home.stateVersion or system.stateVersion
-# One file at a time — edit, rebuild, confirm, then commit
-```
-
----
