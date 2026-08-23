@@ -1,16 +1,6 @@
 { config, pkgs, lib, theme, themeNoHash, ... }:
 {
 
-  home.packages = with pkgs; [
-    xwayland-satellite
-    qt5.qtwayland
-    qt6.qtwayland
-    libnotify       # notify-send
-    tesseract       # OCR
-    imagemagick     # colour picker
-    swaybg
-    mako
-  ];
 
   systemd.user.sessionVariables = {
     NIXOS_OZONE_WL                      = "1";

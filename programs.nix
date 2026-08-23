@@ -190,7 +190,7 @@ programs.helix = {
 ]
 
     [[opener.browser]]
-    run = 'google-chrome-stable "$@"'
+    run = 'helium "$@"'
     orphan = true
     desc = "Open in Chrome"
     for = "unix"
@@ -297,28 +297,9 @@ programs.helix = {
 
 
   home.file.".config/.emoji".text = ''
-    🎒 Backpack
-    🤍 white heart
     ❄️ snowflake winter
     📚 books study
-    🩷 pink Heart 
     🧬 dna genetics
-    ⚛️ atom science
-    👘 Kimono
-    🧳 Luggage
-    🌸 cherry blossom
     ⚙️ Gear
-    🩵 pastel heart
-    🩺 Stethoscope
-    🚪 Door
-    🪞 Mirror
-    🪠 Plunger
-    🚿 Shower
-    🛁 Bathtub
-    🧹 Broom
-    🧻 Roll of Paper
-    🧼 Soap
-    🪥 Toothbrush
-    🧽 Sponge
   '';
 }

@@ -51,7 +51,11 @@
 
   security.pam.services.hyprlock = {};
 
-  hardware.graphics.enable           = true;
+  hardware.graphics = {
+  enable        = true;
+  extraPackages = [ pkgs.intel-media-driver ];
+};
+
   hardware.cpu.intel.updateMicrocode = true;
   hardware.i2c.enable                = true;
 
@@ -60,13 +64,27 @@
   services.gvfs.enable = true;
   services.gnome.gnome-keyring.enable = true;
 
+
   services.greetd = {
-    enable = true;
-    settings.default_session = {
-      user    = "az";
-      command = "niri-session";
+  enable = true;
+  settings.default_session = {
+    user    = "greeter";
+    command = "${pkgs.cage}/bin/cage -s -- ${pkgs.greetd.regreet}/bin/regreet";
+  };
+};
+  
+
+programs.regreet = {
+  enable = true;
+  settings = {
+    GTK = {
+      cursor_theme_name = "Adwaita";
+      cursor_theme_size = 24;
+      font_name = lib.mkForce "JetBrainsMono Nerd Font 14";
     };
   };
+};
+
 
   fonts.packages = with pkgs; [
     noto-fonts
