@@ -111,10 +111,4 @@ nh clean all --keep 3
 git commit -m "update"
 git push
 ```
-
-**Rollback if broken:**
-```bash
-sudo nixos-rebuild switch --rollback
-```
-
 ---
