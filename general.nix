@@ -3,6 +3,7 @@
   environment.systemPackages = with pkgs; [
     nautilus
     usbutils
+    git
     adwaita-icon-theme
     apple-cursor
     wtype
@@ -37,6 +38,8 @@
     gnome-disk-utility
     nix-output-monitor
     fd
+    zathura
+    img2pdf
     ripgrep
     yt-dlp
     libnotify       # notify-send for all scripts

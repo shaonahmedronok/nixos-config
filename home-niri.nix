@@ -115,7 +115,6 @@ window-rule {
         Mod+Space       { spawn "fuzzel"; }
         Mod+W { spawn "bash" "/home/az/.local/bin/wallpaper-cycle.sh"; }
         Mod+B { spawn "helium"; }
-        Mod+period      { spawn "sh" "-c" "cat ~/.config/.emoji | fuzzel --dmenu | awk '{print $1}' | wl-copy && wtype -M ctrl v"; }
         Mod+V           { spawn "sh" "-c" "cliphist list | fuzzel --dmenu | cliphist decode | wl-copy"; }
 
         // ── Windows ───────────────────────────────────────────────────
@@ -173,9 +172,6 @@ window-rule {
         Mod+F2 { spawn "bash" "/home/az/.local/bin/volume-control.sh" "down"; }
         Mod+F3 { spawn "bash" "/home/az/.local/bin/volume-control.sh" "up"; }
 
-        // ── Brightness ────────────────────────────────────────────────
-        Mod+Page_Up   { spawn "bash" "/home/az/.local/bin/brightness-control.sh" "up"; }
-        Mod+Page_Down { spawn "bash" "/home/az/.local/bin/brightness-control.sh" "down"; }
 
         // ── Colour temperature ────────────────────────────────────────
         Mod+Alt+Up   { spawn "bash" "/home/az/.local/bin/wlsunset-adjust.sh" "up"; }
@@ -259,19 +255,4 @@ window-rule {
     font = lib.mkForce "JetBrainsMono Nerd Font 12";
   };
 };
-  
-  
-  services.hypridle = {
-    enable = true;
-    settings = {
-      general = {
-        lock_cmd         = "pidof hyprlock || hyprlock";
-        before_sleep_cmd = "loginctl lock-session";
-      };
-      listener = [
-        { timeout = 300; on-timeout = "loginctl lock-session"; }
-        { timeout = 600; on-timeout = "systemctl suspend"; }
-      ];
-    };
-  };
 }

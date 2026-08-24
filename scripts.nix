@@ -86,23 +86,6 @@
     '';
   };
 
-  # ── Brightness control ────────────────────────────────────────────────────
-  home.file.".local/bin/brightness-control.sh" = {
-    executable = true;
-    text = ''
-      #!/bin/bash
-      case "$1" in
-        up)   ddcutil setvcp 10 + 15 ;;
-        down) ddcutil setvcp 10 - 15 ;;
-      esac
-      case "$1" in
-        up)   notify-send -h string:x-canonical-private-synchronous:brightness \
-                "☀️  Brightness" "+15" -t 900 ;;
-        down) notify-send -h string:x-canonical-private-synchronous:brightness \
-                "🔅 Brightness" "-15" -t 900 ;;
-      esac
-    '';
-  };
 
   # ── System status ─────────────────────────────────────────────────────────
   home.file.".local/bin/system-status.sh" = {
@@ -246,7 +229,9 @@ $WEEK" -t 4000
 
 
 
-  # ── Keybinding cheatsheet (the beast) ────────────────────────────────────
+
+
+# ── Keybinding cheatsheet (the beast) ────────────────────────────────────
   # Press Alt+K (or whatever you bind) → fuzzel dmenu popup showing all binds
   home.file.".local/bin/keybinds-cheatsheet.sh" = {
     executable = true;
@@ -260,8 +245,7 @@ $WEEK" -t 4000
       ── Apps ──────────────────────────────
       Mod+Return          Terminal (kitty)
       Mod+Space           App launcher (fuzzel)
-      Mod+B               Chrome
-      Mod+Period          Emoji picker
+      Mod+B               Helium
       Mod+V               Clipboard history
       ── Windows ───────────────────────────
       Mod+C               Close window
@@ -286,9 +270,6 @@ $WEEK" -t 4000
       Mod+F3              Volume +5%
       Knob turn           Volume ±2% (AK820)
       Knob press          Mute toggle (AK820)
-      ── Brightness ────────────────────────
-      Mod+PageUp          Brightness +15
-      Mod+PageDown        Brightness -15
       ── Colour temp ───────────────────────
       Mod+Alt+Up          Warmer (+200K)
       Mod+Alt+Down        Cooler (-200K)
@@ -310,8 +291,8 @@ $WEEK" -t 4000
 
       echo "$CHEATSHEET" | fuzzel --dmenu \
         --prompt="  Keybinds — Esc to close  " \
-        --lines=40 \
-        --width=52 \
+        --lines=22 \
+        --width=44 \
         --no-exit-on-keyboard-focus-loss
     '';
   };

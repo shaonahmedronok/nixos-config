@@ -294,12 +294,4 @@ programs.helix = {
       { mime = "*.json",          fg = "${theme.base0A}" },
     ]
   '';
-
-
-  home.file.".config/.emoji".text = ''
-    ❄️ snowflake winter
-    📚 books study
-    🧬 dna genetics
-    ⚙️ Gear
-  '';
 }

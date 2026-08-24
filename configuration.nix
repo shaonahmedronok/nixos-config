@@ -6,7 +6,6 @@
   ./gtk.nix
   ./nixos-niri.nix
   ./general.nix
-  ./academia.nix
   inputs.helium.nixosModules.default
 ];
 

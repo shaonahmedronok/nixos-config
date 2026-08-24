@@ -92,15 +92,6 @@
     enableFishIntegration = true;
   };
 
-  programs.git = {
-    enable   = true;
-    settings = {
-      user.name      = "shaonahmedronok";
-      user.email     = "shaonbtw@gmail.com";
-      safe.directory = "/etc/nixos";
-    };
-  };
-
   xdg.desktopEntries.helix = {
     name        = "Helix";
     genericName = "Text Editor";
