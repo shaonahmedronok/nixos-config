@@ -4,19 +4,14 @@
     nautilus
     usbutils
     adwaita-icon-theme
-    regreet
-    cage
     apple-cursor
     wtype
     xwayland-satellite
     qt5.qtwayland
     qt6.qtwayland
-    libnotify
-    tesseract
     imagemagick
     swaybg
     mako
-    imagemagick
     pulseaudio
     psmisc
     wiremix

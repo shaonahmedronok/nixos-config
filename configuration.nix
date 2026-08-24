@@ -65,25 +65,17 @@
   services.gnome.gnome-keyring.enable = true;
 
 
-  services.greetd = {
-  enable = true;
-  settings.default_session = {
-    user    = "greeter";
-    command = "${pkgs.cage}/bin/cage -s -- ${pkgs.greetd.regreet}/bin/regreet";
-  };
-};
-  
 
-programs.regreet = {
+services.greetd = {
   enable = true;
   settings = {
-    GTK = {
-      cursor_theme_name = "Adwaita";
-      cursor_theme_size = 24;
-      font_name = lib.mkForce "JetBrainsMono Nerd Font 14";
+    default_session = {
+      user    = "greeter";
+      command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --remember-session --cmd niri-session";
     };
   };
 };
+
 
 
   fonts.packages = with pkgs; [
