@@ -42,7 +42,6 @@
 <pre>
 /etc/nixos/
 
-├── academia.nix
 ├── configuration.nix
 ├── flake.lock
 ├── flake.nix
