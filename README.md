@@ -76,7 +76,7 @@
 sudo nixos-generate-config
 
 # 2. Clone repo
-git clone https://github.com/shaonahmedronok/nixos-config /tmp/nixconf
+git clone https://github.com/shaonahmedronok/shaonix /tmp/nixconf
 
 # 3. Copy everything EXCEPT hardware-configuration.nix
 sudo cp -r /tmp/nixconf/modules /etc/nixos/
