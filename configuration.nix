@@ -14,7 +14,7 @@
   boot.kernelPackages                  = pkgs.linuxPackages_latest;
   boot.kernelModules = [ "i2c-dev" ];
 
-  networking.hostName              = "nixos";
+  networking.hostName              = "shaonix";
   networking.networkmanager.enable = true;
   networking.firewall.enable       = true;
 
