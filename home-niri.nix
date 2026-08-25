@@ -113,7 +113,7 @@ window-rule {
         // ── Apps ──────────────────────────────────────────────────────
         Mod+Return      { spawn "kitty"; }
         Mod+Space       { spawn "fuzzel"; }
-        Mod+W { spawn "bash" "/home/az/.local/bin/wallpaper-cycle.sh"; }
+        Mod+W { spawn "bash" "/home/shaonix/.local/bin/wallpaper-cycle.sh"; }
         Mod+B { spawn "helium"; }
         Mod+V           { spawn "sh" "-c" "cliphist list | fuzzel --dmenu | cliphist decode | wl-copy"; }
 
@@ -165,33 +165,33 @@ window-rule {
         Mod+Shift+9 { move-window-to-workspace 9; }
 
         // ── Volume — physical knob + keyboard ─────────────────────────
-        XF86AudioMute        { spawn "bash" "/home/az/.local/bin/volume-control.sh" "mute"; }
-        XF86AudioLowerVolume { spawn "bash" "/home/az/.local/bin/volume-control.sh" "down"; }
-        XF86AudioRaiseVolume { spawn "bash" "/home/az/.local/bin/volume-control.sh" "up"; }
-        Mod+F1 { spawn "bash" "/home/az/.local/bin/volume-control.sh" "mute"; }
-        Mod+F2 { spawn "bash" "/home/az/.local/bin/volume-control.sh" "down"; }
-        Mod+F3 { spawn "bash" "/home/az/.local/bin/volume-control.sh" "up"; }
+        XF86AudioMute        { spawn "bash" "/home/shaonix/.local/bin/volume-control.sh" "mute"; }
+        XF86AudioLowerVolume { spawn "bash" "/home/shaonix/.local/bin/volume-control.sh" "down"; }
+        XF86AudioRaiseVolume { spawn "bash" "/home/shaonix/.local/bin/volume-control.sh" "up"; }
+        Mod+F1 { spawn "bash" "/home/shaonix/.local/bin/volume-control.sh" "mute"; }
+        Mod+F2 { spawn "bash" "/home/shaonix/.local/bin/volume-control.sh" "down"; }
+        Mod+F3 { spawn "bash" "/home/shaonix/.local/bin/volume-control.sh" "up"; }
 
 
         // ── Colour temperature ────────────────────────────────────────
-        Mod+Alt+Up   { spawn "bash" "/home/az/.local/bin/wlsunset-adjust.sh" "up"; }
-        Mod+Alt+Down { spawn "bash" "/home/az/.local/bin/wlsunset-adjust.sh" "down"; }
+        Mod+Alt+Up   { spawn "bash" "/home/shaonix/.local/bin/wlsunset-adjust.sh" "up"; }
+        Mod+Alt+Down { spawn "bash" "/home/shaonix/.local/bin/wlsunset-adjust.sh" "down"; }
         Mod+Shift+W  { spawn "sh" "-c" "pgrep wlsunset && pkill wlsunset || nohup wlsunset -t 1000 -T 1001 -l 90 -L 0 &"; }
 
         // ── Screenshot ────────────────────────────────────────────────
-        Mod+Z       { spawn "bash" "/home/az/.local/bin/screenshot-capture-wayland.sh" "region"; }
-        Mod+Shift+Z { spawn "bash" "/home/az/.local/bin/screenshot-capture-wayland.sh"; }
+        Mod+Z       { spawn "bash" "/home/shaonix/.local/bin/screenshot-capture-wayland.sh" "region"; }
+        Mod+Shift+Z { spawn "bash" "/home/shaonix/.local/bin/screenshot-capture-wayland.sh"; }
 
         // ── Info popups ───────────────────────────────────────────────
-        Alt+T { spawn "bash" "/home/az/.local/bin/show-datetime.sh"; }
-        Alt+S { spawn "bash" "/home/az/.local/bin/system-status.sh"; }
-        Alt+N { spawn "bash" "/home/az/.local/bin/network-status.sh"; }
-        Alt+A { spawn "bash" "/home/az/.local/bin/audio-info.sh"; }
-        Alt+K { spawn "bash" "/home/az/.local/bin/keybinds-cheatsheet.sh"; }
+        Alt+T { spawn "bash" "/home/shaonix/.local/bin/show-datetime.sh"; }
+        Alt+S { spawn "bash" "/home/shaonix/.local/bin/system-status.sh"; }
+        Alt+N { spawn "bash" "/home/shaonix/.local/bin/network-status.sh"; }
+        Alt+A { spawn "bash" "/home/shaonix/.local/bin/audio-info.sh"; }
+        Alt+K { spawn "bash" "/home/shaonix/.local/bin/keybinds-cheatsheet.sh"; }
 
         // ── Tools ─────────────────────────────────────────────────────
-        Mod+O { spawn "bash" "/home/az/.local/bin/ocr-extract.sh"; }
-        Mod+P { spawn "bash" "/home/az/.local/bin/color-pick.sh"; }
+        Mod+O { spawn "bash" "/home/shaonix/.local/bin/ocr-extract.sh"; }
+        Mod+P { spawn "bash" "/home/shaonix/.local/bin/color-pick.sh"; }
 
         // ── Session ───────────────────────────────────────────────────
         Mod+Shift+X { spawn "hyprlock"; }

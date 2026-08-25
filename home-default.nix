@@ -7,8 +7,8 @@
     ./scripts.nix
   ];
 
-  home.username      = "az";
-  home.homeDirectory = "/home/az";
+  home.username      = "shaonix";
+  home.homeDirectory = "/home/shaonix";
   home.stateVersion  = "26.05";
   programs.home-manager.enable = true;
 

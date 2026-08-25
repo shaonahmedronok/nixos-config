@@ -20,7 +20,7 @@
   let
     themeLib = import ./theme.nix;
   in {
-    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.shaonix = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = {
         inherit inputs;
@@ -35,7 +35,7 @@
           home-manager = {
             useGlobalPkgs       = true;
             useUserPackages     = true;
-            users.az            = import ./home-default.nix;
+            users.shaonix            = import ./home-default.nix;
             backupFileExtension = "backup";
             extraSpecialArgs    = {
               inherit inputs;

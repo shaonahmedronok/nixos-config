@@ -40,9 +40,9 @@
     variant = "";
   };
 
-  users.users.az = {
+  users.users.shaonix = {
     isNormalUser = true;
-    description  = "az";
+    description  = "shaonix";
     extraGroups  = [ "networkmanager" "wheel" "video" "input" "storage" "i2c" ];
     packages     = [];
     shell        = pkgs.fish;
