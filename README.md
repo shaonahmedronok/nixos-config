@@ -87,7 +87,7 @@ sudo cp /tmp/nixconf/wallpaper.jpg /etc/nixos/
 
 # 4. Track and rebuild
 cd /etc/nixos && git init && git add .
-sudo nixos-rebuild switch --flake /etc/nixos#nixos
+sudo nixos-rebuild switch --flake /etc/nixos#shaonix
 ```
 
 **Daily use — after any edit:**
