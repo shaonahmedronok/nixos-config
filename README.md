@@ -95,7 +95,7 @@ sudo nixos-rebuild switch --flake /etc/nixos#nixos
 cd /etc/nixos
 # edit whatever file
 git add .
-sudo nixos-rebuild switch --flake /etc/nixos#nixos
+sudo nixos-rebuild switch --flake /etc/nixos#shaonix
 git commit -m "what changed"
 git push
 ```
@@ -105,7 +105,7 @@ git push
 cd /etc/nixos
 sudo nix flake update
 git add .
-sudo nixos-rebuild switch --flake /etc/nixos#nixos
+sudo nixos-rebuild switch --flake /etc/nixos#shaonix
 nh clean all --keep 3
 git commit -m "update"
 git push
