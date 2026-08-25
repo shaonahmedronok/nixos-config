@@ -94,20 +94,14 @@ sudo nixos-rebuild switch --flake /etc/nixos#nixos
 ```bash
 cd /etc/nixos
 # edit whatever file
-git add .
 sudo nixos-rebuild switch --flake /etc/nixos#shaonix
-git commit -m "what changed"
-git push
 ```
 
 **Monthly update:**
 ```bash
 cd /etc/nixos
 sudo nix flake update
-git add .
 sudo nixos-rebuild switch --flake /etc/nixos#shaonix
 nh clean all --keep 3
-git commit -m "update"
-git push
 ```
 ---
