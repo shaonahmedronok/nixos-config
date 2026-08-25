@@ -35,37 +35,6 @@
 
 <div align="center">
 
-## Structure
-
-</div>
-
-<pre>
-/etc/nixos/
-
-├── configuration.nix
-├── flake.lock
-├── flake.nix
-├── general.nix
-├── gtk.nix
-├── hardware-configuration.nix
-├── home-default.nix
-├── home-niri.nix
-├── nix.nix
-├── nixos-niri.nix
-├── pipewire.nix
-├── programs.nix
-├── scripts.nix
-├── theme.nix
-└── wallpaper.jpg
-
-├── docs/                                
-├── asset/                               
-</pre>
-
----
-
-<div align="center">
-
 ## Apply
 
 </div>
