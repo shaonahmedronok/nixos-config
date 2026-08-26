@@ -2,7 +2,7 @@
 
 [![NixOS](https://img.shields.io/badge/NixOS-26.05-FDF6E3?style=for-the-badge&logo=nixos&logoColor=FFFFFF&labelColor=458588)](https://nixos.org)
 [![Niri](https://img.shields.io/badge/Niri-Wayland-FDF6E3?style=for-the-badge&labelColor=458588)](https://github.com/YaLTeR/niri)
-[![Noctalia Shell](https://img.shields.io/badge/Noctalia-Shell-FDF6E3?style=for-the-badge&labelColor=458588)](https://github.com/noctalia-dev/noctalia-shell)[![Flakes](https://img.shields.io/badge/Flakes-Enabled-FDF6E3?style=for-the-badge&logo=nixos&logoColor=FFFFFF&labelColor=458588)](https://nixos.wiki/wiki/Flakes)
+[![Flakes](https://img.shields.io/badge/Flakes-Enabled-FDF6E3?style=for-the-badge&logo=nixos&logoColor=FFFFFF&labelColor=458588)](https://nixos.wiki/wiki/Flakes)
 [![Home Manager](https://img.shields.io/badge/Home_Manager-26.05-FDF6E3?style=for-the-badge&logoColor=000000&labelColor=458588)](https://nix-community.github.io/home-manager/)
 
 [![Website](https://img.shields.io/badge/shaon.neocities.org-e089a1?style=for-the-badge&labelColor=458588)](https://shaon.neocities.org)
