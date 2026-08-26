@@ -280,6 +280,8 @@ $WEEK" -t 4000
       Alt+N               Network status
       Alt+A               Audio info
       Alt+K               THIS cheatsheet
+      ── Language & Input ────────────────────────────
+      Ctrl+Space          Change system keyboard layout
       ── Screen ────────────────────────────
       Mod+O               OCR (copy text from screen)
       Mod+P               Colour picker
