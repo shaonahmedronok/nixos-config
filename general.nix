@@ -5,8 +5,6 @@
     usbutils
     git
     adwaita-icon-theme
-    apple-cursor
-    wtype
     xwayland-satellite
     qt5.qtwayland
     qt6.qtwayland
@@ -25,7 +23,6 @@
     unzip
     p7zip
     keepassxc
-    wf-recorder
     slurp
     grim
     wlsunset
@@ -33,13 +30,8 @@
     polkit_gnome
     networkmanagerapplet
     nh
-    ncdu
-    dysk
-    gnome-disk-utility
-    nix-output-monitor
     fd
     zathura
-    img2pdf
     ripgrep
     yt-dlp
     libnotify       # notify-send for all scripts
@@ -55,7 +47,6 @@
   services.udisks2.enable               = true;
   services.avahi.enable                 = true;
   services.avahi.nssmdns4               = true;
-  services.power-profiles-daemon.enable = true;
   programs.fish.enable                  = true;
 
   zramSwap.enable = true;
