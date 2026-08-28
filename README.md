@@ -23,11 +23,8 @@ sudo nixos-generate-config
 git clone https://github.com/shaonahmedronok/shaonix /tmp/nixconf
 
 # 3. Copy everything EXCEPT hardware-configuration.nix
-sudo cp -r /tmp/nixconf/modules /etc/nixos/
+namely,
 sudo cp /tmp/nixconf/flake.nix /etc/nixos/
-sudo cp /tmp/nixconf/flake.lock /etc/nixos/
-sudo cp /tmp/nixconf/theme.nix /etc/nixos/
-sudo cp /tmp/nixconf/wallpaper.jpg /etc/nixos/
 
 # 4. Track and rebuild
 cd /etc/nixos && git init && git add .
