@@ -4,6 +4,7 @@
     nautilus
     usbutils
     git
+    google-chrome 
     adwaita-icon-theme
     xwayland-satellite
     qt5.qtwayland
