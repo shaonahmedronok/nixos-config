@@ -13,8 +13,6 @@
 
 <div align="center">
 
-## Apply
-
 </div>
 
 **First time on a new machine:**
