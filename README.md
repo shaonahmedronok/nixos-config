@@ -11,28 +11,6 @@
 
 ---
 
-
-## System
-
-</div>
-
-| | |
-|---|---|
-| **OS** | NixOS 26.05 (Yarara) |
-| **WM** | Niri (Wayland) |
-| **Terminal** | Kitty |
-| **Shell** | Fish (default) + Bash |
-| **Editor** | Helix |
-| **Launcher** | Fuzzel |
-| **Clipboard** | cliphist + wl-clipboard |
-| **Screen Lock** | Hyprlock |
-| **Warm Light** | wlsunset |
-| **File Manager** | Yazi + nautilus |
-| **Font** | JetBrainsMono Nerd Font |
-| **Swap** | zram (3.8G, priority 5) + disk swapfile (8G, priority 0) |
-
----
-
 <div align="center">
 
 ## Apply
