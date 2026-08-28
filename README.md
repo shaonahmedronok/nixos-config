@@ -35,7 +35,7 @@ cd /etc/nixos && git init && git add .
 sudo nixos-rebuild switch --flake /etc/nixos#shaonix
 ```
 
-**Daily use — after any edit:**
+**Daily use (after any edit):**
 ```bash
 cd /etc/nixos
 # edit whatever file
