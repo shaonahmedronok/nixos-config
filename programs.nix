@@ -43,7 +43,6 @@
     };
   };
 
-  
 
   programs.kitty = {
     enable = true;
@@ -85,7 +84,6 @@ color15 = "#000000";
     };
   };
 
-
   programs.fuzzel = {
     enable = true;
     settings = {
@@ -98,8 +96,7 @@ colors = {
   selection-text = "000000ff";
   border         = "458588ff";
 };
-
-      
+     
       main = {
         font     = lib.mkForce "JetBrainsMono Nerd Font:size=16";
         lines    = 12;
@@ -112,8 +109,6 @@ colors = {
       };
     };
   };
-
-
 
 programs.imv = {
   enable = true;
@@ -133,8 +128,6 @@ programs.imv = {
       };
     };
   };
-
-
 
 
 programs.helix = {
@@ -204,8 +197,6 @@ programs.helix = {
 };
 
 
-
-
   home.file.".config/yazi/yazi.toml".text = ''
     [mgr]
     show_hidden = true
@@ -247,8 +238,6 @@ programs.helix = {
     mime = "application/xhtml+xml"
     use = "browser"
   '';
-
-
 
 
   home.file.".config/yazi/theme.toml".text = ''

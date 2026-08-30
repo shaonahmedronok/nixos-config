@@ -1,4 +1,4 @@
-{ config, pkgs, lib, themeNoHash, inputs, ... }:
+{ config, pkgs, lib, ... }:
 {
   imports = [
   ./nix.nix
@@ -32,8 +32,6 @@
   };
 
 
-
-
   services.xserver.xkb = {
     layout  = "us";
     variant = "";
@@ -63,7 +61,6 @@
   services.gnome.gnome-keyring.enable = true;
 
 
-
 services.greetd = {
   enable = true;
   settings = {
@@ -75,13 +72,11 @@ services.greetd = {
 };
 
 
-
   fonts.packages = with pkgs; [
     noto-fonts
     noto-fonts-color-emoji
     nerd-fonts.jetbrains-mono
   ];
-
 
 fonts.fontconfig = {
   defaultFonts = {
@@ -89,8 +84,6 @@ fonts.fontconfig = {
     serif     = [ "Noto Serif" "Noto Serif Bengali" ];
   };
 };
-
-
 
 i18n.inputMethod = {
   type = "fcitx5";
@@ -101,10 +94,7 @@ i18n.inputMethod = {
     fcitx5-gtk
   ];
 };
-
-
-
-  
+ 
 
   swapDevices = [
   {
@@ -116,9 +106,6 @@ i18n.inputMethod = {
 
 
 
-  # Written to /etc/environment — PAM propagates this to the systemd user
-  # session, so every app niri-session launches (KeepassXC, Chrome, Thunar)
-  # receives these variables.
   environment.sessionVariables = {
     NIXOS_OZONE_WL                    = "1";
     XDG_CURRENT_DESKTOP               = "niri:GNOME";
