@@ -1,4 +1,4 @@
-{ config, pkgs, lib, theme, themeNoHash, ... }:
+{ config, pkgs, lib, ... }:
 {
 
 
@@ -52,15 +52,15 @@ layout {
         bottom 8
     }
     focus-ring {
-        width 3
-        active-color   "#${themeNoHash.base0B}"
-        inactive-color "#${themeNoHash.base01}"
-    }
-    border {
-        width 3
-        active-color   "#${themeNoHash.base0D}"
-        inactive-color "#${themeNoHash.base01}"
-    }
+    width 3
+    active-color   "#458588"
+    inactive-color "#D9D3C3"
+}
+border {
+    width 3
+    active-color   "#458588"
+    inactive-color "#D9D3C3"
+}
 }
 
 
@@ -213,24 +213,26 @@ window-rule {
         brightness  = 0.8;
         contrast    = 0.9;
       }];
-      input-field = [{
+
+input-field = [{
         size              = "250, 55";
         position          = "0, -80";
         monitor           = "";
         dots_center       = true;
         fade_on_empty     = false;
         outline_thickness = 3;
-        outer_color       = "rgb(${themeNoHash.base0B})";
-        inner_color       = "rgb(${themeNoHash.base00})";
-        font_color        = "rgb(${themeNoHash.base06})";
+        outer_color       = "rgb(458588)";
+        inner_color       = "rgb(FDF6E3)";
+        font_color        = "rgb(000000)";
         placeholder_text  = "<i>Password...</i>";
         shadow_passes     = 2;
         halign            = "center";
         valign            = "center";
       }];
+
       label = [{
         text        = "$TIME";
-        color       = "rgba(${themeNoHash.base06}ff)";
+        color       = "rgba(000000ff)";
         font_size   = 52;
         font_family = "JetBrainsMono Nerd Font";
         position    = "0, 80";
@@ -243,6 +245,12 @@ window-rule {
   services.mako = {
   enable = true;
   settings = {
+
+      background-color = "#FDF6E3";
+text-color       = "#000000";
+border-color     = "#458588";
+
+      
     anchor           = "top-center";
     margin           = "10";
     padding          = "10,16";

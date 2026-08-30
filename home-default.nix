@@ -12,15 +12,6 @@
   home.stateVersion  = "26.05";
   programs.home-manager.enable = true;
 
-  stylix.targets.gtk.enable      = false;
-  stylix.targets.niri.enable     = false;
-  stylix.targets.qt.enable       = false;
-  stylix.targets.kitty.enable    = true;
-  stylix.targets.helix.enable    = true;
-  stylix.targets.hyprlock.enable = false;
-  stylix.targets.mpv.enable      = false;
-  stylix.targets.gnome.enable    = false;
-  stylix.targets.fuzzel.enable   = true;
 
   programs.bash = {
     enable    = true;

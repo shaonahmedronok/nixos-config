@@ -1,4 +1,4 @@
-{ config, pkgs, lib, theme, themeNoHash, ... }:
+{ config, pkgs, lib, ... }:
 {
   programs.mpv = {
     enable = true;
@@ -48,6 +48,29 @@
   programs.kitty = {
     enable = true;
     settings = {
+
+      background             = "#FDF6E3";
+foreground             = "#000000";
+selection_background   = "#D9D3C3";
+selection_foreground   = "#000000";
+cursor                 = "#458588";
+color0  = "#FDF6E3";
+color1  = "#CC3333";
+color2  = "#458588";
+color3  = "#9A7D0A";
+color4  = "#458588";
+color5  = "#e089a1";
+color6  = "#2E8B84";
+color7  = "#000000";
+color8  = "#999999";
+color9  = "#CC3333";
+color10 = "#458588";
+color11 = "#9A7D0A";
+color12 = "#458588";
+color13 = "#e089a1";
+color14 = "#2E8B84";
+color15 = "#000000";
+      
     window_padding_width    = 10;
     cursor_shape            = "block";
     font_family             = "JetBrainsMono Nerd Font";
@@ -66,6 +89,17 @@
   programs.fuzzel = {
     enable = true;
     settings = {
+
+colors = {
+  background     = "FDF6E3ff";
+  text           = "000000ff";
+  match          = "458588ff";
+  selection      = "D9D3C3ff";
+  selection-text = "000000ff";
+  border         = "458588ff";
+};
+
+      
       main = {
         font     = lib.mkForce "JetBrainsMono Nerd Font:size=16";
         lines    = 12;
@@ -79,15 +113,18 @@
     };
   };
 
-  programs.imv = {
-    enable = true;
-    settings = {
-      options = {
-        background               = themeNoHash.base00;
-        overlay_text_color       = themeNoHash.base06;
-        overlay_background_color = themeNoHash.base01;
-        overlay_font             = "JetBrainsMono Nerd Font:12";
-      };
+
+
+programs.imv = {
+  enable = true;
+  settings = {
+    options = {
+      background               = "FDF6E3";
+      overlay_text_color       = "000000";
+      overlay_background_color = "D9D3C3";
+      overlay_font             = "JetBrainsMono Nerd Font:12";
+    };
+
       binds = {
         "<Ctrl+p>"       = ''exec lp "$imv_current_file"'';
         "<Ctrl+x>"       = ''exec rm "$imv_current_file"; quit'';
@@ -105,6 +142,7 @@ programs.helix = {
   defaultEditor = true;
 
   settings = {
+    theme = "solarized_light";
     editor = {
       line-number = "relative";
       mouse = true;
@@ -182,7 +220,7 @@ programs.helix = {
         { run = 'imv "$@"', orphan = true, for = "unix" },
     ]
     play_audio = [
-        { run = 'killall -q mpv; mpv --force-window --no-resume-playback "$@"', desc = "Play Audio" }
+    { run = 'pkill -q mpv; mpv --force-window --no-resume-playback "$@"', desc = "Play Audio" }
     ]
     
     open_pdf = [
@@ -210,88 +248,91 @@ programs.helix = {
     use = "browser"
   '';
 
+
+
+
   home.file.".config/yazi/theme.toml".text = ''
     [mgr]
-    cwd             = { fg = "${theme.base0B}", bold = true }
-    hovered         = { fg = "${theme.base00}", bg = "${theme.base0B}" }
-    find_keyword    = { fg = "${theme.base0B}", bold = true }
-    find_position   = { fg = "${theme.base09}", bg = "reset", bold = true }
-    marker_copied   = { fg = "${theme.base0B}", bg = "${theme.base0B}" }
-    marker_cut      = { fg = "${theme.base08}", bg = "${theme.base08}" }
-    marker_selected = { fg = "${theme.base0D}", bg = "${theme.base0D}" }
-    count_copied    = { fg = "${theme.base00}", bg = "${theme.base0B}" }
-    count_cut       = { fg = "${theme.base00}", bg = "${theme.base08}" }
-    count_selected  = { fg = "${theme.base00}", bg = "${theme.base0D}" }
+    cwd             = { fg = "#458588", bold = true }
+    hovered         = { fg = "#FDF6E3", bg = "#458588" }
+    find_keyword    = { fg = "#458588", bold = true }
+    find_position   = { fg = "#C67F3A", bg = "reset", bold = true }
+    marker_copied   = { fg = "#458588", bg = "#458588" }
+    marker_cut      = { fg = "#CC3333", bg = "#CC3333" }
+    marker_selected = { fg = "#458588", bg = "#458588" }
+    count_copied    = { fg = "#FDF6E3", bg = "#458588" }
+    count_cut       = { fg = "#FDF6E3", bg = "#CC3333" }
+    count_selected  = { fg = "#FDF6E3", bg = "#458588" }
     border_symbol   = "│"
-    border_style    = { fg = "${theme.base03}" }
+    border_style    = { fg = "#999999" }
 
     [indicator]
     preview = { underline = true }
 
     [tabs]
-    active   = { fg = "${theme.base00}", bg = "${theme.base0B}", bold = true }
-    inactive = { fg = "${theme.base04}", bg = "${theme.base01}" }
+    active   = { fg = "#FDF6E3", bg = "#458588", bold = true }
+    inactive = { fg = "#8B7355", bg = "#D9D3C3" }
 
     [status]
     separator_open  = ""
     separator_close = ""
-    separator_style = { fg = "${theme.base01}", bg = "${theme.base01}" }
-    mode_normal     = { fg = "${theme.base00}", bg = "${theme.base0B}", bold = true }
-    mode_select     = { fg = "${theme.base00}", bg = "${theme.base0B}", bold = true }
-    mode_unset      = { fg = "${theme.base00}", bg = "${theme.base0D}", bold = true }
-    progress_label  = { fg = "${theme.base06}", bold = true }
-    progress_normal = { fg = "${theme.base0D}", bg = "${theme.base01}" }
-    progress_error  = { fg = "${theme.base08}", bg = "${theme.base01}" }
-    permissions_t   = { fg = "${theme.base09}" }
-    permissions_r   = { fg = "${theme.base0B}" }
-    permissions_w   = { fg = "${theme.base08}" }
-    permissions_x   = { fg = "${theme.base0D}" }
-    permissions_s   = { fg = "${theme.base03}" }
+    separator_style = { fg = "#D9D3C3", bg = "#D9D3C3" }
+    mode_normal     = { fg = "#FDF6E3", bg = "#458588", bold = true }
+    mode_select     = { fg = "#FDF6E3", bg = "#458588", bold = true }
+    mode_unset      = { fg = "#FDF6E3", bg = "#458588", bold = true }
+    progress_label  = { fg = "#000000", bold = true }
+    progress_normal = { fg = "#458588", bg = "#D9D3C3" }
+    progress_error  = { fg = "#CC3333", bg = "#D9D3C3" }
+    permissions_t   = { fg = "#C67F3A" }
+    permissions_r   = { fg = "#458588" }
+    permissions_w   = { fg = "#CC3333" }
+    permissions_x   = { fg = "#458588" }
+    permissions_s   = { fg = "#999999" }
 
     [input]
-    border   = { fg = "${theme.base09}" }
+    border   = { fg = "#C67F3A" }
     title    = {}
     value    = {}
     selected = { reversed = true }
 
     [select]
-    border   = { fg = "${theme.base09}" }
-    active   = { fg = "${theme.base0B}", bold = true }
+    border   = { fg = "#C67F3A" }
+    active   = { fg = "#458588", bold = true }
     inactive = {}
 
     [tasks]
-    border  = { fg = "${theme.base09}" }
+    border  = { fg = "#C67F3A" }
     title   = {}
     hovered = { underline = true }
 
     [which]
     cols            = 3
-    mask            = { bg = "${theme.base01}" }
-    cand            = { fg = "${theme.base0B}" }
-    rest            = { fg = "${theme.base03}" }
-    desc            = { fg = "${theme.base06}" }
+    mask            = { bg = "#D9D3C3" }
+    cand            = { fg = "#458588" }
+    rest            = { fg = "#999999" }
+    desc            = { fg = "#000000" }
     separator       = "  "
-    separator_style = { fg = "${theme.base03}" }
+    separator_style = { fg = "#999999" }
 
     [notify]
-    title_info  = { fg = "${theme.base0B}" }
-    title_warn  = { fg = "${theme.base0A}" }
-    title_error = { fg = "${theme.base08}" }
+    title_info  = { fg = "#458588" }
+    title_warn  = { fg = "#9A7D0A" }
+    title_error = { fg = "#CC3333" }
 
     [filetype]
     rules = [
-      { mime = "image/*",         fg = "${theme.base0D}" },
-      { mime = "video/*",         fg = "${theme.base09}" },
-      { mime = "audio/*",         fg = "${theme.base0B}" },
-      { mime = "text/*",          fg = "${theme.base06}" },
-      { mime = "inode/directory", fg = "${theme.base09}", bold = true },
-      { mime = "*.nix",           fg = "${theme.base0D}" },
-      { mime = "*.rs",            fg = "${theme.base09}" },
-      { mime = "*.py",            fg = "${theme.base0A}" },
-      { mime = "*.sh",            fg = "${theme.base0B}" },
-      { mime = "*.md",            fg = "${theme.base06}" },
-      { mime = "*.toml",          fg = "${theme.base09}" },
-      { mime = "*.json",          fg = "${theme.base0A}" },
+      { mime = "image/*",         fg = "#458588" },
+      { mime = "video/*",         fg = "#C67F3A" },
+      { mime = "audio/*",         fg = "#458588" },
+      { mime = "text/*",          fg = "#000000" },
+      { mime = "inode/directory", fg = "#C67F3A", bold = true },
+      { mime = "*.nix",           fg = "#458588" },
+      { mime = "*.rs",            fg = "#C67F3A" },
+      { mime = "*.py",            fg = "#9A7D0A" },
+      { mime = "*.sh",            fg = "#458588" },
+      { mime = "*.md",            fg = "#000000" },
+      { mime = "*.toml",          fg = "#C67F3A" },
+      { mime = "*.json",          fg = "#9A7D0A" },
     ]
   '';
 }

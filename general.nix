@@ -13,7 +13,6 @@
     swaybg
     mako
     pulseaudio
-    psmisc
     wiremix
     wireplumber
     wl-clipboard
