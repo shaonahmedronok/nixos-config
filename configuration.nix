@@ -6,7 +6,6 @@
   ./gtk.nix
   ./nixos-niri.nix
   ./general.nix
-  inputs.helium.nixosModules.default
 ];
 
   boot.loader.systemd-boot.enable      = true;
@@ -103,14 +102,6 @@ i18n.inputMethod = {
   ];
 };
 
-
-programs.helium = {
-  enable = true;
-  flags = [
-    "--ozone-platform-hint=auto"
-    "--enable-wayland-ime"
-  ];
-};
 
   stylix = {
     enable   = true;

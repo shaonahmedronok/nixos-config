@@ -114,7 +114,7 @@ window-rule {
         Mod+Return      { spawn "kitty"; }
         Mod+Space       { spawn "fuzzel"; }
         Mod+W { spawn "bash" "/home/shaonix/.local/bin/wallpaper-cycle.sh"; }
-        Mod+B { spawn "helium"; }
+        Mod+B { spawn "google-chrome-stable"; }
         Mod+V           { spawn "sh" "-c" "cliphist list | fuzzel --dmenu | cliphist decode | wl-copy"; }
 
         // ── Windows ───────────────────────────────────────────────────

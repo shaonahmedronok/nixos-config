@@ -21,7 +21,6 @@
     wl-clip-persist
     yazi
     udiskie
-    unzip
     p7zip
     keepassxc
     slurp

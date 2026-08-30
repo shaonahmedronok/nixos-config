@@ -245,7 +245,7 @@ $WEEK" -t 4000
       ── Apps ──────────────────────────────
       Mod+Return          Terminal (kitty)
       Mod+Space           App launcher (fuzzel)
-      Mod+B               Helium
+      Mod+B               Google Chrome
       Mod+V               Clipboard history
       ── Windows ───────────────────────────
       Mod+C               Close window

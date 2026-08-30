@@ -11,12 +11,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    helium = {
-  url = "github:oxcl/nix-flake-helium-browser";
-  inputs.nixpkgs.follows = "nixpkgs";
-};
   };
-  outputs = { self, nixpkgs, home-manager, stylix, helium, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, stylix, ... }@inputs:
   let
     themeLib = import ./theme.nix;
   in {

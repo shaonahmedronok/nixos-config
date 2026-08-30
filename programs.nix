@@ -190,7 +190,7 @@ programs.helix = {
 ]
 
     [[opener.browser]]
-    run = 'helium "$@"'
+    run = 'google-chrome-stable "$@"'
     orphan = true
     desc = "Open in Chrome"
     for = "unix"
