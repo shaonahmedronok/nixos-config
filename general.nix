@@ -30,7 +30,6 @@
     nh
     zathura
     ripgrep
-    yt-dlp
     libnotify       # notify-send for all scripts
     tesseract       # OCR script
   ];
