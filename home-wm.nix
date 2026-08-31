@@ -260,7 +260,7 @@ border-color     = "#458588";
     border-radius    = 8;
     default-timeout  = 4000;
     layer            = "overlay";
-    font = lib.mkForce "Iosevka 12";
+    font = lib.mkForce "Iosevka 15";
   };
 };
 }

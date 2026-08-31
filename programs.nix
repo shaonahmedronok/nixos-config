@@ -47,7 +47,7 @@ programs.alacritty = {
   enable = true;
   settings = {
     font = {
-      size = 16;
+      size = 18;
       normal = {
         family = "Iosevka";
         style = "Regular";
@@ -123,7 +123,7 @@ colors = {
 };
      
       main = {
-        font     = lib.mkForce "Iosevka:size=16";
+        font     = lib.mkForce "Iosevka:size=18";
         lines    = 12;
         width    = 45;
         terminal = "alacritty";
@@ -142,7 +142,7 @@ programs.imv = {
       background               = "FDF6E3";
       overlay_text_color       = "000000";
       overlay_background_color = "D9D3C3";
-      overlay_font             = "Iosevka:12";
+      overlay_font             = "Iosevka:15";
     };
 
       binds = {
