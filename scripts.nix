@@ -1,6 +1,5 @@
 { ... }:
 {
-  # ── Screenshot ────────────────────────────────────────────────────────────
   home.file.".local/bin/screenshot-capture-wayland.sh" = {
     executable = true;
     text = ''
@@ -24,7 +23,6 @@
     '';
   };
 
-  # ── Wlsunset colour temperature ───────────────────────────────────────────
   home.file.".local/bin/wlsunset-adjust.sh" = {
     executable = true;
     text = ''
@@ -50,10 +48,6 @@
     '';
   };
 
-  # ── Volume control with OSD notification ─────────────────────────────────
-  # This is what makes the physical AK820 knob show feedback.
-  # The XF86Audio* keycodes go through niri → pactl → wireplumber.
-  # wireplumber must be running (it is, via services.pipewire on NixOS).
   home.file.".local/bin/volume-control.sh" = {
     executable = true;
     text = ''
@@ -86,8 +80,6 @@
     '';
   };
 
-
-  # ── System status ─────────────────────────────────────────────────────────
   home.file.".local/bin/system-status.sh" = {
     executable = true;
     text = ''
@@ -106,8 +98,6 @@ Temp:   $CPU_TEMP
 Uptime: $UPTIME" -t 6000
     '';
   };
-
-
 
 home.file.".local/bin/wallpaper-cycle.sh" = {
   executable = true;
@@ -137,11 +127,6 @@ notify-send "🖼 Wallpaper" "$(basename $WALL)" -t 1500
   '';
 };
 
-
-
-
-
-  # ── Network status ────────────────────────────────────────────────────────
   home.file.".local/bin/network-status.sh" = {
     executable = true;
     text = ''
@@ -164,7 +149,6 @@ Ping: ${PING:-timeout}ms" -t 4000
     '';
   };
 
-  # ── Audio info ────────────────────────────────────────────────────────────
   home.file.".local/bin/audio-info.sh" = {
     executable = true;
     text = ''
@@ -179,7 +163,6 @@ In:  $SOURCE" -t 4000
     '';
   };
 
-  # ── Date / time ───────────────────────────────────────────────────────────
   home.file.".local/bin/show-datetime.sh" = {
     executable = true;
     text = ''
@@ -193,7 +176,6 @@ $WEEK" -t 4000
     '';
   };
 
-  # ── OCR text extraction ───────────────────────────────────────────────────
   home.file.".local/bin/ocr-extract.sh" = {
     executable = true;
     text = ''
@@ -211,7 +193,6 @@ $WEEK" -t 4000
     '';
   };
 
-  # ── Colour picker ─────────────────────────────────────────────────────────
   home.file.".local/bin/color-pick.sh" = {
     executable = true;
     text = ''
@@ -227,20 +208,10 @@ $WEEK" -t 4000
     '';
   };
 
-
-
-
-
-# ── Keybinding cheatsheet (the beast) ────────────────────────────────────
-  # Press Alt+K (or whatever you bind) → fuzzel dmenu popup showing all binds
   home.file.".local/bin/keybinds-cheatsheet.sh" = {
     executable = true;
     text = ''
       #!/bin/bash
-      # Show all keybindings as a fuzzel dmenu cheatsheet.
-      # Selecting an entry does nothing — it's read-only reference.
-      # Press Escape to close.
-
       CHEATSHEET=$(cat << 'KEYS'
       ── Apps ──────────────────────────────
       Mod+Return          Terminal (kitty)
@@ -290,7 +261,6 @@ $WEEK" -t 4000
       Mod+Shift+E         Quit niri
       KEYS
       )
-
       echo "$CHEATSHEET" | fuzzel --dmenu \
         --prompt="  Keybinds — Esc to close  " \
         --lines=22 \

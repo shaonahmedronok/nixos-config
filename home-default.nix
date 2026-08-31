@@ -1,8 +1,7 @@
 { config, pkgs, lib, ... }:
 {
   imports = [
-    ./home-niri.nix
-    # noctalia.nix removed — ditched
+    ./home-wm.nix
     ./programs.nix
     ./scripts.nix
   ];

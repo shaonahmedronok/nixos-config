@@ -4,7 +4,7 @@
   ./nix.nix
   ./pipewire.nix
   ./gtk.nix
-  ./nixos-niri.nix
+  ./nixos-wm.nix
   ./general.nix
 ];
 
