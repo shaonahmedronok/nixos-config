@@ -43,46 +43,71 @@
     };
   };
 
+programs.alacritty = {
+  enable = true;
+  settings = {
+    font = {
+      size = 16;
+      normal = {
+        family = "JetBrainsMono Nerd Font";
+        style = "Regular";
+      };
+      bold = {
+        family = "JetBrainsMono Nerd Font";
+        style = "Bold";
+      };
+      italic = {
+        family = "JetBrainsMono Nerd Font";
+        style = "Italic";
+      };
+      bold_italic = {
+        family = "JetBrainsMono Nerd Font";
+        style = "Bold Italic";
+      };
+    };
 
-  programs.kitty = {
-    enable = true;
-    settings = {
+    window.padding = {
+      x = 10;
+      y = 10;
+    };
 
-      background             = "#FDF6E3";
-foreground             = "#000000";
-selection_background   = "#D9D3C3";
-selection_foreground   = "#000000";
-cursor                 = "#458588";
-color0  = "#FDF6E3";
-color1  = "#CC3333";
-color2  = "#458588";
-color3  = "#9A7D0A";
-color4  = "#458588";
-color5  = "#e089a1";
-color6  = "#2E8B84";
-color7  = "#000000";
-color8  = "#999999";
-color9  = "#CC3333";
-color10 = "#458588";
-color11 = "#9A7D0A";
-color12 = "#458588";
-color13 = "#e089a1";
-color14 = "#2E8B84";
-color15 = "#000000";
-      
-    window_padding_width    = 10;
-    cursor_shape            = "block";
-    font_family             = "JetBrainsMono Nerd Font";
-    font_size               = 16;
-    bold_font_family        = "JetBrainsMono Nerd Font Bold";
-    italic_font_family      = "JetBrainsMono Nerd Font Italic";
-    bold_italic_font_family = "JetBrainsMono Nerd Font Bold Italic";
-    cursor_trail            = 3;
-      enable_audio_bell   = "no";
-      allow_remote_control = "yes";
-      shell_integration   = "enabled";
+    cursor.style.shape = "Block";
+
+    colors = {
+      primary = {
+        background = "#FDF6E3";
+        foreground = "#000000";
+      };
+      selection = {
+        text = "#000000";
+        background = "#D9D3C3";
+      };
+      cursor = {
+        cursor = "#458588";
+      };
+      normal = {
+        black   = "#FDF6E3"; # color0
+        red     = "#CC3333"; # color1
+        green   = "#458588"; # color2
+        yellow  = "#9A7D0A"; # color3
+        blue    = "#458588"; # color4
+        magenta = "#e089a1"; # color5
+        cyan    = "#2E8B84"; # color6
+        white   = "#000000"; # color7
+      };
+      bright = {
+        black   = "#999999"; # color8
+        red     = "#CC3333"; # color9
+        green   = "#458588"; # color10
+        yellow  = "#9A7D0A"; # color11
+        blue    = "#458588"; # color12
+        magenta = "#e089a1"; # color13
+        cyan    = "#2E8B84"; # color14
+        white   = "#000000"; # color15
+      };
     };
   };
+};
 
   programs.fuzzel = {
     enable = true;
@@ -101,7 +126,7 @@ colors = {
         font     = lib.mkForce "JetBrainsMono Nerd Font:size=16";
         lines    = 12;
         width    = 45;
-        terminal = "kitty";
+        terminal = "alacritty";
       };
       border = {
         width  = 2;
@@ -202,7 +227,7 @@ programs.helix = {
     show_hidden = true
     [opener]
     edit = [
-        { run = 'kitty -e hx "$@"', orphan = true },
+        { run = 'alacritty -e hx "$@"', orphan = true },
     ]
     open = [
         { run = 'xdg-open "$@"', desc = "Open", for = "unix" },

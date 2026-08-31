@@ -85,7 +85,7 @@
   xdg.desktopEntries.helix = {
     name        = "Helix";
     genericName = "Text Editor";
-    exec        = "kitty -e hx %F";
+    exec        = "alacritty -e hx %F";
     terminal    = false;
     categories  = [ "Utility" "TextEditor" ];
     mimeType    = [

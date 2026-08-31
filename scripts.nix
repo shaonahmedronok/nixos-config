@@ -214,7 +214,7 @@ $WEEK" -t 4000
       #!/bin/bash
       CHEATSHEET=$(cat << 'KEYS'
       ── Apps ──────────────────────────────
-      Mod+Return          Terminal (kitty)
+      Mod+Return          Terminal (Alacritty)
       Mod+Space           App launcher (fuzzel)
       Mod+B               Google Chrome
       Mod+V               Clipboard history

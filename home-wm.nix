@@ -111,7 +111,7 @@ window-rule {
 
     binds {
         // ── Apps ──────────────────────────────────────────────────────
-        Mod+Return      { spawn "kitty"; }
+        Mod+Return      { spawn "alacritty"; }
         Mod+Space       { spawn "fuzzel"; }
         Mod+W { spawn "bash" "/home/shaonix/.local/bin/wallpaper-cycle.sh"; }
         Mod+B { spawn "google-chrome-stable"; }
