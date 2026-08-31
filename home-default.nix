@@ -11,67 +11,72 @@
   home.stateVersion  = "26.05";
   programs.home-manager.enable = true;
 
-
-  programs.bash = {
+programs.bash = {
     enable    = true;
-    initExtra = "";
-    shellAliases = {
-      ls = "eza -l -a -a -h --icons";
-      ll = "eza -l -a -a -h --icons";
-    };
-  };
+    initExtra = ''
+      set -o vi
 
-  programs.fish = {
-    enable = true;
-    interactiveShellInit = ''
-      set fish_greeting
-      fish_vi_key_bindings
-      bind -M insert ctrl-backspace backward-kill-word
-      bind -M insert alt-backspace backward-kill-word
+      bind '"\C-h": backward-kill-word'
+      bind '"\e\C-?": backward-kill-word'
+      bind '"\C-l": clear-screen'
 
-      function fish_mode_prompt
-      end
+      __prompt() {
+        local last=$?
 
-      function fish_prompt
-        set -l last_status $status
+        local reset=$'\001\e[0m\002'
+        local bold_teal=$'\001\e[1;38;2;69;133;136m\002'
+        local pink=$'\001\e[38;2;224;137;161m\002'
+        local bold_green=$'\001\e[1;38;2;184;187;38m\002'
+        local bold_red=$'\001\e[1;38;2;204;51;51m\002'
+        local bold_cyan=$'\001\e[1;38;2;46;139;132m\002'
 
-        set_color --bold 458588
-        echo -n " "
-        set_color normal
+        local short_pwd
+        short_pwd=$(
+          pwd | sed "s|$HOME|~|" | awk -F'/' '{
+            out = ""
+            for (i = 1; i <= NF; i++) {
+              if (i == NF) {
+                out = out (out == "" ? "" : "/") $i
+              } else if ($i == "~") {
+                out = "~"
+              } else if ($i == "") {
+                true
+              } else {
+                out = out (out == "" ? "" : "/") substr($i, 1, 3)
+              }
+            }
+            print out
+          }'
+        )
 
-        if test -n "$IN_NIX_SHELL"
-          set_color --bold 2E8B84
-          echo -n "❄ "
-          set_color normal
-        end
+        PS1="''${bold_teal} ''${reset}"
 
-        set_color --bold 458588
-        echo -n (prompt_pwd --full-length-dirs 1 --dir-length 3)
-        set_color normal
+        if [ -n "''${IN_NIX_SHELL}" ]; then
+          PS1+="''${bold_cyan}❄ ''${reset}"
+        fi
 
-        if git rev-parse --git-dir >/dev/null 2>&1
-          set_color e089a1
-          echo -n "  "(git branch --show-current)
-          set_color normal
-        end
+        PS1+="''${bold_teal}''${short_pwd}''${reset}"
 
-        echo ""
+        local branch
+        branch=$(git branch --show-current 2>/dev/null)
+        if [ -n "''${branch}" ]; then
+          PS1+="''${pink}  ''${branch}''${reset}"
+        fi
 
-        if test $last_status -eq 0
-          set_color --bold b8bb26
+        PS1+=$'\n'
+
+        if [ "''${last}" -eq 0 ]; then
+          PS1+="''${bold_green}❯ ''${reset}"
         else
-          set_color --bold CC3333
-        end
-        echo -n "❯ "
-        set_color normal
-      end
+          PS1+="''${bold_red}❯ ''${reset}"
+        fi
+      }
 
-      function fish_right_prompt
-      end
+      PROMPT_COMMAND=__prompt
     '';
     shellAliases = {
-      ls  = "eza -l -a -a -h --icons";
-      ll  = "eza -l -a -a -h --icons";
+      ls  = "eza -l -a -a -h ";
+      ll  = "eza -l -a -a -h ";
       vim = "hx";
     };
   };
@@ -79,7 +84,6 @@
   programs.eza = {
     enable                = true;
     enableBashIntegration = true;
-    enableFishIntegration = true;
   };
 
   xdg.desktopEntries.helix = {

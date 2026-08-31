@@ -42,7 +42,7 @@
     description  = "shaonix";
     extraGroups  = [ "networkmanager" "wheel" "video" "input" "storage" "i2c" ];
     packages     = [];
-    shell        = pkgs.fish;
+    shell        = pkgs.bash;
   };
 
   security.pam.services.hyprlock = {};
@@ -74,8 +74,7 @@ services.greetd = {
 
   fonts.packages = with pkgs; [
     noto-fonts
-    noto-fonts-color-emoji
-    nerd-fonts.jetbrains-mono
+    iosevka
   ];
 
 fonts.fontconfig = {

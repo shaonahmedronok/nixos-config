@@ -35,6 +35,5 @@
   ];
 
   services.udisks2.enable               = true;
-  programs.fish.enable                  = true;
   zramSwap.enable = true;
 }

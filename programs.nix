@@ -15,14 +15,14 @@
       ytdl-raw-options      = "ignore-config=,sub-langs=\"en.*,^en\",write-subs=,write-auto-subs=";
       sub-visibility        = "yes";
       sub-auto              = "fuzzy";
-      sub-font              = "JetBrainsMono Nerd Font Mono";
+      sub-font              = "Iosevka";
       sub-font-size         = 33;
       sub-border-size       = 3;
       sub-shadow-offset     = 1;
       sub-pos               = 98;
       sub-align-y           = "bottom";
       sub-margin-y          = 20;
-      osd-font              = "JetBrainsMono Nerd Font";
+      osd-font              = "Iosevka";
       osd-font-size         = 28;
     };
     bindings = {
@@ -49,19 +49,19 @@ programs.alacritty = {
     font = {
       size = 16;
       normal = {
-        family = "JetBrainsMono Nerd Font";
+        family = "Iosevka";
         style = "Regular";
       };
       bold = {
-        family = "JetBrainsMono Nerd Font";
+        family = "Iosevka";
         style = "Bold";
       };
       italic = {
-        family = "JetBrainsMono Nerd Font";
+        family = "Iosevka";
         style = "Italic";
       };
       bold_italic = {
-        family = "JetBrainsMono Nerd Font";
+        family = "Iosevka";
         style = "Bold Italic";
       };
     };
@@ -123,7 +123,7 @@ colors = {
 };
      
       main = {
-        font     = lib.mkForce "JetBrainsMono Nerd Font:size=16";
+        font     = lib.mkForce "Iosevka:size=16";
         lines    = 12;
         width    = 45;
         terminal = "alacritty";
@@ -142,7 +142,7 @@ programs.imv = {
       background               = "FDF6E3";
       overlay_text_color       = "000000";
       overlay_background_color = "D9D3C3";
-      overlay_font             = "JetBrainsMono Nerd Font:12";
+      overlay_font             = "Iosevka:12";
     };
 
       binds = {

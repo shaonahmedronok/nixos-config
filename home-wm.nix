@@ -234,7 +234,7 @@ input-field = [{
         text        = "$TIME";
         color       = "rgba(000000ff)";
         font_size   = 52;
-        font_family = "JetBrainsMono Nerd Font";
+        font_family = "Iosevka";
         position    = "0, 80";
         halign      = "center";
         valign      = "center";
@@ -260,7 +260,7 @@ border-color     = "#458588";
     border-radius    = 8;
     default-timeout  = 4000;
     layer            = "overlay";
-    font = lib.mkForce "JetBrainsMono Nerd Font 12";
+    font = lib.mkForce "Iosevka 12";
   };
 };
 }
