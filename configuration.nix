@@ -238,12 +238,6 @@ in
 
     # Session variables (user-level)
     systemd.user.sessionVariables = {
-      NIXOS_OZONE_WL                     = "1";
-      XDG_CURRENT_DESKTOP                = "niri:GNOME";
-      XDG_SESSION_TYPE                   = "wayland";
-      XDG_SESSION_DESKTOP                = "niri";
-      QT_QPA_PLATFORM                    = "wayland;xcb";
-      QT_WAYLAND_DISABLE_WINDOWDECORATION  = "1";
       QT_IM_MODULE                       = "fcitx";
       XMODIFIERS                         = "@im=fcitx";
       GDK_BACKEND                        = "wayland,x11";
@@ -605,8 +599,8 @@ programs.bash = {
         PROMPT_COMMAND=__prompt
       '';
       shellAliases = {
-        ls  = "eza -l -a -a -h ";
-        ll  = "eza -l -a -a -h ";
+        ls  = "eza -l -a -a -h";
+        ll  = "eza -l -a -a -h";
         vim = "hx";
       };
     };
