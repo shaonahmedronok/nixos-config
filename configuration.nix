@@ -17,18 +17,15 @@ let
   '';
 in
 {
-  # ── Boot ─────────────────────────────────────────────────────────────
   boot.loader.systemd-boot.enable      = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages                  = pkgs.linuxPackages_latest;
   boot.kernelModules                   = [ "i2c-dev" ];
 
-  # ── Networking ───────────────────────────────────────────────────────
   networking.hostName              = "shaonix";
   networking.networkmanager.enable = true;
   networking.firewall.enable       = true;
 
-  # ── Locale / Time ────────────────────────────────────────────────────
   time.timeZone      = "Asia/Dhaka";
   i18n.defaultLocale = "en_US.UTF-8";
   i18n.extraLocaleSettings = {
@@ -43,7 +40,6 @@ in
     LC_TIME           = "en_US.UTF-8";
   };
 
-  # ── Input method (fcitx5 — system-level) ────────────────────────────
   i18n.inputMethod = {
     type   = "fcitx5";
     enable = true;
@@ -54,12 +50,10 @@ in
     ];
   };
 
-  # ── Keyboard ─────────────────────────────────────────────────────────
   services.xserver.xkb = {
     layout  = "us";
   };
 
-  # ── Users ─────────────────────────────────────────────────────────────
   users.users.shaonix = {
     isNormalUser = true;
     description  = "shaonix";
@@ -67,12 +61,10 @@ in
     shell        = pkgs.bash;
   };
 
-  # ── Security ─────────────────────────────────────────────────────────
   security.pam.services.hyprlock = {};
   security.polkit.enable         = true;
   security.rtkit.enable          = true;
 
-  # ── Hardware ─────────────────────────────────────────────────────────
   hardware.graphics = {
     enable        = true;
     extraPackages = [ pkgs.intel-media-driver ];
@@ -80,7 +72,6 @@ in
   hardware.cpu.intel.updateMicrocode = true;
   hardware.i2c.enable                = true;
 
-  # ── Audio (PipeWire) ─────────────────────────────────────────────────
   services.pipewire = {
     enable             = true;
     alsa.enable        = true;
@@ -94,7 +85,6 @@ in
     }];
   };
 
-  # ── Display / Wayland services ────────────────────────────────────────
   programs.niri.enable     = true;
   programs.xwayland.enable = true;
 
@@ -112,7 +102,6 @@ in
     };
   };
 
-  # ── Greeter ───────────────────────────────────────────────────────────
   services.greetd = {
     enable   = true;
     settings = {
@@ -123,12 +112,10 @@ in
     };
   };
 
-  # ── Desktop services ─────────────────────────────────────────────────
   services.gvfs.enable                = true;
   services.gnome.gnome-keyring.enable = true;
   services.udisks2.enable             = true;
 
-  # ── Fonts ─────────────────────────────────────────────────────────────
   fonts.packages = with pkgs; [
     noto-fonts
     iosevka
@@ -140,7 +127,6 @@ in
     };
   };
 
-  # ── Swap ─────────────────────────────────────────────────────────────
   swapDevices = [{
     device   = "/var/lib/swapfile";
     size     = 8 * 1024;    # 8 GiB in MiB
@@ -148,7 +134,6 @@ in
   }];
   zramSwap.enable = true;
 
-  # ── GTK / theming (system-wide) ──────────────────────────────────────
   environment.etc = {
     "xdg/gtk-3.0/settings.ini".text = gtksettings;
     "xdg/gtk-4.0/settings.ini".text = gtksettings;
@@ -170,7 +155,6 @@ in
     }];
   };
 
-  # ── Session environment ───────────────────────────────────────────────
   environment.sessionVariables = {
     NIXOS_OZONE_WL                     = "1";
     XDG_CURRENT_DESKTOP                = "niri:GNOME";
@@ -180,42 +164,28 @@ in
     QT_WAYLAND_DISABLE_WINDOWDECORATION  = "1";
   };
 
-  # ── System packages ───────────────────────────────────────────────────
   environment.systemPackages = with pkgs; [
-    # GTK theming
     theme-package
     icon-theme-package
     gtk3
     gtk4
     adwaita-qt
-
-    # Core desktop
     nautilus
     adwaita-icon-theme
     git
-    google-chrome
+    firefox
     xwayland-satellite
     qt5.qtwayland
     qt6.qtwayland
-
-    # Wayland utilities
     swaybg
     mako
     wl-clipboard
-    cliphist
-    wl-clip-persist
-
-    # Audio
     wiremix
     wireplumber
     pulseaudio
-
-    # Image / screen tools
     imagemagick
     slurp
     grim
-
-    # System tools
     wlsunset
     ddcutil
     polkit_gnome
@@ -231,19 +201,16 @@ in
     tesseract
   ];
 
-  # ── Home Manager Integration ──────────────────────────────────────────
   home-manager.users.shaonix = {
     home.stateVersion = "26.05";
     programs.home-manager.enable = true;
 
-    # Session variables (user-level)
     systemd.user.sessionVariables = {
       QT_IM_MODULE                       = "fcitx";
       XMODIFIERS                         = "@im=fcitx";
       GDK_BACKEND                        = "wayland,x11";
     };
 
-    # GTK (user-level)
     gtk = {
       enable    = true;
       iconTheme = {
@@ -254,14 +221,12 @@ in
       gtk4.extraConfig.gtk-application-prefer-dark-theme = 0;
     };
 
-    # Qt (user-level)
     qt = {
       enable             = true;
       platformTheme.name = lib.mkForce "gtk";
       style.name         = lib.mkForce "adwaita";
     };
 
-    # XDG MIME / desktop entries
     xdg.desktopEntries.helix = {
       name        = "Helix";
       genericName = "Text Editor";
@@ -289,7 +254,6 @@ in
       };
     };
 
-    # Niri WM config
     xdg.configFile."niri/config.kdl".text = ''
       input {
           keyboard {
@@ -378,8 +342,6 @@ in
       spawn-at-startup "mako"
       spawn-at-startup "swaybg" "-i" "/etc/nixos/wallpaper.jpg" "-m" "fill"
       spawn-at-startup "wlsunset" "-t" "4500" "-T" "4500"
-      spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
-      spawn-at-startup "wl-clip-persist" "--clipboard" "regular"
       spawn-at-startup "xwayland-satellite"
 
       binds {
@@ -387,8 +349,7 @@ in
           Mod+Return { spawn "alacritty"; }
           Mod+Space  { spawn "fuzzel"; }
           Mod+W      { spawn "bash" "/home/shaonix/.local/bin/wallpaper-cycle.sh"; }
-          Mod+B      { spawn "google-chrome-stable"; }
-          Mod+V      { spawn "sh" "-c" "cliphist list | fuzzel --dmenu | cliphist decode | wl-copy"; }
+          Mod+B      { spawn "firefox"; }
 
 // ── Windows ───────────────────────────────────────────────────
           Mod+C         { close-window; }
@@ -471,7 +432,6 @@ in
       }
     '';
 
-    # Hyprlock
     programs.hyprlock = {
       enable   = true;
       settings = {
@@ -513,7 +473,6 @@ in
       };
     };
 
-    # Mako notifications
     services.mako = {
       enable   = true;
       settings = {
@@ -532,8 +491,6 @@ in
         font             = lib.mkForce "Iosevka 15";
       };
     };
-
-    # Bash
 
 programs.bash = {
       enable    = true;
@@ -605,14 +562,12 @@ programs.bash = {
       };
     };
 
-    
 
     programs.eza = {
       enable                = true;
       enableBashIntegration = true;
     };
 
-    # Helix editor
     programs.helix = {
       enable        = true;
       defaultEditor = true;
@@ -675,7 +630,6 @@ programs.bash = {
       };
     };
 
-    # Alacritty
     programs.alacritty = {
       enable   = true;
       settings = {
@@ -716,7 +670,6 @@ programs.bash = {
       };
     };
 
-    # Fuzzel launcher
     programs.fuzzel = {
       enable   = true;
       settings = {
@@ -741,7 +694,6 @@ programs.bash = {
       };
     };
 
-    # imv image viewer
     programs.imv = {
       enable   = true;
       settings = {
@@ -760,7 +712,6 @@ programs.bash = {
       };
     };
 
-    # MPV
     programs.mpv = {
       enable   = true;
       config   = {
@@ -804,7 +755,6 @@ programs.bash = {
       };
     };
 
-    # Yazi file manager config
     home.file.".config/yazi/yazi.toml".text = ''
       [mgr]
       show_hidden = true
@@ -826,9 +776,9 @@ programs.bash = {
       ]
 
       [[opener.browser]]
-      run = 'google-chrome-stable "$@"'
+      run = 'firefox "$@"'
       orphan = true
-      desc = "Open in Chrome"
+      desc = "Open in Firefox"
       for = "unix"
 
       [open]
@@ -932,7 +882,6 @@ programs.bash = {
       ]
     '';
 
-    # Shell scripts (.local/bin)
     home.file.".local/bin/screenshot-capture-wayland.sh" = {
       executable = true;
       text = ''
@@ -1011,9 +960,6 @@ programs.bash = {
       '';
     };
  
-
-
-
 home.file.".local/bin/system-status.sh" = {
     executable = true;
     text = ''
@@ -1148,8 +1094,7 @@ home.file.".local/bin/system-status.sh" = {
       ── Apps ──────────────────────────────
       Mod+Return          Terminal (Alacritty)
       Mod+Space           App launcher (fuzzel)
-      Mod+B               Google Chrome
-      Mod+V               Clipboard history
+      Mod+B               Firefox
       ── Windows ───────────────────────────
       Mod+C               Close window
       Mod+F               Maximize column
@@ -1200,7 +1145,6 @@ home.file.".local/bin/system-status.sh" = {
   };
 };
 
-  # ── Nix settings ─────────────────────────────────────────────────────
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nixpkgs.config.allowUnfree          = true;
 
