@@ -40,16 +40,6 @@ in
     LC_TIME           = "en_US.UTF-8";
   };
 
-  i18n.inputMethod = {
-    type   = "fcitx5";
-    enable = true;
-    fcitx5.waylandFrontend = true;
-    fcitx5.addons = with pkgs; [
-      fcitx5-openbangla-keyboard
-      fcitx5-gtk
-    ];
-  };
-
   services.xserver.xkb = {
     layout  = "us";
   };
@@ -117,15 +107,8 @@ in
   services.udisks2.enable             = true;
 
   fonts.packages = with pkgs; [
-    noto-fonts
     iosevka
   ];
-  fonts.fontconfig = {
-    defaultFonts = {
-      sansSerif = [ "Noto Sans" "Noto Sans Bengali" ];
-      serif     = [ "Noto Serif" "Noto Serif Bengali" ];
-    };
-  };
 
   swapDevices = [{
     device   = "/var/lib/swapfile";
@@ -206,8 +189,6 @@ in
     programs.home-manager.enable = true;
 
     systemd.user.sessionVariables = {
-      QT_IM_MODULE                       = "fcitx";
-      XMODIFIERS                         = "@im=fcitx";
       GDK_BACKEND                        = "wayland,x11";
     };
 
@@ -345,18 +326,13 @@ in
       spawn-at-startup "xwayland-satellite"
 
       binds {
-// ── Apps ──────────────────────────────────────────────────────
           Mod+Return { spawn "alacritty"; }
           Mod+Space  { spawn "fuzzel"; }
           Mod+W      { spawn "bash" "/home/shaonix/.local/bin/wallpaper-cycle.sh"; }
           Mod+B      { spawn "firefox"; }
-
-// ── Windows ───────────────────────────────────────────────────
           Mod+C         { close-window; }
           Mod+F         { maximize-column; }
           Mod+Shift+Space { toggle-window-floating; }
-
-// ── Focus ─────────────────────────────────────────────────────
           Mod+H     { focus-column-left; }
           Mod+J     { focus-window-or-workspace-down; }
           Mod+K     { focus-window-or-workspace-up; }
@@ -365,8 +341,6 @@ in
           Mod+Down  { focus-window-or-workspace-down; }
           Mod+Up    { focus-window-or-workspace-up; }
           Mod+Right { focus-column-right; }
-
-// ── Move ──────────────────────────────────────────────────────
           Mod+Shift+H      { move-column-left; }
           Mod+Shift+J      { move-window-down-or-to-workspace-down; }
           Mod+Shift+K      { move-window-up-or-to-workspace-up; }
@@ -377,8 +351,6 @@ in
           Mod+Shift+Right  { move-column-right; }
           Mod+Shift+period { move-column-to-monitor-right; }
           Mod+Shift+comma  { move-column-to-monitor-left; }
-
-// ── Workspaces ────────────────────────────────────────────────
           Mod+1 { focus-workspace 1; }
           Mod+2 { focus-workspace 2; }
           Mod+3 { focus-workspace 3; }
@@ -397,36 +369,24 @@ in
           Mod+Shift+7 { move-window-to-workspace 7; }
           Mod+Shift+8 { move-window-to-workspace 8; }
           Mod+Shift+9 { move-window-to-workspace 9; }
-
-// ── Volume ────────────────────────────────────────────────────
           XF86AudioMute        { spawn "bash" "/home/shaonix/.local/bin/volume-control.sh" "mute"; }
           XF86AudioLowerVolume { spawn "bash" "/home/shaonix/.local/bin/volume-control.sh" "down"; }
           XF86AudioRaiseVolume { spawn "bash" "/home/shaonix/.local/bin/volume-control.sh" "up"; }
           Mod+F1 { spawn "bash" "/home/shaonix/.local/bin/volume-control.sh" "mute"; }
           Mod+F2 { spawn "bash" "/home/shaonix/.local/bin/volume-control.sh" "down"; }
           Mod+F3 { spawn "bash" "/home/shaonix/.local/bin/volume-control.sh" "up"; }
-
-// ── Colour temperature ────────────────────────────────────────
           Mod+Alt+Up   { spawn "bash" "/home/shaonix/.local/bin/wlsunset-adjust.sh" "up"; }
           Mod+Alt+Down { spawn "bash" "/home/shaonix/.local/bin/wlsunset-adjust.sh" "down"; }
           Mod+Shift+W  { spawn "sh" "-c" "pgrep wlsunset && pkill wlsunset || nohup wlsunset -t 1000 -T 1001 -l 90 -L 0 &"; }
-
-// ── Screenshot ────────────────────────────────────────────────
           Mod+Z       { spawn "bash" "/home/shaonix/.local/bin/screenshot-capture-wayland.sh" "region"; }
           Mod+Shift+Z { spawn "bash" "/home/shaonix/.local/bin/screenshot-capture-wayland.sh"; }
-
-// ── Info popups ───────────────────────────────────────────────
           Alt+T { spawn "bash" "/home/shaonix/.local/bin/show-datetime.sh"; }
           Alt+S { spawn "bash" "/home/shaonix/.local/bin/system-status.sh"; }
           Alt+N { spawn "bash" "/home/shaonix/.local/bin/network-status.sh"; }
           Alt+A { spawn "bash" "/home/shaonix/.local/bin/audio-info.sh"; }
           Alt+K { spawn "bash" "/home/shaonix/.local/bin/keybinds-cheatsheet.sh"; }
-
-// ── Tools ─────────────────────────────────────────────────────
           Mod+O { spawn "bash" "/home/shaonix/.local/bin/ocr-extract.sh"; }
           Mod+P { spawn "bash" "/home/shaonix/.local/bin/color-pick.sh"; }
-
-// ── Session ───────────────────────────────────────────────────
           Mod+Shift+X { spawn "hyprlock"; }
           Mod+Shift+E { quit; }
       }
@@ -890,13 +850,13 @@ programs.bash = {
         LOCKFILE="$HOME/.ss_counter.lock"
         mkdir -p "$SCREENSHOT_DIR"
         exec 200>"$LOCKFILE"
-        flock 200
+        flock -n 200 || exit 0
         n=1
         while [ -f "$SCREENSHOT_DIR/ss$n.png" ]; do
           n=$((n + 1))
         done
         if [ "$1" = "region" ]; then
-          grim -g "$(slurp)" "$SCREENSHOT_DIR/ss$n.png" || exit 0
+          wl-copy --clear; grim -g "$(slurp)" "$SCREENSHOT_DIR/ss$n.png" || exit 0
         else
           grim "$SCREENSHOT_DIR/ss$n.png"
         fi
@@ -1071,21 +1031,6 @@ home.file.".local/bin/system-status.sh" = {
     '';
   };
 
-  home.file.".local/bin/color-pick.sh" = {
-    executable = true;
-    text = ''
-      #!/bin/bash
-      TMPIMG=$(mktemp /tmp/colorpick-XXXXXX.png)
-      grim -g "$(slurp -p)" "$TMPIMG" 2>/dev/null || { rm -f "$TMPIMG"; exit 0; }
-      HEX=$(convert "$TMPIMG" -format "#%[hex:u.p{0,0}]" info: 2>/dev/null | head -c 7)
-      rm -f "$TMPIMG"
-      if [ -n "$HEX" ]; then
-        echo "$HEX" | wl-copy
-        notify-send "🎨 Colour" "$HEX — copied to clipboard" -t 2500
-      fi
-    '';
-  };
-
   home.file.".local/bin/keybinds-cheatsheet.sh" = {
     executable = true;
     text = ''
@@ -1126,11 +1071,8 @@ home.file.".local/bin/system-status.sh" = {
       Alt+N               Network status
       Alt+A               Audio info
       Alt+K               THIS cheatsheet
-      ── Language ──────────────────────────
-      Ctrl+Space          Change keyboard layout
       ── Screen ────────────────────────────
       Mod+O               OCR (copy text from screen)
-      Mod+P               Colour picker
       ── Session ───────────────────────────
       Mod+Shift+X         Lock screen (hyprlock)
       Mod+Shift+E         Quit niri
