@@ -28,21 +28,6 @@ in
 
   time.timeZone      = "Asia/Dhaka";
   i18n.defaultLocale = "en_US.UTF-8";
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS        = "en_US.UTF-8";
-    LC_IDENTIFICATION = "en_US.UTF-8";
-    LC_MEASUREMENT    = "en_US.UTF-8";
-    LC_MONETARY       = "en_US.UTF-8";
-    LC_NAME           = "en_US.UTF-8";
-    LC_NUMERIC        = "en_US.UTF-8";
-    LC_PAPER          = "en_US.UTF-8";
-    LC_TELEPHONE      = "en_US.UTF-8";
-    LC_TIME           = "en_US.UTF-8";
-  };
-
-  services.xserver.xkb = {
-    layout  = "us";
-  };
 
   users.users.shaonix = {
     isNormalUser = true;
@@ -150,8 +135,6 @@ in
   environment.systemPackages = with pkgs; [
     theme-package
     icon-theme-package
-    gtk3
-    gtk4
     adwaita-qt
     nautilus
     adwaita-icon-theme
@@ -177,6 +160,8 @@ in
     udiskie
     p7zip
     keepassxc
+    imv
+    mpv
     zathura
     ripgrep
     yazi
@@ -328,7 +313,6 @@ in
       binds {
           Mod+Return { spawn "alacritty"; }
           Mod+Space  { spawn "fuzzel"; }
-          Mod+W      { spawn "bash" "/home/shaonix/.local/bin/wallpaper-cycle.sh"; }
           Mod+B      { spawn "firefox"; }
           Mod+C         { close-window; }
           Mod+F         { maximize-column; }
@@ -375,13 +359,9 @@ in
           Mod+Shift+W  { spawn "sh" "-c" "pgrep wlsunset && pkill wlsunset || nohup wlsunset -t 1000 -T 1001 -l 90 -L 0 &"; }
           Mod+Z       { spawn "bash" "/home/shaonix/.local/bin/screenshot-capture-wayland.sh" "region"; }
           Mod+Shift+Z { spawn "bash" "/home/shaonix/.local/bin/screenshot-capture-wayland.sh"; }
-          Alt+T { spawn "bash" "/home/shaonix/.local/bin/show-datetime.sh"; }
-          Alt+S { spawn "bash" "/home/shaonix/.local/bin/system-status.sh"; }
-          Alt+N { spawn "bash" "/home/shaonix/.local/bin/network-status.sh"; }
           Alt+A { spawn "bash" "/home/shaonix/.local/bin/audio-info.sh"; }
           Alt+K { spawn "bash" "/home/shaonix/.local/bin/keybinds-cheatsheet.sh"; }
           Mod+O { spawn "bash" "/home/shaonix/.local/bin/ocr-extract.sh"; }
-          Mod+P { spawn "bash" "/home/shaonix/.local/bin/color-pick.sh"; }
           Mod+Shift+X { spawn "hyprlock"; }
           Mod+Shift+E { quit; }
       }
@@ -447,68 +427,11 @@ in
       };
     };
 
-programs.bash = {
+    programs.bash = {
       enable    = true;
       initExtra = ''
         set -o vi
-
-        bind '"\C-h": backward-kill-word'
-        bind '"\e\C-?": backward-kill-word'
-        bind '"\C-l": clear-screen'
-
-        __prompt() {
-          local last=$?
-
-          local reset=$'\001\e[0m\002'
-          local bold_teal=$'\001\e[1;38;2;69;133;136m\002'
-          local pink=$'\001\e[38;2;224;137;161m\002'
-          local bold_green=$'\001\e[1;38;2;184;187;38m\002'
-          local bold_red=$'\001\e[1;38;2;204;51;51m\002'
-          local bold_cyan=$'\001\e[1;38;2;46;139;132m\002'
-
-          local short_pwd
-          short_pwd=$(
-            pwd | sed "s|$HOME|~|" | awk -F'/' '{
-              out = ""
-              for (i = 1; i <= NF; i++) {
-                if (i == NF) {
-                  out = out (out == "" ? "" : "/") $i
-                } else if ($i == "~") {
-                  out = "~"
-                } else if ($i == "") {
-                  true
-                } else {
-                  out = out (out == "" ? "" : "/") substr($i, 1, 3)
-                }
-              }
-              print out
-            }'
-          )
-
-          PS1="''${bold_teal} ''${reset}"
-
-          if [ -n "''${IN_NIX_SHELL}" ]; then
-            PS1+="''${bold_cyan}❄ ''${reset}"
-          fi
-
-          PS1+="''${bold_teal}''${short_pwd}''${reset}"
-
-          local branch
-          branch=$(git branch --show-current 2>/dev/null)
-          if [ -n "''${branch}" ]; then
-            PS1+="''${pink}  ''${branch}''${reset}"
-          fi
-
-          PS1+=$'\n'
-
-          if [ "''${last}" -eq 0 ]; then
-            PS1+="''${bold_green}❯ ''${reset}"
-          else
-            PS1+="''${bold_red}❯ ''${reset}"
-          fi
-        }
-
-        PROMPT_COMMAND=__prompt
+        PS1='\[\e[38;2;224;137;161m\]\w \[\e[0m\]❯ '
       '';
       shellAliases = {
         ls  = "eza -l -a -a -h";
@@ -516,7 +439,6 @@ programs.bash = {
         vim = "hx";
       };
     };
-
 
     programs.eza = {
       enable                = true;
@@ -541,16 +463,6 @@ programs.bash = {
           lsp = {
             display-messages     = true;
             display-inlay-hints  = true;
-          };
-          statusline = {
-            left   = [ "mode" "spinner" ];
-            center = [ "file-name" "file-modification-indicator" ];
-            right  = [ "diagnostics" "selections" "position" "file-encoding" "file-type" ];
-            mode   = {
-              normal = "🟢 NORMAL";
-              insert = "🔴 INSERT";
-              select = "🔵 SELECT";
-            };
           };
         };
         keys = {
@@ -649,113 +561,34 @@ programs.bash = {
       };
     };
 
-    programs.imv = {
-      enable   = true;
-      settings = {
-        options = {
-          background                 = "FDF6E3";
-          overlay_text_color         = "000000";
-          overlay_background_color = "D9D3C3";
-          overlay_font               = "Iosevka:15";
-        };
-        binds = {
-          "<Ctrl+p>"       = ''exec lp "$imv_current_file"'';
-          "<Ctrl+x>"       = ''exec rm "$imv_current_file"; quit'';
-          "<Ctrl+Shift+X>" = ''exec rm "$imv_current_file"; close'';
-          "<Ctrl+r>"       = ''exec mogrify -rotate 90 "$imv_current_file"'';
-        };
-      };
-    };
-
-    programs.mpv = {
-      enable   = true;
-      config   = {
-        profile                 = "fast";
-        vo                      = "gpu";
-        hwdec                   = "vaapi";
-        "gpu-api"               = "opengl";
-        save-position-on-quit = true;
-        osc                     = false;
-        border                  = false;
-        cursor-autohide         = 1000;
-        slang                   = "en,eng,enUS,enGB,enAU,enNZ,enCA,enIE,enZA";
-        ytdl-raw-options        = "ignore-config=,sub-langs=\"en.*,^en\",write-subs=,write-auto-subs=";
-        sub-visibility          = "yes";
-        sub-auto                = "fuzzy";
-        sub-font                = "Iosevka";
-        sub-font-size           = 33;
-        sub-border-size         = 3;
-        sub-shadow-offset       = 1;
-        sub-pos                 = 98;
-        sub-align-y             = "bottom";
-        sub-margin-y            = 20;
-        osd-font                = "Iosevka";
-        osd-font-size           = 28;
-      };
-      bindings = {
-        "l"     = "seek 5";
-        "h"     = "seek -5";
-        "k"     = "add volume 2";
-        "j"     = "add volume -2";
-        "f"     = "cycle fullscreen";
-        "SPACE" = "cycle pause";
-        "s"     = "screenshot";
-        "S"     = "cycle sub";
-        "v"     = "cycle sub-visibility";
-        "]"     = "add speed 0.1";
-        "["     = "add speed -0.1";
-        "BS"    = "set speed 1.0";
-        "q"     = "quit";
-        "Q"     = "quit-watch-later";
-      };
-    };
-
     home.file.".config/yazi/yazi.toml".text = ''
       [mgr]
       show_hidden = true
-      [opener]
-      edit = [
-          { run = 'alacritty -e hx "$@"', orphan = true },
-      ]
-      open = [
-          { run = 'xdg-open "$@"', desc = "Open", for = "unix" },
-      ]
-      image = [
-          { run = 'imv "$@"', orphan = true, for = "unix" },
-      ]
-      play_audio = [
-          { run = 'pkill -q mpv; mpv --force-window --no-resume-playback "$@"', desc = "Play Audio" }
-      ]
-      open_pdf = [
-          { run = 'zathura "$@"', orphan = true, desc = "Open PDF", for = "unix" },
-      ]
 
-      [[opener.browser]]
-      run = 'firefox "$@"'
-      orphan = true
-      desc = "Open in Firefox"
-      for = "unix"
+      [opener]
+      edit     = [{ run = 'alacritty -e hx "$@"', orphan = true }]
+      image    = [{ run = 'imv "$@"', orphan = true, for = "unix" }]
+      video    = [{ run = 'mpv "$@"', orphan = true, for = "unix" }]
+      audio    = [{ run = 'mpv --force-window --no-resume-playback "$@"', orphan = true }]
+      pdf      = [{ run = 'zathura "$@"', orphan = true, for = "unix" }]
+      browser  = [{ run = 'firefox "$@"', orphan = true, for = "unix" }]
 
       [open]
       rules = [
-          { mime = "audio/*",       use = "play_audio" },
-          { mime = "image/*",       use = "image" },
-          { mime = "text/*",        use = "edit" },
-          { mime = "video/*",       use = [ "open" ] },
-          { mime = "application/pdf", use = "open_pdf" },
+        { mime = "image/*",         use = "image" },
+        { mime = "video/*",         use = "video" },
+        { mime = "audio/*",         use = "audio" },
+        { mime = "text/*",          use = "edit" },
+        { mime = "application/pdf", use = "pdf" },
+        { mime = "text/html",       use = "browser" },
+        { mime = "application/xhtml+xml", use = "browser" },
       ]
-      [[open.prepend_rules]]
-      mime = "text/html"
-      use = "browser"
-      [[open.prepend_rules]]
-      mime = "application/xhtml+xml"
-      use = "browser"
     '';
 
     home.file.".config/yazi/theme.toml".text = ''
       [mgr]
-      cwd               = { fg = "#458588", bold = true }
-      hovered           = { fg = "#FDF6E3", bg = "#458588" }
+      cwd             = { fg = "#458588", bold = true }
+      hovered         = { fg = "#FDF6E3", bg = "#458588" }
       find_keyword    = { fg = "#458588", bold = true }
       find_position   = { fg = "#C67F3A", bg = "reset", bold = true }
       marker_copied   = { fg = "#458588", bg = "#458588" }
@@ -764,76 +597,28 @@ programs.bash = {
       count_copied    = { fg = "#FDF6E3", bg = "#458588" }
       count_cut       = { fg = "#FDF6E3", bg = "#CC3333" }
       count_selected  = { fg = "#FDF6E3", bg = "#458588" }
-      border_symbol   = "│"
-      border_style    = { fg = "#999999" }
-
-      [indicator]
-      preview = { underline = true }
 
       [tabs]
       active   = { fg = "#FDF6E3", bg = "#458588", bold = true }
       inactive = { fg = "#8B7355", bg = "#D9D3C3" }
 
       [status]
-      separator_open  = ""
-      separator_close = ""
-      separator_style = { fg = "#D9D3C3", bg = "#D9D3C3" }
-      mode_normal     = { fg = "#FDF6E3", bg = "#458588", bold = true }
-      mode_select     = { fg = "#FDF6E3", bg = "#458588", bold = true }
-      mode_unset      = { fg = "#FDF6E3", bg = "#458588", bold = true }
-      progress_label  = { fg = "#000000", bold = true }
-      progress_normal = { fg = "#458588", bg = "#D9D3C3" }
-      progress_error  = { fg = "#CC3333", bg = "#D9D3C3" }
-      permissions_t   = { fg = "#C67F3A" }
-      permissions_r   = { fg = "#458588" }
-      permissions_w   = { fg = "#CC3333" }
-      permissions_x   = { fg = "#458588" }
-      permissions_s   = { fg = "#999999" }
-
-      [input]
-      border   = { fg = "#C67F3A" }
-      title    = {}
-      value    = {}
-      selected = { reversed = true }
-
-      [select]
-      border   = { fg = "#C67F3A" }
-      active   = { fg = "#458588", bold = true }
-      inactive = {}
-
-      [tasks]
-      border  = { fg = "#C67F3A" }
-      title   = {}
-      hovered = { underline = true }
-
-      [which]
-      cols              = 3
-      mask              = { bg = "#D9D3C3" }
-      cand              = { fg = "#458588" }
-      rest              = { fg = "#999999" }
-      desc              = { fg = "#000000" }
-      separator         = "  "
-      separator_style = { fg = "#999999" }
-
-      [notify]
-      title_info  = { fg = "#458588" }
-      title_warn  = { fg = "#9A7D0A" }
-      title_error = { fg = "#CC3333" }
+      mode_normal = { fg = "#FDF6E3", bg = "#458588", bold = true }
+      mode_select = { fg = "#FDF6E3", bg = "#458588", bold = true }
+      mode_unset  = { fg = "#FDF6E3", bg = "#458588", bold = true }
 
       [filetype]
       rules = [
-        { mime = "image/*",       fg = "#458588" },
-        { mime = "video/*",       fg = "#C67F3A" },
-        { mime = "audio/*",       fg = "#458588" },
-        { mime = "text/*",        fg = "#000000" },
+        { mime = "image/*",         fg = "#458588" },
+        { mime = "video/*",         fg = "#C67F3A" },
+        { mime = "audio/*",         fg = "#458588" },
+        { mime = "text/*",          fg = "#000000" },
         { mime = "inode/directory", fg = "#C67F3A", bold = true },
-        { mime = "*.nix",         fg = "#458588" },
-        { mime = "*.rs",          fg = "#C67F3A" },
-        { mime = "*.py",          fg = "#9A7D0A" },
-        { mime = "*.sh",          fg = "#458588" },
-        { mime = "*.md",          fg = "#000000" },
-        { mime = "*.toml",        fg = "#C67F3A" },
-        { mime = "*.json",        fg = "#9A7D0A" },
+        { mime = "*.nix",           fg = "#458588" },
+        { mime = "*.sh",            fg = "#458588" },
+        { mime = "*.md",            fg = "#000000" },
+        { mime = "*.toml",          fg = "#C67F3A" },
+        { mime = "*.json",          fg = "#9A7D0A" },
       ]
     '';
 
@@ -914,176 +699,92 @@ programs.bash = {
         fi
       '';
     };
- 
-home.file.".local/bin/system-status.sh" = {
-    executable = true;
-    text = ''
-      #!/bin/bash
-      MEM=$(free -h | awk '/^Mem:/ {print $3"/"$2}')
-      DISK=$(df -h / | awk 'NR==2{print $3"/"$2" ("$5")"}')
-      UPTIME=$(uptime -p | sed 's/up //')
-      CPU_LOAD=$(uptime | grep -oP 'load average: \K[^,]+')
-      CPU_TEMP=$(cat /sys/class/thermal/thermal_zone*/temp 2>/dev/null | \
-        awk '{sum+=$1; n++} END {if(n>0) printf "%.0f°C", sum/n/1000; else print "n/a"}')
-      notify-send "💻 System" \
-        "RAM:    $MEM
-      Disk:   $DISK
-      Load:   $CPU_LOAD
-      Temp:   $CPU_TEMP
-      Uptime: $UPTIME" -t 6000
-    '';
+
+    home.file.".local/bin/audio-info.sh" = {
+      executable = true;
+      text = ''
+        #!/bin/bash
+        SINK=$(pactl info | grep "Default Sink" | cut -d: -f2 | xargs | sed 's/.*\.//')
+        VOL=$(pactl get-sink-volume @DEFAULT_SINK@ | grep -oP '\d+%' | head -1)
+        MUTED=$(pactl get-sink-mute @DEFAULT_SINK@ | grep -oP '(yes|no)')
+        SOURCE=$(pactl info | grep "Default Source" | cut -d: -f2 | xargs | sed 's/.*\.//')
+        notify-send "🔊 Audio" "Out: $SINK
+        Vol: $VOL (muted: $MUTED)
+        In:  $SOURCE" -t 4000
+      '';
+    };
+
+    home.file.".local/bin/ocr-extract.sh" = {
+      executable = true;
+      text = ''
+        #!/bin/bash
+        TMPIMG=$(mktemp /tmp/ocr-XXXXXX.png)
+        grim -g "$(slurp)" "$TMPIMG" || { rm -f "$TMPIMG"; exit 0; }
+        TEXT=$(tesseract "$TMPIMG" stdout 2>/dev/null | tr -d '\f')
+        rm -f "$TMPIMG"
+        if [ -n "$TEXT" ]; then
+          echo "$TEXT" | wl-copy
+          notify-send "📋 OCR" "Text copied to clipboard" -t 2000
+        else
+          notify-send "📋 OCR" "No text found" -t 2000
+        fi
+      '';
+    };
+
+    home.file.".local/bin/keybinds-cheatsheet.sh" = {
+      executable = true;
+      text = ''
+        #!/bin/bash
+        CHEATSHEET=$(cat << 'KEYS'
+        ── Apps ──────────────────────────────
+        Mod+Return          Terminal (Alacritty)
+        Mod+Space           App launcher (fuzzel)
+        Mod+B               Firefox
+        ── Windows ───────────────────────────
+        Mod+C               Close window
+        Mod+F               Maximize column
+        Mod+Shift+Space     Toggle floating
+        ── Focus ─────────────────────────────
+        Mod+H/J/K/L         Focus left/down/up/right
+        Mod+Arrows          Focus (arrow keys)
+        ── Move ──────────────────────────────
+        Mod+Shift+H/J/K/L   Move window
+        Mod+Shift+Arrows    Move window
+        Mod+Shift+,/.       Move to monitor left/right
+        ── Workspaces ────────────────────────
+        Mod+1-9             Switch workspace
+        Mod+Shift+1-9       Move window to workspace
+        ── Screenshot ────────────────────────
+        Mod+Z               Region screenshot
+        Mod+Shift+Z         Full screenshot
+        ── Audio ─────────────────────────────
+        Mod+F1              Mute toggle
+        Mod+F2              Volume -5%
+        Mod+F3              Volume +5%
+        ── Colour temp ───────────────────────
+        Mod+Alt+Up          Warmer (+200K)
+        Mod+Alt+Down        Cooler (-200K)
+        Mod+Shift+W         Toggle night mode
+        ── Info popups ───────────────────────
+        Alt+A               Audio info
+        Alt+K               THIS cheatsheet
+        ── Screen ────────────────────────────
+        Mod+O               OCR (copy text from screen)
+        ── Session ───────────────────────────
+        Mod+Shift+X         Lock screen (hyprlock)
+        Mod+Shift+E         Quit niri
+        KEYS
+        )
+        echo "$CHEATSHEET" | fuzzel --dmenu \
+          --prompt="  Keybinds — Esc to close  " \
+          --lines=22 \
+          --width=44 \
+          --no-exit-on-keyboard-focus-loss
+      '';
+    };
   };
-
-  home.file.".local/bin/wallpaper-cycle.sh" = {
-    executable = true;
-    text = ''
-      #!/bin/bash
-      WALLDIR="$HOME/dirrr/wallpapers"
-      STORE="$HOME/.current_wallpaper"
-
-      mapfile -t WALLS < <(find "$WALLDIR" -type f \( -name "*.jpg" -o -name "*.png" -o -name "*.jpeg" \) | sort)
-
-      if [ ''${#WALLS[@]} -eq 0 ]; then
-        notify-send "🖼 Wallpaper" "No images found in ~/dirrr/wallpapers" -t 2000
-        exit 1
-      fi
-
-      CURRENT=$(cat "$STORE" 2>/dev/null || echo "-1")
-      NEXT=$(( (CURRENT + 1) % ''${#WALLS[@]} ))
-      echo "$NEXT" > "$STORE"
-
-      WALL="''${WALLS[$NEXT]}"
-      pkill swaybg 2>/dev/null
-      sleep 0.1
-      swaybg -i "$WALL" -m fill &
-      notify-send "🖼 Wallpaper" "$(basename "$WALL")" -t 1500
-    '';
-  };
-
-  home.file.".local/bin/network-status.sh" = {
-    executable = true;
-    text = ''
-      #!/bin/bash
-      IFACE=$(ip route get 8.8.8.8 2>/dev/null | grep -oP 'dev \K\S+' | head -1)
-      IP=$(ip addr show "$IFACE" 2>/dev/null | grep -oP '(?<=inet )\d+\.\d+\.\d+\.\d+' | head -1)
-      SSID=$(nmcli -t -f active,ssid dev wifi 2>/dev/null | grep '^yes' | cut -d: -f2)
-      PING=$(ping -c1 -W1 8.8.8.8 2>/dev/null | grep -oP 'time=\K[\d.]+' | head -1)
-
-      if [ -n "$SSID" ]; then
-        notify-send "🌐 Network" "WiFi: $SSID
-      IP:   ''${IP:-unknown}
-      Ping: ''${PING:-timeout}ms" -t 4000
-      elif [ -n "$IP" ]; then
-        notify-send "🌐 Network" "Ethernet: $IP
-      Ping: ''${PING:-timeout}ms" -t 4000
-      else
-        notify-send "🌐 Network" "No connection" -t 4000
-      fi
-    '';
-  };
-
-  home.file.".local/bin/audio-info.sh" = {
-    executable = true;
-    text = ''
-      #!/bin/bash
-      SINK=$(pactl info | grep "Default Sink" | cut -d: -f2 | xargs | sed 's/.*\.//')
-      VOL=$(pactl get-sink-volume @DEFAULT_SINK@ | grep -oP '\d+%' | head -1)
-      MUTED=$(pactl get-sink-mute @DEFAULT_SINK@ | grep -oP '(yes|no)')
-      SOURCE=$(pactl info | grep "Default Source" | cut -d: -f2 | xargs | sed 's/.*\.//')
-      notify-send "🔊 Audio" "Out: $SINK
-      Vol: $VOL (muted: $MUTED)
-      In:  $SOURCE" -t 4000
-    '';
-  };
-
-  home.file.".local/bin/show-datetime.sh" = {
-    executable = true;
-    text = ''
-      #!/bin/bash
-      DATE=$(date "+%A, %d %B %Y")
-      TIME=$(date "+%H:%M:%S")
-      WEEK=$(date "+Week %V")
-      notify-send "🕐 Time" "$TIME
-      $DATE
-      $WEEK" -t 4000
-    '';
-  };
-
-  home.file.".local/bin/ocr-extract.sh" = {
-    executable = true;
-    text = ''
-      #!/bin/bash
-      TMPIMG=$(mktemp /tmp/ocr-XXXXXX.png)
-      grim -g "$(slurp)" "$TMPIMG" || { rm -f "$TMPIMG"; exit 0; }
-      TEXT=$(tesseract "$TMPIMG" stdout 2>/dev/null | tr -d '\f')
-      rm -f "$TMPIMG"
-      if [ -n "$TEXT" ]; then
-        echo "$TEXT" | wl-copy
-        notify-send "📋 OCR" "Text copied to clipboard" -t 2000
-      else
-        notify-send "📋 OCR" "No text found" -t 2000
-      fi
-    '';
-  };
-
-  home.file.".local/bin/keybinds-cheatsheet.sh" = {
-    executable = true;
-    text = ''
-      #!/bin/bash
-      CHEATSHEET=$(cat << 'KEYS'
-      ── Apps ──────────────────────────────
-      Mod+Return          Terminal (Alacritty)
-      Mod+Space           App launcher (fuzzel)
-      Mod+B               Firefox
-      ── Windows ───────────────────────────
-      Mod+C               Close window
-      Mod+F               Maximize column
-      Mod+Shift+Space     Toggle floating
-      ── Focus ─────────────────────────────
-      Mod+H/J/K/L         Focus left/down/up/right
-      Mod+Arrows          Focus (arrow keys)
-      ── Move ──────────────────────────────
-      Mod+Shift+H/J/K/L   Move window
-      Mod+Shift+Arrows    Move window
-      Mod+Shift+,/.       Move to monitor left/right
-      ── Workspaces ────────────────────────
-      Mod+1-9             Switch workspace
-      Mod+Shift+1-9       Move window to workspace
-      ── Screenshot ────────────────────────
-      Mod+Z               Region screenshot
-      Mod+Shift+Z         Full screenshot
-      ── Audio ─────────────────────────────
-      Mod+F1              Mute toggle
-      Mod+F2              Volume -5%
-      Mod+F3              Volume +5%
-      ── Colour temp ───────────────────────
-      Mod+Alt+Up          Warmer (+200K)
-      Mod+Alt+Down        Cooler (-200K)
-      Mod+Shift+W         Toggle night mode
-      ── Info popups ───────────────────────
-      Alt+T               Date & time
-      Alt+S               System status
-      Alt+N               Network status
-      Alt+A               Audio info
-      Alt+K               THIS cheatsheet
-      ── Screen ────────────────────────────
-      Mod+O               OCR (copy text from screen)
-      ── Session ───────────────────────────
-      Mod+Shift+X         Lock screen (hyprlock)
-      Mod+Shift+E         Quit niri
-      KEYS
-      )
-      echo "$CHEATSHEET" | fuzzel --dmenu \
-        --prompt="  Keybinds — Esc to close  " \
-        --lines=22 \
-        --width=44 \
-        --no-exit-on-keyboard-focus-loss
-    '';
-  };
-};
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nixpkgs.config.allowUnfree          = true;
-
   system.stateVersion = "26.05";
 }
