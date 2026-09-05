@@ -144,7 +144,6 @@ in
     qt5.qtwayland
     qt6.qtwayland
     swaybg
-    mako
     wl-clipboard
     wiremix
     wireplumber
@@ -158,15 +157,11 @@ in
     networkmanagerapplet
     nh
     udiskie
-    p7zip
     keepassxc
     imv
     mpv
     zathura
-    ripgrep
     yazi
-    libnotify
-    tesseract
   ];
 
   home-manager.users.shaonix = {
@@ -183,8 +178,6 @@ in
         name    = "Gruvbox-Plus-Light";
         package = pkgs.gruvbox-plus-icons;
       };
-      gtk3.extraConfig.gtk-application-prefer-dark-theme = 0;
-      gtk4.extraConfig.gtk-application-prefer-dark-theme = 0;
     };
 
     qt = {
@@ -278,9 +271,12 @@ in
           geometry-corner-radius 8
           clip-to-geometry true
       }
-
       window-rule {
-          match app-id="mako"
+          match app-id="org.gnome.Nautilus"
+          open-floating true
+      }
+      window-rule {
+          match app-id="xdg-desktop-portal-gtk"
           open-floating true
       }
       window-rule {
@@ -295,17 +291,8 @@ in
           match title="Confirm to replace files"
           open-floating true
       }
-      window-rule {
-          match app-id="xdg-desktop-portal-gtk"
-          open-floating true
-      }
-      window-rule {
-          match app-id="imv"
-          open-floating true
-      }
 
       spawn-at-startup "udiskie" "-t"
-      spawn-at-startup "mako"
       spawn-at-startup "swaybg" "-i" "/etc/nixos/wallpaper.jpg" "-m" "fill"
       spawn-at-startup "wlsunset" "-t" "4500" "-T" "4500"
       spawn-at-startup "xwayland-satellite"
@@ -343,25 +330,9 @@ in
           Mod+Shift+2 { move-window-to-workspace 2; }
           Mod+Shift+3 { move-window-to-workspace 3; }
           Mod+Shift+4 { move-window-to-workspace 4; }
-          Mod+Shift+5 { move-window-to-workspace 5; }
-          Mod+Shift+6 { move-window-to-workspace 6; }
-          Mod+Shift+7 { move-window-to-workspace 7; }
-          Mod+Shift+8 { move-window-to-workspace 8; }
-          Mod+Shift+9 { move-window-to-workspace 9; }
-          XF86AudioMute        { spawn "bash" "/home/shaonix/.local/bin/volume-control.sh" "mute"; }
-          XF86AudioLowerVolume { spawn "bash" "/home/shaonix/.local/bin/volume-control.sh" "down"; }
-          XF86AudioRaiseVolume { spawn "bash" "/home/shaonix/.local/bin/volume-control.sh" "up"; }
-          Mod+F1 { spawn "bash" "/home/shaonix/.local/bin/volume-control.sh" "mute"; }
-          Mod+F2 { spawn "bash" "/home/shaonix/.local/bin/volume-control.sh" "down"; }
-          Mod+F3 { spawn "bash" "/home/shaonix/.local/bin/volume-control.sh" "up"; }
-          Mod+Alt+Up   { spawn "bash" "/home/shaonix/.local/bin/wlsunset-adjust.sh" "up"; }
-          Mod+Alt+Down { spawn "bash" "/home/shaonix/.local/bin/wlsunset-adjust.sh" "down"; }
-          Mod+Shift+W  { spawn "sh" "-c" "pgrep wlsunset && pkill wlsunset || nohup wlsunset -t 1000 -T 1001 -l 90 -L 0 &"; }
-          Mod+Z       { spawn "bash" "/home/shaonix/.local/bin/screenshot-capture-wayland.sh" "region"; }
-          Mod+Shift+Z { spawn "bash" "/home/shaonix/.local/bin/screenshot-capture-wayland.sh"; }
-          Alt+A { spawn "bash" "/home/shaonix/.local/bin/audio-info.sh"; }
-          Alt+K { spawn "bash" "/home/shaonix/.local/bin/keybinds-cheatsheet.sh"; }
-          Mod+O { spawn "bash" "/home/shaonix/.local/bin/ocr-extract.sh"; }
+          XF86AudioMute        { spawn "sh" "-c" "pactl set-sink-mute @DEFAULT_SINK@ toggle"; }
+          XF86AudioLowerVolume { spawn "sh" "-c" "pactl set-sink-volume @DEFAULT_SINK@ -2%"; }
+          XF86AudioRaiseVolume { spawn "sh" "-c" "pactl set-sink-volume @DEFAULT_SINK@ +2%"; }
           Mod+Shift+X { spawn "hyprlock"; }
           Mod+Shift+E { quit; }
       }
@@ -405,25 +376,6 @@ in
           halign      = "center";
           valign      = "center";
         }];
-      };
-    };
-
-    services.mako = {
-      enable   = true;
-      settings = {
-        background-color = "#FDF6E3";
-        text-color       = "#000000";
-        border-color     = "#458588";
-        anchor           = "top-center";
-        margin           = "10";
-        padding          = "10,16";
-        width            = 340;
-        height           = 120;
-        border-size      = 2;
-        border-radius    = 8;
-        default-timeout  = 4000;
-        layer            = "overlay";
-        font             = lib.mkForce "Iosevka 15";
       };
     };
 
@@ -621,167 +573,6 @@ in
         { mime = "*.json",          fg = "#9A7D0A" },
       ]
     '';
-
-    home.file.".local/bin/screenshot-capture-wayland.sh" = {
-      executable = true;
-      text = ''
-        #!/bin/bash
-        SCREENSHOT_DIR="$HOME/dirrr"
-        LOCKFILE="$HOME/.ss_counter.lock"
-        mkdir -p "$SCREENSHOT_DIR"
-        exec 200>"$LOCKFILE"
-        flock -n 200 || exit 0
-        n=1
-        while [ -f "$SCREENSHOT_DIR/ss$n.png" ]; do
-          n=$((n + 1))
-        done
-        if [ "$1" = "region" ]; then
-          wl-copy --clear; grim -g "$(slurp)" "$SCREENSHOT_DIR/ss$n.png" || exit 0
-        else
-          grim "$SCREENSHOT_DIR/ss$n.png"
-        fi
-        wl-copy < "$SCREENSHOT_DIR/ss$n.png"
-        notify-send -i "$SCREENSHOT_DIR/ss$n.png" "📸 Screenshot" "Saved: ss$n.png — copied to clipboard" -t 3000
-      '';
-    };
-
-    home.file.".local/bin/wlsunset-adjust.sh" = {
-      executable = true;
-      text = ''
-        #!/bin/bash
-        STEP=200
-        STORE="$HOME/.wlsunset_temp"
-        [ -f "$STORE" ] && CURRENT=$(cat "$STORE") || CURRENT=3000
-
-        case "$1" in
-          up)   NEW=$((CURRENT + STEP)) ;;
-          down) NEW=$((CURRENT - STEP)) ;;
-          *)    NEW=$CURRENT ;;
-        esac
-
-        [ "$NEW" -lt 1000 ] && NEW=1000
-        [ "$NEW" -gt 6500 ] && NEW=6500
-
-        echo "$NEW" > "$STORE"
-        pkill wlsunset 2>/dev/null
-        sleep 0.2
-        setsid wlsunset -t "$NEW" -T $((NEW + 1)) -l 90 -L 0 >/dev/null 2>&1 &
-        notify-send "🌡 Colour Temp" "''${NEW}K" -t 1200
-      '';
-    };
-
-    home.file.".local/bin/volume-control.sh" = {
-      executable = true;
-      text = ''
-        #!/bin/bash
-        timeout=5
-        while [ $timeout -gt 0 ]; do
-          pactl info &>/dev/null && break
-          sleep 0.5
-          timeout=$((timeout - 1))
-        done
-
-        case "$1" in
-          up)   pactl set-sink-volume @DEFAULT_SINK@ +2% ;;
-          down) pactl set-sink-volume @DEFAULT_SINK@ -2% ;;
-          mute) pactl set-sink-mute  @DEFAULT_SINK@ toggle ;;
-        esac
-
-        MUTED=$(pactl get-sink-mute @DEFAULT_SINK@ | grep -c "yes")
-        VOL=$(pactl get-sink-volume @DEFAULT_SINK@ | grep -oP '\d+%' | head -1)
-
-        if [ "$MUTED" -gt 0 ]; then
-          notify-send -h string:x-canonical-private-synchronous:volume \
-            "🔇 Muted" "" -t 1000
-        else
-          notify-send -h string:x-canonical-private-synchronous:volume \
-            "🔊 Volume" "$VOL" -t 1000
-        fi
-      '';
-    };
-
-    home.file.".local/bin/audio-info.sh" = {
-      executable = true;
-      text = ''
-        #!/bin/bash
-        SINK=$(pactl info | grep "Default Sink" | cut -d: -f2 | xargs | sed 's/.*\.//')
-        VOL=$(pactl get-sink-volume @DEFAULT_SINK@ | grep -oP '\d+%' | head -1)
-        MUTED=$(pactl get-sink-mute @DEFAULT_SINK@ | grep -oP '(yes|no)')
-        SOURCE=$(pactl info | grep "Default Source" | cut -d: -f2 | xargs | sed 's/.*\.//')
-        notify-send "🔊 Audio" "Out: $SINK
-        Vol: $VOL (muted: $MUTED)
-        In:  $SOURCE" -t 4000
-      '';
-    };
-
-    home.file.".local/bin/ocr-extract.sh" = {
-      executable = true;
-      text = ''
-        #!/bin/bash
-        TMPIMG=$(mktemp /tmp/ocr-XXXXXX.png)
-        grim -g "$(slurp)" "$TMPIMG" || { rm -f "$TMPIMG"; exit 0; }
-        TEXT=$(tesseract "$TMPIMG" stdout 2>/dev/null | tr -d '\f')
-        rm -f "$TMPIMG"
-        if [ -n "$TEXT" ]; then
-          echo "$TEXT" | wl-copy
-          notify-send "📋 OCR" "Text copied to clipboard" -t 2000
-        else
-          notify-send "📋 OCR" "No text found" -t 2000
-        fi
-      '';
-    };
-
-    home.file.".local/bin/keybinds-cheatsheet.sh" = {
-      executable = true;
-      text = ''
-        #!/bin/bash
-        CHEATSHEET=$(cat << 'KEYS'
-        ── Apps ──────────────────────────────
-        Mod+Return          Terminal (Alacritty)
-        Mod+Space           App launcher (fuzzel)
-        Mod+B               Firefox
-        ── Windows ───────────────────────────
-        Mod+C               Close window
-        Mod+F               Maximize column
-        Mod+Shift+Space     Toggle floating
-        ── Focus ─────────────────────────────
-        Mod+H/J/K/L         Focus left/down/up/right
-        Mod+Arrows          Focus (arrow keys)
-        ── Move ──────────────────────────────
-        Mod+Shift+H/J/K/L   Move window
-        Mod+Shift+Arrows    Move window
-        Mod+Shift+,/.       Move to monitor left/right
-        ── Workspaces ────────────────────────
-        Mod+1-9             Switch workspace
-        Mod+Shift+1-9       Move window to workspace
-        ── Screenshot ────────────────────────
-        Mod+Z               Region screenshot
-        Mod+Shift+Z         Full screenshot
-        ── Audio ─────────────────────────────
-        Mod+F1              Mute toggle
-        Mod+F2              Volume -5%
-        Mod+F3              Volume +5%
-        ── Colour temp ───────────────────────
-        Mod+Alt+Up          Warmer (+200K)
-        Mod+Alt+Down        Cooler (-200K)
-        Mod+Shift+W         Toggle night mode
-        ── Info popups ───────────────────────
-        Alt+A               Audio info
-        Alt+K               THIS cheatsheet
-        ── Screen ────────────────────────────
-        Mod+O               OCR (copy text from screen)
-        ── Session ───────────────────────────
-        Mod+Shift+X         Lock screen (hyprlock)
-        Mod+Shift+E         Quit niri
-        KEYS
-        )
-        echo "$CHEATSHEET" | fuzzel --dmenu \
-          --prompt="  Keybinds — Esc to close  " \
-          --lines=22 \
-          --width=44 \
-          --no-exit-on-keyboard-focus-loss
-      '';
-    };
   };
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
