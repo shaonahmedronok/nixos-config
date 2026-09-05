@@ -291,6 +291,10 @@ in
           match title="Confirm to replace files"
           open-floating true
       }
+      window-rule {
+          match app-id="imv"
+          open-floating true
+      }
 
       spawn-at-startup "udiskie" "-t"
       spawn-at-startup "swaybg" "-i" "/etc/nixos/wallpaper.jpg" "-m" "fill"
