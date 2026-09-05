@@ -390,8 +390,8 @@ in
         PS1='\[\e[38;2;224;137;161m\]\w \[\e[0m\]❯ '
       '';
       shellAliases = {
-        ls  = "eza -l -a -a -h";
-        ll  = "eza -l -a -a -h";
+        ls  = "eza -l -a -h";
+        ll  = "eza -l -a -h";
         vim = "hx";
       };
     };
